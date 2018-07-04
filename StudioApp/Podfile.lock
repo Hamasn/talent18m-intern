@@ -1,0 +1,36 @@
+PODS:
+  - ASExtendedCircularMenu (0.1.1)
+  - CircleMenu (3.0.6)
+  - FSPagerView (0.7.1)
+  - SnapKit (4.0.0)
+
+DEPENDENCIES:
+  - ASExtendedCircularMenu (from `https://github.com/anshul18895/ASExtendedCircularMenu`)
+  - CircleMenu
+  - FSPagerView
+  - SnapKit (~> 4.0.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CircleMenu
+    - FSPagerView
+    - SnapKit
+
+EXTERNAL SOURCES:
+  ASExtendedCircularMenu:
+    :git: https://github.com/anshul18895/ASExtendedCircularMenu
+
+CHECKOUT OPTIONS:
+  ASExtendedCircularMenu:
+    :commit: c1d0381abf2a055033a267ce113516da53d84bd6
+    :git: https://github.com/anshul18895/ASExtendedCircularMenu
+
+SPEC CHECKSUMS:
+  ASExtendedCircularMenu: c6012cee87d7686981c2f0d184a461ae41c5dac0
+  CircleMenu: 743ac815475e8e40e8848d2954fa7f7263d9f78d
+  FSPagerView: 958aba39684e1573755ddcfcc29f7eebb8413cee
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+
+PODFILE CHECKSUM: cca161541c244cbd2f358d725e4d163a63b94dbd
+
+COCOAPODS: 1.5.3
