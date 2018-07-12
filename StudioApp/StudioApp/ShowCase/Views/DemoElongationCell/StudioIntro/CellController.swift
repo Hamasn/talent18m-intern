@@ -1,0 +1,9 @@
+//
+//  File.swift
+//  StudioApp
+//
+//  Created by ifundit on 2018/7/5.
+//  Copyright © 2018年 ifundit. All rights reserved.
+//
+
+import Foundation

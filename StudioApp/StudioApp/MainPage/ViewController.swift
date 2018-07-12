@@ -8,18 +8,13 @@
 
 import UIKit
 import SnapKit
-import ASExtendedCircularMenu
 class ViewController: UIViewController,ASCircularButtonDelegate{
-   
-    
-
-    
-
    var myIndex = 0
    
+ 
     @IBOutlet weak var TestButton: ASCircularMenuButton!
-
-    let items: [String] = ["更多内容","发现","Group 7","主页","AR","home","关闭"]
+    
+    let items: [String] = ["更多内容","发现","Setting","主页","AR","home","关闭"]
     var ableToDrag:Bool = true
     var DragPoint:CGPoint!
     var Extend:Bool = false
@@ -28,7 +23,7 @@ class ViewController: UIViewController,ASCircularButtonDelegate{
         //set up touch button
         configureDraggebleCircularMenuButton(button: TestButton, numberOfMenuItems: 5, menuRedius: 70, postion: .center)
         TestButton.menuButtonSize = .large
-        TestButton.sholudMenuButtonAnimate = true
+        TestButton.sholudMenuButtonAnimate = false
         TestButton.setImage(UIImage(named: items[5]), for: .normal)
     }
     
@@ -53,7 +48,14 @@ class ViewController: UIViewController,ASCircularButtonDelegate{
         Button.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
     }
     func didClickOnCircularMenuButton(_ menuButton: ASCircularMenuButton, indexForButton: Int, button: UIButton) {
-       
+        if indexForButton == 0{
+            let presentView = storyboard!.instantiateViewController(withIdentifier: "StudioIntro") as! StudioIntro
+            present(presentView, animated: true, completion: nil)
+        }
+        else if indexForButton == 2  {
+            let presentView = storyboard!.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
+            present(presentView, animated: true, completion: nil)
+        }
     }
     
     func buttonForIndexAt(_ menuButton: ASCircularMenuButton, indexForButton: Int) -> UIButton {
