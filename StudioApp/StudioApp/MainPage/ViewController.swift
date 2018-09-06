@@ -25,6 +25,7 @@ class ViewController: UIViewController,ASCircularButtonDelegate{
         TestButton.menuButtonSize = .large
         TestButton.sholudMenuButtonAnimate = false
         TestButton.setImage(UIImage(named: items[5]), for: .normal)
+        
     }
     
     @IBOutlet weak var Table: UITableView!
@@ -97,7 +98,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         }
         else if indexPath.row == 2 {
              var cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! CellOneViewController
-            
+           
             return cell
         }
         else if indexPath.row == 3{
@@ -150,7 +151,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
 // accessory taped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      
+
     }
     
     

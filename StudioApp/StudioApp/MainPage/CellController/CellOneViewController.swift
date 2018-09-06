@@ -14,8 +14,8 @@ class CellOneViewController: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
     }
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -24,7 +24,7 @@ class CellOneViewController: UITableViewCell {
     }
     
 }
-extension CellOneViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CellOneViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
@@ -57,6 +57,33 @@ extension CellOneViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.layer.cornerRadius = 12.0
    
         return cell
+    }
+    func responderViewController() -> UIViewController? {
+        for view in sequence(first: self.superview, next: {$0?.superview}) {
+            if let responder = view?.next {
+                if responder.isKind(of: UIViewController.self) {
+                    return responder as? UIViewController
+                }
+            }
+        }
+        return nil
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let view = self.responderViewController()
+        let ar = view?.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
+        let routes = view?.storyboard!.instantiateViewController(withIdentifier: "showRoutes") as! RoutesViewController
+        if indexPath.row == 0{
+            print("0")
+            view?.present(ar, animated: true, completion: nil)
+            
+        }else if indexPath.row == 1{
+            print("1")
+            view?.present(routes, animated: true, completion: nil)
+        }else if indexPath.row == 2 {
+            print("2")
+        }
+        
+        
     }
 
 }

@@ -18,6 +18,7 @@ class CollectionOneViewCell: UICollectionViewCell {
         if (number == 1)  {
              CellImage.image = UIImage(named: "showcase\(number)")
             ShowLabel.text = "AR"
+            
         }
         else if number == 2{
             CellImage.image = UIImage(named: "showcase\(number)")

@@ -1,24 +1,32 @@
 PODS:
   - ElongationPreview (1.1.2)
-  - FSPagerView (0.7.1)
+  - FSPagerView (0.7.2)
   - SnapKit (4.0.0)
+  - SVProgressHUD (2.2.5)
+  - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
   - ElongationPreview
   - FSPagerView
   - SnapKit (~> 4.0.0)
+  - SVProgressHUD
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ElongationPreview
     - FSPagerView
     - SnapKit
+    - SVProgressHUD
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   ElongationPreview: a1b53f61d2086c0ce5c2061e5233bff25b93917d
-  FSPagerView: 958aba39684e1573755ddcfcc29f7eebb8413cee
+  FSPagerView: 7515f63c424da71623d299d4fbbfb3dd884642ff
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 57c348ae9fb909bc289a5a1d3d540a77e70b7212
+PODFILE CHECKSUM: b531964c6532f9e9da0a3bbd81ee18752629115f
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.2
