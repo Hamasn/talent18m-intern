@@ -31,14 +31,14 @@ class Person : SCNNode{
     }
 
     func playAnimation(imageName:String){
-        guard  let sceneURL = Bundle.main.url(forResource: "art.scnassets/ShuLiFixed", withExtension: "dae") else {
+        guard  let sceneURL = Bundle.main.url(forResource: "art.scnassets/"+imageName, withExtension: "dae") else {
             fatalError("dae not exit.")
         }
         guard  let sceneSource = SCNSceneSource(url: sceneURL,options: nil) else {
             fatalError("dae not exit.")
         }
 
-        if let animationObject = sceneSource.entryWithIdentifier("ShuLiFixed-1", withClass: CAAnimation.self) {
+        if let animationObject = sceneSource.entryWithIdentifier(imageName+"-1", withClass: CAAnimation.self) {
             // The animation will only play once
             animationObject.repeatCount = 5
             // To create smooth transitions between animations
@@ -51,24 +51,5 @@ class Person : SCNNode{
         self.addAnimation(animations["dancing"]!, forKey: "dancing")
         
     }
-    func playAnimation2(imageName:String){
-        guard  let sceneURL = Bundle.main.url(forResource: "art.scnassets/YellingFixed", withExtension: "dae") else {
-            fatalError("dae not exit.")
-        }
-        guard  let sceneSource = SCNSceneSource(url: sceneURL,options: nil) else {
-            fatalError("dae not exit.")
-        }
-        if let animationObject = sceneSource.entryWithIdentifier("YellingFixed-1", withClass: CAAnimation.self) {
-            // The animation will only play once
-            animationObject.repeatCount = 5
-            // To create smooth transitions between animations
-            animationObject.fadeInDuration = CGFloat(1)
-            animationObject.fadeOutDuration = CGFloat(0.5)
-            
-            // Store the animation for later use
-            animations["dancing"] = animationObject
-        }
-        self.addAnimation(animations["dancing"]!, forKey: "dancing")
-        
-    }
+    
 }

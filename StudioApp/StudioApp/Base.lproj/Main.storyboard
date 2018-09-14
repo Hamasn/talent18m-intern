@@ -310,6 +310,21 @@ Cg
             <point key="canvasLocation" x="-321" y="-1281"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="xn5-hy-0PO">
+            <objects>
+                <viewController storyboardIdentifier="videoView" id="buO-ol-L0I" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bC3-62-ovh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dHo-Wm-TRL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CWL-dM-pNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1620" y="-448"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="main" id="BYZ-38-t0r" customClass="ViewController" customModule="StudioApp" customModuleProvider="target" sceneMemberID="viewController">

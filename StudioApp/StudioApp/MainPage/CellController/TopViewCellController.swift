@@ -46,50 +46,75 @@ class TopViewCellController: UITableViewCell,UIScrollViewDelegate{
          let imgFour = UIImageView(frame: CGRect(x:scrollWidth*3, y:0,width:scrollWidth, height:scrollHeight))
          imgFour.image = UIImage(named: "4")
         imgOne.contentMode = .scaleToFill
-        
+//
         //set up button
         let ratio:CGFloat = 163.0/375.0
         let width = UIScreen.main.bounds.width * ratio;
-        
+
         
         
         let button1 = UIButton(frame: CGRect(x: width, y: 74, width: 50, height: 50))
         let button2 = UIButton(frame: CGRect(x: scrollWidth+width, y: 74, width: 50, height: 50))
         let button3 = UIButton(frame: CGRect(x: scrollWidth*2+width , y: 74, width: 50, height: 50))
         let button4 = UIButton(frame: CGRect(x: scrollWidth*3+width , y: 74, width: 50, height: 50))
+        
+        
+        button1.addTarget(self, action: #selector(playVedio1), for: .touchUpInside)
+        button2.addTarget(self, action: #selector(playVedio1), for: .touchUpInside)
+        button3.addTarget(self, action: #selector(playVedio1), for: .touchUpInside)
+        button4.addTarget(self, action: #selector(playVedio1), for: .touchUpInside)
+        
         self.setUpButton(button: button1)
         self.setUpButton(button: button2)
         self.setUpButton(button: button3)
         self.setUpButton(button: button4)
+
         //add image to view
         viewOne.addSubview(imgOne)
         viewTwo.addSubview(imgTwo)
         viewThree.addSubview(imgThree)
         viewFour.addSubview(imgFour)
-        
+
          imgOne.snp.makeConstraints { (imgOne) -> Void in
          imgOne.top.equalTo(viewOne).offset(0)
          imgOne.left.equalTo(viewOne).offset(0)
          imgOne.bottom.equalTo(viewOne).offset(0)
          imgOne.right.equalTo(viewOne).offset(0)
          }
-        
-        //add button to view
-        viewOne.addSubview(button1)
-        viewTwo.addSubview(button2)
-        viewThree.addSubview(button3)
-        viewFour.addSubview(button4)
-        
+
         TopView.addSubview(viewOne)
         TopView.addSubview(viewTwo)
         TopView.addSubview(viewThree)
         TopView.addSubview(viewFour)
+        
+        TopView.addSubview(button1)
+        TopView.addSubview(button2)
+        TopView.addSubview(button3)
+        TopView.addSubview(button4)
        
         self.TopView.contentSize = CGSize(width: UIScreen.main.bounds.width * 4, height: scrollHeight)
         self.TopView.delegate = self
         self.TopControl.currentPage = 0
         
     }
+    
+    @objc func playVedio1(sender: UIButton) {
+        let view = self.responderViewController()
+        let videoView = view?.storyboard!.instantiateViewController(withIdentifier: "videoView") as! RoutesViewController
+        view?.present(videoView, animated: true, completion: nil)
+    }
+    
+    func responderViewController() -> UIViewController? {
+        for view in sequence(first: self.superview, next: {$0?.superview}) {
+            if let responder = view?.next {
+                if responder.isKind(of: UIViewController.self) {
+                    return responder as? UIViewController
+                }
+            }
+        }
+        return nil
+    }
+    
     //function that set up the property of dot in TopControl
     func TopControlSetup() {
         
@@ -101,6 +126,8 @@ class TopViewCellController: UITableViewCell,UIScrollViewDelegate{
         self.TopControl.currentPage = Int(currentPage)
     }
   }
+
+
 
 
  

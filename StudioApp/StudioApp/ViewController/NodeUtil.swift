@@ -57,45 +57,12 @@ class NodeUtil{
         let node = SCNNode(geometry: box)
         node.position = position
         node.name = "endNode"
-//        let filePath:String = NSHomeDirectory() + "/Documents/tf0.json"
-//        let fileUrl = URL(fileURLWithPath: filePath)
+
          positionStr = positionStr+position.toString()
-         UserDefaults.standard.set(positionStr, forKey: "positionStr")
-         let test = UserDefaults.standard.string(forKey: "positionStr")
-         print(test)
-//        NToDel.write(toFile: filePath, atomically: true)
-//        NToDel.write(to: fileUrl, atomically: true)
-//
-//        let test = NSMutableArray(contentsOfFile:NSHomeDirectory() + "/Documents/tf9.plist")
-//
-//        print(test)
-        
-//        guard let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-//        let fileUrl = documentDirectoryUrl.appendingPathComponent("Persons.json")
+         UserDefaults.standard.removeObject(forKey: "ShuLiFixed")
+         UserDefaults.standard.set(positionStr, forKey: "ShuLiFixed")
+ 
 
-//        
-//        let arry = NSArray(objects: "stev","baidu.com","com","12344","robinson")
-//        let sss:String = NSHomeDirectory() + "/Documents/tf1.plist"
-//        arry.write(toFile: sss, atomically: true)
-//        
-//        let tfArray = NSArray(contentsOfFile:NSHomeDirectory() + "/Documents/tf1.plist")
-//        
-//        print(tfArray)
-
-        
-//        let fileManager = FileManager.default
-//        if fileManager.fileExists(atPath: filePath) {
-//
-//          print("存在")
-//        }
-//        else {
-//            print("不存在")
-//        }
-        
-        // Read from file
-//        let tfArray = NSArray(contentsOfFile:FileUtil.path(name: "/com.mmoaay.findme.routes".appending("/").appending("test2.plist"))!)
-//
-//        print(tfArray)
         
         node.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
         rootNode.addChildNode(node)

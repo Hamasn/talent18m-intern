@@ -15,12 +15,24 @@ extension SCNMatrix4{
     }
     
     private func matrixElement(f:Float)->String{
-        return String(format: "%.3f", f)
+        return String(format: "%.6f", f)
+    }
+}
+
+extension Float{
+    func toString() -> String{
+        return String(format: "%.6f", self)
     }
 }
 
 extension String.SubSequence {
     var floatValue: Float {
+        return (self as NSString).floatValue
+    }
+}
+
+extension String{
+    var floatValue: Float{
         return (self as NSString).floatValue
     }
 }
@@ -32,7 +44,7 @@ extension SCNVector3
     }
     
     private func matrixElement(f:Float)->String{
-        return String(format: "%.3f", f)
+        return String(format: "%.6f", f)
     }
     
     /**
