@@ -60,8 +60,7 @@ class NodeUtil{
 
          positionStr = positionStr+position.toString()
          print(positionStr)
-         UserDefaults.standard.removeObject(forKey: "ShuLiFixed")
-         UserDefaults.standard.set(positionStr, forKey: "ShuLiFixed")
+
  
 
         

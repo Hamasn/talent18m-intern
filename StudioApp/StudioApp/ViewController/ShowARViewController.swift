@@ -102,12 +102,12 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
         let attributedTitle = NSMutableAttributedString(string: "Please select a display mode.")
         alert.setValue(attributedTitle, forKey: "attributedTitle")
         self.isAlert = true
-        let action1 = UIAlertAction(title: "speaker", style: .default, handler: { (action) -> Void in
+        let action1 = UIAlertAction(title: "Speaker", style: .default, handler: { (action) -> Void in
             self.isAlert = false
             self.displayPerson(name: name)
         })
         
-        let action2 = UIAlertAction(title: "guide", style: .default, handler: { (action) -> Void in
+        let action2 = UIAlertAction(title: "Guide", style: .default, handler: { (action) -> Void in
            
             self.readRoute(name: name)
         })
@@ -200,7 +200,6 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
         
         let current = pointOfView.position
         
-        
         print(current.x.toString())
         print(current.x.toString().floatValue)
         print(positionArr![0])
@@ -220,7 +219,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
             }
             else{
                 let itLast = SCNVector3(positionArr![(s-1)*3].floatValue+current_x,positionArr![(s-1)*3+1].floatValue+current_y,positionArr![(s-1)*3+2].floatValue+current_z)
-                if s == (positionArr?.count)!-1{
+                if s == (nodePosition.count)-1{
                     NodeUtil.addEndNode(rootNode: self.sceneView.scene.rootNode, position: itLast)
                     break
                 }
