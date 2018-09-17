@@ -17,6 +17,8 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var textScroll: UIScrollView!
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var guideView: UIView!
     
     var animations = [String: CAAnimation]()
     var ShuLiFixed:Person?
@@ -27,17 +29,29 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
     var modleVoice = [String:String]()
     
     var isPlay = true
+    var isAlert = false
     let synthesizer = AVSpeechSynthesizer()
     
 
-    @IBOutlet weak var textView: UIView!
+    
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func closeGuide(_ sender: Any) {
+        self.sceneView.scene.rootNode.enumerateChildNodes { (existingNode, _) in
+            existingNode.removeFromParentNode()
+        }
+        self.bottomView.isHidden = true
+        self.isAlert = false
+    }
     var routes = RouteCacheService.shared.allRoutes()
     var nodePosition = RoutesViewController.shared.allPosition()
     override func viewDidLoad() {
         super.viewDidLoad()
          self.textScroll.contentLayoutGuide.bottomAnchor.constraint(equalTo: self.textLabel.bottomAnchor).isActive = true
          sceneView.delegate = self
-        modleVoice["ShuLiFixed"] = "hello im shuli"
+        self.bottomView.isHidden = true
+        modleVoice["ShuLiFixed"] = "In a horizontally regular environment, the view controller is presented in the style specified by the"
         modleVoice["YellingFixed"] = "hello im YellingFixed"
         
     }
@@ -57,7 +71,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        synthesizer.stopSpeaking(at: .immediate)
         // Pause the view's session
         sceneView.session.pause()
     }
@@ -74,6 +88,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
         utterance.rate = 0.4
         
         if isPlay{
+            self.textLabel.text = text
             synthesizer.speak(utterance)
         }else{
             synthesizer.stopSpeaking(at: .immediate)
@@ -84,21 +99,23 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
     
     func selectAlert(name:String){
         let alert = UIAlertController(title: "",message: "",preferredStyle: .alert)
-        let attributedTitle = NSMutableAttributedString(string: "Multiple buttons")
-        let attributedMessage = NSMutableAttributedString(string: "Select an Action")
+        let attributedTitle = NSMutableAttributedString(string: "Please select a display mode.")
         alert.setValue(attributedTitle, forKey: "attributedTitle")
-        alert.setValue(attributedMessage, forKey: "attributedMessage")
-        
+        self.isAlert = true
         let action1 = UIAlertAction(title: "speaker", style: .default, handler: { (action) -> Void in
+            self.isAlert = false
             self.displayPerson(name: name)
         })
         
         let action2 = UIAlertAction(title: "guide", style: .default, handler: { (action) -> Void in
+           
             self.readRoute(name: name)
         })
         
         // Cancel button
-        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) -> Void in })
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) -> Void in
+            self.isAlert = false
+        })
         
         alert.addAction(action1)
         alert.addAction(action2)
@@ -107,6 +124,9 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
     }
     
     func displayPerson(name:String){
+        self.bottomView.isHidden = false
+        self.textScroll.isHidden = false
+        self.guideView.isHidden = true
         switch name {
         case "ShuLiFixed"  :
             displayShuli(); break
@@ -138,14 +158,14 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
         guard let pointOfView = self.sceneView.pointOfView else { return }
         
         let current = pointOfView.position
-        if self.ShuLiFixed == nil{
-            self.ShuLiFixed = Person()
-            self.ShuLiFixed?.name = "YellingFixed"
-            self.ShuLiFixed?.position = current
-            self.sceneView.scene.rootNode.addChildNode(self.ShuLiFixed!)
-            self.ShuLiFixed?.playAnimation(imageName: "YellingFixed")
-            self.sceneView.scene.rootNode.addAnimation((self.ShuLiFixed?.animations["dancing"]!)!, forKey: "dancing")
-            let text = self.ShuLiFixed?.shuli
+        if self.YellingFixed == nil{
+            self.YellingFixed = Person()
+            self.YellingFixed?.name = "YellingFixed"
+            self.YellingFixed?.position = current
+            self.sceneView.scene.rootNode.addChildNode(self.YellingFixed!)
+            self.YellingFixed?.playAnimation(imageName: "YellingFixed")
+            self.sceneView.scene.rootNode.addAnimation((self.YellingFixed?.animations["dancing"]!)!, forKey: "dancing")
+            let text = self.YellingFixed?.yelling
             self.textLabel.text = text
             self.playVoice(name: "YellingFixed")
         }
@@ -153,10 +173,15 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
     }
     
     func readRoute(name:String){
+        self.isAlert = true
+        self.bottomView.isHidden = false
+        self.textScroll.isHidden = true
+        self.guideView.isHidden = false
+        
         let positionStr = UserDefaults.standard.string(forKey: name)
 
         let positionArr = positionStr?.split(separator: " ")
-        var arrPosition = Array<Any>()
+       
         var nodePosition = Array<Any>()
         var k = 0
         for kkk in positionArr! {
@@ -165,7 +190,8 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
                 arrPosition.append(positionArr![k])
                 arrPosition.append(positionArr![k+1])
                 arrPosition.append(positionArr![k+2])
-                nodePosition.append(positionArr)
+                nodePosition.append(arrPosition)
+                print(arrPosition)
             }
             k = k+1
         }
@@ -175,14 +201,19 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
         let current = pointOfView.position
         
         
-        
+        print(current.x.toString())
+        print(current.x.toString().floatValue)
+        print(positionArr![0])
+        print(positionArr![0].floatValue)
         let current_x = current.x.toString().floatValue - positionArr![0].floatValue
         let current_y = current.y.toString().floatValue - positionArr![1].floatValue
         let current_z = current.z.toString().floatValue - positionArr![2].floatValue
 
+        print(nodePosition.count)
         var s = 0
         for nmb in nodePosition{
             let itPosition = SCNVector3(positionArr![s*3].floatValue+current_x,positionArr![s*3+1].floatValue+current_y,positionArr![s*3+2].floatValue+current_z)
+            print(itPosition)
             if s == 0{
                 
                 NodeUtil.addBeginNode(rootNode: self.sceneView.scene.rootNode, position: itPosition)
@@ -200,28 +231,25 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
             s = s+1
         }
     }
-
-
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         DispatchQueue.main.async {
             guard let imageAnchor = anchor as? ARImageAnchor,
                 let imageName = imageAnchor.referenceImage.name else { return }
             print(imageName)
             
-            if imageName == "ShuLiFixed" {
-                 self.selectAlert(name:imageName)
+            if imageName == "ShuLiFixed" && self.ShuLiFixed == nil && !self.isAlert{
+                self.selectAlert(name:imageName)
                 
-            }else if imageName == "YellingFixed"{
+            }else if imageName == "YellingFixed" && self.YellingFixed == nil && !self.isAlert{
                 self.selectAlert(name:imageName)
                 
             }
-            
-
+  
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         let location = touches.first!.location(in: sceneView)
         
         // Let's test if a 3D Object was touch
@@ -240,8 +268,8 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
     func rePlay(name:String){
         let him = self.modlePerson[name]
         if isPlay{
-            him.playAnimation(imageName: name)
-            self.sceneView.scene.rootNode.addAnimation((him!.animations["dancing"]!), forKey: "dancing")
+//            him?.playAnimation(imageName: name)
+//            self.sceneView.scene.rootNode.addAnimation((him!.animations["dancing"]!), forKey: "dancing")
             
         }else{
             
@@ -262,10 +290,5 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate {
         }
         return nil
     }
-    
-    
-
-    
-
 }
 

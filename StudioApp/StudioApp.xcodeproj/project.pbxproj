@@ -39,6 +39,7 @@
 		9AEECA1820DC8220009819A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AEECA1720DC8220009819A8 /* Assets.xcassets */; };
 		9AEECA1B20DC8220009819A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AEECA1920DC8220009819A8 /* LaunchScreen.storyboard */; };
 		9AF5064020F71BFB00DF8D72 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5063F20F71BFB00DF8D72 /* FirstPageViewController.swift */; };
+		CE38EA43214E986D0041DD85 /* VideoViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38EA42214E986D0041DD85 /* VideoViewViewController.swift */; };
 		CE3B48A3212BBBD500AF1B5B /* ShowARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B48A2212BBBD500AF1B5B /* ShowARViewController.swift */; };
 		CE3B48A7212BF6BA00AF1B5B /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3B48A6212BF6BA00AF1B5B /* art.scnassets */; };
 		CE547324213698A6007DDA11 /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE547323213698A6007DDA11 /* RoutesViewController.swift */; };
@@ -93,6 +94,7 @@
 		9AF5063F20F71BFB00DF8D72 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		AAF67E3115659D093D97BC7C /* Pods-StudioApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudioApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-StudioApp/Pods-StudioApp.release.xcconfig"; sourceTree = "<group>"; };
 		BD5FAE654894E42CDB516C49 /* Pods_StudioApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudioApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE38EA42214E986D0041DD85 /* VideoViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewViewController.swift; sourceTree = "<group>"; };
 		CE3B48A2212BBBD500AF1B5B /* ShowARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowARViewController.swift; sourceTree = "<group>"; };
 		CE3B48A6212BF6BA00AF1B5B /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		CE547323213698A6007DDA11 /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			children = (
 				9AEECA1220DC821F009819A8 /* ViewController.swift */,
 				9A656BAE20E1D29E00602A96 /* CellController */,
+				CE38EA42214E986D0041DD85 /* VideoViewViewController.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -449,16 +452,20 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-StudioApp/Pods-StudioApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BMPlayer/BMPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/ElongationPreview/ElongationPreview.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BMPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ElongationPreview.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -508,6 +515,7 @@
 				9AEB64E520F3446F00FE0300 /* OptionViewCell.swift in Sources */,
 				CE5473302137C8BC007DDA11 /* FileUtil.swift in Sources */,
 				9AE9EEA120EDE2A500AEC2ED /* ShowCaseViewController.swift in Sources */,
+				CE38EA43214E986D0041DD85 /* VideoViewViewController.swift in Sources */,
 				9AEB64E020F33B7300FE0300 /* ProfileViewController.swift in Sources */,
 				9AC08DB120EDE616001669CD /* ASExtendedCircularMenu.swift in Sources */,
 				9A656BC020E20C1A00602A96 /* CollectionTwoViewCell.swift in Sources */,

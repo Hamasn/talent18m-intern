@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Snow Mountain.jpg"
+      "filename" : "YellingFixed.jpg"
     }
   ],
   "info" : {
@@ -10,6 +10,6 @@
     "author" : "xcode"
   },
   "properties" : {
-    "width" : 0.26000000000000001
+    "width" : 0.16248000000000001
   }
 }

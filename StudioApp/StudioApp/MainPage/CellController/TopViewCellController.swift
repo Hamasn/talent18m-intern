@@ -100,8 +100,11 @@ class TopViewCellController: UITableViewCell,UIScrollViewDelegate{
     
     @objc func playVedio1(sender: UIButton) {
         let view = self.responderViewController()
-        let videoView = view?.storyboard!.instantiateViewController(withIdentifier: "videoView") as! RoutesViewController
+        let videoView = view?.storyboard!.instantiateViewController(withIdentifier: "videoView") as! VideoViewViewController
+//        videoView.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        videoView.modalPresentationStyle = .overCurrentContext
         view?.present(videoView, animated: true, completion: nil)
+        
     }
     
     func responderViewController() -> UIViewController? {

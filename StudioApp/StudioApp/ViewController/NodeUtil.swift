@@ -59,6 +59,7 @@ class NodeUtil{
         node.name = "endNode"
 
          positionStr = positionStr+position.toString()
+         print(positionStr)
          UserDefaults.standard.removeObject(forKey: "ShuLiFixed")
          UserDefaults.standard.set(positionStr, forKey: "ShuLiFixed")
  
@@ -89,12 +90,6 @@ class NodeUtil{
         print(current.toString())
         positionStr = positionStr+current.toString()+" "
 
-        let b = (pos:node.position,trans:node.transform,rot:node.rotation)
-        positionArr?.append((node.position,node.transform,node.rotation))
-        
-        arrPosition.append(b)
-        NToDel.addObjects(from: arrPosition)
-        print(node.transform.toString())
       
     }
 }

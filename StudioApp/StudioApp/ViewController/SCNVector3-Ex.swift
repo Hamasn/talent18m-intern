@@ -27,12 +27,19 @@ extension Float{
 
 extension String.SubSequence {
     var floatValue: Float {
-        return (self as NSString).floatValue
+      //  print(self as NSString)
+        return Float(self)!
     }
 }
 
+
+
 extension String{
     var floatValue: Float{
+        return (self as NSString).floatValue
+    }
+    
+    var floatValueStr :Float{
         return (self as NSString).floatValue
     }
 }
