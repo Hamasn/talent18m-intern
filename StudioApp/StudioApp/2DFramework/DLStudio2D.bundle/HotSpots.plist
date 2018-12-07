@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Agile Room</string>
+		<key>x</key>
+		<integer>552</integer>
+		<key>y</key>
+		<integer>226</integer>
+		<key>selected</key>
+		<false/>
+	</dict>
+    <dict>
+        <key>name</key>
+        <string>Office Room</string>
+        <key>x</key>
+        <integer>218</integer>
+        <key>y</key>
+        <integer>226</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>LOT LAB</string>
+        <key>x</key>
+        <integer>619</integer>
+        <key>y</key>
+        <integer>574</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Studio Pods5</string>
+        <key>x</key>
+        <integer>243</integer>
+        <key>y</key>
+        <integer>515</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Studio Pods3</string>
+        <key>x</key>
+        <integer>610</integer>
+        <key>y</key>
+        <integer>1000</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Studio Pods2</string>
+        <key>x</key>
+        <integer>610</integer>
+        <key>y</key>
+        <integer>1400</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Studio Pods1</string>
+        <key>x</key>
+        <integer>610</integer>
+        <key>y</key>
+        <integer>1750</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Showcase 6</string>
+        <key>x</key>
+        <integer>243</integer>
+        <key>y</key>
+        <integer>811</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Showcase 5</string>
+        <key>x</key>
+        <integer>243</integer>
+        <key>y</key>
+        <integer>1046</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Showcase 4</string>
+        <key>x</key>
+        <integer>243</integer>
+        <key>y</key>
+        <integer>1260</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Showcase 3</string>
+        <key>x</key>
+        <integer>243</integer>
+        <key>y</key>
+        <integer>1477</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Showcase 2</string>
+        <key>x</key>
+        <integer>243</integer>
+        <key>y</key>
+        <integer>1738</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Showcase 1</string>
+        <key>x</key>
+        <integer>243</integer>
+        <key>y</key>
+        <integer>2012</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+	<dict>
+		<key>name</key>
+		<string>Tatami Stage</string>
+		<key>x</key>
+		<real>1558</real>
+		<key>y</key>
+		<real>1820</real>
+		<key>selected</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>CBC</string>
+		<key>x</key>
+		<integer>1630</integer>
+		<key>y</key>
+		<integer>875</integer>
+		<key>selected</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>SME Pod</string>
+		<key>x</key>
+		<integer>1630</integer>
+		<key>y</key>
+		<integer>1270</integer>
+		<key>selected</key>
+		<false/>
+	</dict>
+    <dict>
+        <key>name</key>
+        <string>Design Thinking</string>
+        <key>x</key>
+        <integer>1630</integer>
+        <key>y</key>
+        <integer>440</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Conference Room</string>
+        <key>x</key>
+        <integer>1856</integer>
+        <key>y</key>
+        <integer>1540</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Informal Metting Room</string>
+        <key>x</key>
+        <integer>1090</integer>
+        <key>y</key>
+        <integer>1320</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Waston Display</string>
+        <key>x</key>
+        <integer>990</integer>
+        <key>y</key>
+        <integer>2500</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Salesforce</string>
+        <key>x</key>
+        <integer>1380</integer>
+        <key>y</key>
+        <integer>2500</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Meeting Room</string>
+        <key>x</key>
+        <integer>1620</integer>
+        <key>y</key>
+        <integer>2430</integer>
+        <key>selected</key>
+        <false/>
+    </dict>
+</array>
+</plist>

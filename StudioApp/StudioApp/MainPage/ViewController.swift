@@ -8,6 +8,8 @@
 
 import UIKit
 import SnapKit
+import DLStudio2D
+
 class ViewController: UIViewController,ASCircularButtonDelegate{
    var myIndex = 0
    
@@ -56,6 +58,10 @@ class ViewController: UIViewController,ASCircularButtonDelegate{
         else if indexForButton == 2  {
             let presentView = storyboard!.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
             present(presentView, animated: true, completion: nil)
+        } else if indexForButton == 4 {
+            let studio2D = DLStudio2DViewController()
+            let naviController = UINavigationController(rootViewController: studio2D)
+            self.present(naviController, animated: true, completion: nil)
         }
     }
     

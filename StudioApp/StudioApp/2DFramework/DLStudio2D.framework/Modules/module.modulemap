@@ -1,0 +1,6 @@
+framework module DLStudio2D {
+  umbrella header "DLStudio2D.h"
+
+  export *
+  module * { export * }
+}

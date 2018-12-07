@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18070A4721BA4CC000F717DB /* DLStudio2D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18070A4621BA4CC000F717DB /* DLStudio2D.framework */; };
+		18070A4A21BA4CE700F717DB /* DLStudio2D.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18070A4921BA4CE700F717DB /* DLStudio2D.bundle */; };
 		5D70DCE138D6225B3A1D7A72 /* Pods_StudioApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5FAE654894E42CDB516C49 /* Pods_StudioApp.framework */; };
 		9A06619A20EDB5890053CD5D /* LayerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06619920EDB5890053CD5D /* LayerContainerView.swift */; };
 		9A34675120EDEBBB005366FD /* GridViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A34674C20EDEBBB005366FD /* GridViewCell.xib */; };
@@ -59,6 +61,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18070A4621BA4CC000F717DB /* DLStudio2D.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DLStudio2D.framework; path = StudioApp/2DFramework/DLStudio2D.framework; sourceTree = "<group>"; };
+		18070A4921BA4CE700F717DB /* DLStudio2D.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DLStudio2D.bundle; path = StudioApp/2DFramework/DLStudio2D.bundle; sourceTree = SOURCE_ROOT; };
 		9A06619920EDB5890053CD5D /* LayerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerContainerView.swift; sourceTree = "<group>"; };
 		9A34674C20EDEBBB005366FD /* GridViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GridViewCell.xib; sourceTree = "<group>"; };
 		9A34674D20EDEBBB005366FD /* GridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18070A4721BA4CC000F717DB /* DLStudio2D.framework in Frameworks */,
 				5D70DCE138D6225B3A1D7A72 /* Pods_StudioApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,9 +140,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		18070A4821BA4CD700F717DB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				18070A4921BA4CE700F717DB /* DLStudio2D.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		681CF85BC16991D0CB3CE3DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18070A4621BA4CC000F717DB /* DLStudio2D.framework */,
 				BD5FAE654894E42CDB516C49 /* Pods_StudioApp.framework */,
 			);
 			name = Frameworks;
@@ -297,7 +311,7 @@
 		9AEECA0F20DC821F009819A8 /* StudioApp */ = {
 			isa = PBXGroup;
 			children = (
-				CE5473372138DE56007DDA11 /* path */,
+				18070A4821BA4CD700F717DB /* Resources */,
 				CEECC3CC212D556B001CC128 /* Extension */,
 				CE3B48A6212BF6BA00AF1B5B /* art.scnassets */,
 				CE3B489D212BBA1E00AF1B5B /* ViewController */,
@@ -336,13 +350,6 @@
 				CE547344213CE24D007DDA11 /* ShareUtil.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		CE5473372138DE56007DDA11 /* path */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = path;
 			sourceTree = "<group>";
 		};
 		CEECC3CC212D556B001CC128 /* Extension */ = {
@@ -415,6 +422,7 @@
 			files = (
 				CE54733F2139385C007DDA11 /* 1.rtf in Resources */,
 				9AEECA1B20DC8220009819A8 /* LaunchScreen.storyboard in Resources */,
+				18070A4A21BA4CE700F717DB /* DLStudio2D.bundle in Resources */,
 				9A34675120EDEBBB005366FD /* GridViewCell.xib in Resources */,
 				9A34675320EDEBBB005366FD /* DemoElongationCell.xib in Resources */,
 				CE3B48A7212BF6BA00AF1B5B /* art.scnassets in Resources */,
@@ -669,6 +677,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5YX7VL3TZ3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/StudioApp/2DFramework",
+				);
 				INFOPLIST_FILE = StudioApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -691,6 +703,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5YX7VL3TZ3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/StudioApp/2DFramework",
+				);
 				INFOPLIST_FILE = StudioApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
