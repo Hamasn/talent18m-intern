@@ -9,14 +9,17 @@
 import UIKit
 import SceneKit
 import ARKit
+import CoreLocation
 
-class RoutesViewController: UIViewController,ARSCNViewDelegate {
+class RoutesViewController: UIViewController,ARSCNViewDelegate,CLLocationManagerDelegate {
     @IBOutlet weak var sceneView: ARSCNView!
     
     
+    @IBOutlet weak var correctView: UIView!
     @IBOutlet weak var routes: UIButton!
     @IBOutlet weak var badge: UILabel!
     let route = RouteDae()
+    let locationManager = CLLocationManager()
     var last: SCNVector3? = nil
     var recordFlag = false
     var arr = Array<SCNVector3>()
@@ -62,13 +65,42 @@ class RoutesViewController: UIViewController,ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sceneView.delegate = self
+        self.correctView.layer.borderWidth = 1
+        self.correctView.layer.borderColor = UIColor(red:222/255, green:225/255, blue:227/255, alpha: 1).cgColor
+        //设置定位服务管理器代理
+        locationManager.delegate = self
+        //设置定位进度
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest //最佳定位
+        //更新距离
+        locationManager.distanceFilter = 1
+        //发出授权请求
+        locationManager.requestAlwaysAuthorization()
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        if (CLLocationManager.locationServicesEnabled()){
+            //允许使用定位服务的话，开始定位服务更新
+            locationManager.startUpdatingLocation()
+            print("定位开始")
+            print(locationManager.delegate)
+            
+        }
         sceneView.scene = SCNScene()
+        sceneView.delegate = self
+        
         sceneView.session.run(configuration)
         
-        self.showBadge()
+       
+
+      //  self.showBadge()
     }
     
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var currLocation : CLLocation = locations.last!
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let configuration = ARWorldTrackingConfiguration()
@@ -109,6 +141,8 @@ class RoutesViewController: UIViewController,ARSCNViewDelegate {
                     }
                 } else {
                     NodeUtil.addBeginNode(rootNode: self.sceneView.scene.rootNode, position: current)
+                    print("begin")
+                    print(current)
                     self.last = current
 
                 }

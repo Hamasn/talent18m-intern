@@ -60,10 +60,8 @@ class NodeUtil{
 
          positionStr = positionStr+position.toString()
          print(positionStr)
+        UserDefaults.standard.set(positionStr, forKey: "ShuLiFixed")
 
- 
-
-        
         node.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
         rootNode.addChildNode(node)
     }
