@@ -6,14 +6,14 @@ PODS:
     - BMPlayer/Core
     - NVActivityIndicatorView (~> 4.0.0)
     - SnapKit (~> 4.0.0)
-  - ElongationPreview (1.1.2)
-  - FSPagerView (0.7.2)
+  - ElongationPreview (2.0.0)
+  - FSPagerView (0.8.2)
   - NVActivityIndicatorView (4.0.1):
     - NVActivityIndicatorView/Presenter (= 4.0.1)
   - NVActivityIndicatorView/Presenter (4.0.1)
-  - SnapKit (4.0.0)
+  - SnapKit (4.0.1)
   - SVProgressHUD (2.2.5)
-  - SwiftyJSON (4.1.0)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - BMPlayer (~> 1.0.0)
@@ -24,7 +24,7 @@ DEPENDENCIES:
   - SwiftyJSON
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - BMPlayer
     - ElongationPreview
     - FSPagerView
@@ -35,13 +35,13 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   BMPlayer: 44eebf06eb01450dd14ea74b27d07c5222f0eed1
-  ElongationPreview: a1b53f61d2086c0ce5c2061e5233bff25b93917d
-  FSPagerView: 7515f63c424da71623d299d4fbbfb3dd884642ff
+  ElongationPreview: c167df6cf34e21cec440061c57041cfac1368d9a
+  FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
   NVActivityIndicatorView: 77ed6d7b571643e24899e7858bf9ae2ee4c21f31
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
 PODFILE CHECKSUM: 69998b463b4abc020e6dae5e039b7d5d336e9a3b
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

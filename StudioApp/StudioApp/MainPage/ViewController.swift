@@ -10,8 +10,9 @@ import UIKit
 import SnapKit
 import DLStudio2D
 
-class ViewController: UIViewController,ASCircularButtonDelegate{
+class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationControllerDelegate{
    var myIndex = 0
+    let studio2D = DLStudio2DViewController()
    
  
     @IBOutlet weak var TestButton: ASCircularMenuButton!
@@ -20,6 +21,7 @@ class ViewController: UIViewController,ASCircularButtonDelegate{
     var ableToDrag:Bool = true
     var DragPoint:CGPoint!
     var Extend:Bool = false
+ //   var naviController :UINavigationController!
     override func viewDidLoad() {
         super.viewDidLoad()
         //set up touch button
@@ -27,6 +29,7 @@ class ViewController: UIViewController,ASCircularButtonDelegate{
         TestButton.menuButtonSize = .large
         TestButton.sholudMenuButtonAnimate = false
         TestButton.setImage(UIImage(named: items[5]), for: .normal)
+        
         
     }
     
@@ -59,11 +62,34 @@ class ViewController: UIViewController,ASCircularButtonDelegate{
             let presentView = storyboard!.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
             present(presentView, animated: true, completion: nil)
         } else if indexForButton == 4 {
-            let studio2D = DLStudio2DViewController()
+            
             let naviController = UINavigationController(rootViewController: studio2D)
+            naviController.delegate = self
+            let closeBtn = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(close))
+            let arBtn = UIBarButtonItem(image: UIImage(named: "ARChange"), style: .plain, target: self, action: #selector(arChange))
+            studio2D.navigationItem.leftBarButtonItem = closeBtn
+            studio2D.navigationItem.rightBarButtonItem = arBtn
+            studio2D.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+            studio2D.navigationController?.navigationBar.barTintColor = UIColor.black
+            studio2D.navigationItem.title = "2D"
+            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedStringKey.foregroundColor as NSCopying)
+            studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedStringKey : Any]
+            studio2D.navigationController?.navigationBar.tintColor = UIColor.white
+
             self.present(naviController, animated: true, completion: nil)
         }
     }
+    @objc func close(_ sender:UISwitch){
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func arChange(_ sender:UISwitch){
+        self.dismiss(animated: true, completion: nil)
+        //add loading....
+        let ar = self.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
+        self.present(ar, animated: true, completion: nil)
+    }
+    
+    
     
     func buttonForIndexAt(_ menuButton: ASCircularMenuButton, indexForButton: Int) -> UIButton {
         let button = UIButton()

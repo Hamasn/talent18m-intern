@@ -10,7 +10,10 @@ import ElongationPreview
 import UIKit
 
 final class ShowCaseViewController: ElongationViewController {
-
+    
+    @IBAction func backHome(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBOutlet weak var tableview: UITableView!
   
     // MARK: Lifecycle 🌎
@@ -26,9 +29,9 @@ final class ShowCaseViewController: ElongationViewController {
         config.topViewHeight = 150
         config.bottomViewHeight = 106
         config.bottomViewOffset = 0
-       config.parallaxFactor = 100
+        config.parallaxFactor = 100
         config.separatorHeight = 0.5
-        config.separatorColor = .white
+        config.separatorColor = .black
         
         // Save created config as `shared` instance.
         ElongationConfig.shared = config
@@ -45,6 +48,7 @@ final class ShowCaseViewController: ElongationViewController {
         guard let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
         let data = datasource[indexPath.row]
         detailViewController.Text = data.Text
+        detailViewController.Title = data.Title
         expand(viewController: detailViewController)
      
     }
@@ -83,7 +87,5 @@ extension ShowCaseViewController {
         cell.aboutTitleLabel.text = data.IntroTitle
         cell.TopImage.image = data.TopImage
         cell.SubTitle.text = data.SubTitle
-        
-      
     }
 }

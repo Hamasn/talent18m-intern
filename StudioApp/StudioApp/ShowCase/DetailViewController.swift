@@ -11,11 +11,12 @@ import UIKit
 
 final class DetailViewController: ElongationDetailViewController {
     var Text:String?
+    var Title:String?
     override func viewDidLoad() {
         super.viewDidLoad()
        // tableView.backgroundColor = .black
        tableView.separatorStyle = .none
-        tableView.register(UINib(nibName: "GridViewCell", bundle: nil), forCellReuseIdentifier: "ViewCell")
+       tableView.register(UINib(nibName: "GridViewCell", bundle: nil), forCellReuseIdentifier: "ViewCell")
     }
 
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -25,8 +26,17 @@ final class DetailViewController: ElongationDetailViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt _: IndexPath) -> UITableViewCell {
         //let cell = tableView.dequeue(GridViewCell.self)
          var cell = tableView.dequeueReusableCell(withIdentifier: "ViewCell") as! GridViewCell
-        cell.ContentText.text = Text
+        cell.ContentTextTest.text = Text
+        if Title=="AR" {
+            cell.JumpButton.addTarget(self, action: #selector(arChange), for: UIControlEvents.touchUpInside)
+        }
         return cell
+    }
+    @objc func arChange(_ sender:UISwitch){
+ 
+        let ar = self.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
+     //   self.navigationController?.present(ar, animated: true, completion: nil)
+       
     }
 
     override func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {

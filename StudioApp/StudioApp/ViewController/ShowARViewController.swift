@@ -12,8 +12,29 @@ import SceneKit
 import AVFoundation
 import SpriteKit
 import CoreLocation
+import DLStudio2D
 
-class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManagerDelegate {
+class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManagerDelegate,UINavigationControllerDelegate {
+   
+
+    @IBAction func showAR(_ sender: Any) {
+        let studio2D = DLStudio2DViewController()
+        let naviController = UINavigationController(rootViewController: studio2D)
+        naviController.delegate = self
+        let closeBtn = UIBarButtonItem(title: "BACK AR", style: .plain, target: self, action: #selector(close))
+        studio2D.navigationItem.leftBarButtonItem = closeBtn
+        studio2D.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+        studio2D.navigationController?.navigationBar.barTintColor = UIColor.black
+        studio2D.navigationItem.title = "2D"
+        let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedStringKey.foregroundColor as NSCopying)
+        studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedStringKey : Any]
+        studio2D.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        self.present(naviController, animated: true, completion: nil)
+    }
+    @objc func close(_ sender:UISwitch){
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBOutlet weak var distance: UILabel!
     
     @IBOutlet weak var sceneView: ARSCNView!
@@ -56,10 +77,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     var routeItem = [Int]()
     var routeBeacon:Int?
     var routeName = "routeName" //路线名称变量
-    
-    
 
-    
     @IBAction func back(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -79,10 +97,18 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     var nodePosition = RoutesViewController.shared.allPosition()
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.textScroll.contentLayoutGuide.bottomAnchor.constraint(equalTo: self.textLabel.bottomAnchor).isActive = true
+        self.navigationController?.isNavigationBarHidden = true
+       // self.textScroll.contentLayoutGuide.bottomAnchor.constraint(equalTo: self.textLabel.bottomAnchor).isActive = true
          sceneView.delegate = self
         self.correctView.layer.borderWidth = 3
         self.correctView.layer.borderColor = UIColor.red.cgColor
+        
+        let switchOnOff = UISwitch(frame:CGRect(x: 250, y: 150, width: 51, height: 31))
+     //   switchOnOff.addTarget(self, action: #selector(ShowARViewController.switchStateDidChange(_:)), for: .valueChanged)
+//        switchOnOff.transform = CGAffineTransform(scaleX: 2.0, y: 1.0);
+        switchOnOff.setOn(true, animated: false)
+
+        self.view.addSubview(switchOnOff)
      
         //设置定位服务管理器代理
         locationManager.delegate = self
