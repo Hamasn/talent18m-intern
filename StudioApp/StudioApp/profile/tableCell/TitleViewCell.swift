@@ -22,11 +22,11 @@ class TitleViewCell: UITableViewCell {
         Edit.layer.borderWidth = 1
         Edit.layer.borderColor = UIColor(red: 82.0/255.0, green: 84.0/255.0, blue: 103.0/255.0, alpha: 1.0).cgColor
         Edit.layer.cornerRadius = 4
-       // let nameContent = "Marlene Anna"
-      //  let emailContent = "SanDiegoCA@cn.ibm.com"
-        name.text = UserDefaults.standard.string(forKey: "name")
-      
-        email.text = UserDefaults.standard.string(forKey: "email")
+        let nameContent = "Marlene Anna"
+        let emailContent = "SanDiegoCA@cn.ibm.com"
+        name.text = nameContent
+
+        email.text = emailContent
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -10,8 +10,9 @@ import UIKit
 import SnapKit
 import DLStudio2D
 
-class ViewController: UIViewController,ASCircularButtonDelegate{
+class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationControllerDelegate{
    var myIndex = 0
+    let studio2D = DLStudio2DViewController()
    
  
     @IBOutlet weak var TestButton: ASCircularMenuButton!
@@ -20,13 +21,18 @@ class ViewController: UIViewController,ASCircularButtonDelegate{
     var ableToDrag:Bool = true
     var DragPoint:CGPoint!
     var Extend:Bool = false
+ //   var naviController :UINavigationController!
     override func viewDidLoad() {
         super.viewDidLoad()
         //set up touch button
+        let statusHeight = UIApplication.shared.statusBarFrame.height
+        
+        self.Table.contentInset.top = -(statusHeight)
         configureDraggebleCircularMenuButton(button: TestButton, numberOfMenuItems: 5, menuRedius: 70, postion: .center)
         TestButton.menuButtonSize = .large
         TestButton.sholudMenuButtonAnimate = false
         TestButton.setImage(UIImage(named: items[5]), for: .normal)
+        
         
     }
     
@@ -53,17 +59,62 @@ class ViewController: UIViewController,ASCircularButtonDelegate{
     func didClickOnCircularMenuButton(_ menuButton: ASCircularMenuButton, indexForButton: Int, button: UIButton) {
         if indexForButton == 0{
             let presentView = storyboard!.instantiateViewController(withIdentifier: "StudioIntro") as! StudioIntro
-            present(presentView, animated: true, completion: nil)
+            let naviController = UINavigationController(rootViewController: presentView)
+            let closeBtn = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(close))
+            
+            presentView.navigationItem.leftBarButtonItem = closeBtn
+            
+            presentView.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+            presentView.navigationController?.navigationBar.barTintColor = UIColor.black
+            presentView.navigationItem.title = "Studio Introduction"
+            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedStringKey.foregroundColor as NSCopying)
+            presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedStringKey : Any]
+            presentView.navigationController?.navigationBar.tintColor = UIColor.white
+            present(naviController, animated: true, completion: nil)
         }
         else if indexForButton == 2  {
             let presentView = storyboard!.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
-            present(presentView, animated: true, completion: nil)
+            let naviController = UINavigationController(rootViewController: presentView)
+            let closeBtn = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(close))
+
+            presentView.navigationItem.leftBarButtonItem = closeBtn
+          
+            presentView.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+            presentView.navigationController?.navigationBar.barTintColor = UIColor.black
+            presentView.navigationItem.title = "Settings"
+            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedStringKey.foregroundColor as NSCopying)
+            presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedStringKey : Any]
+            presentView.navigationController?.navigationBar.tintColor = UIColor.white
+            present(naviController, animated: true, completion: nil)
         } else if indexForButton == 4 {
-            let studio2D = DLStudio2DViewController()
+            
             let naviController = UINavigationController(rootViewController: studio2D)
+            naviController.delegate = self
+            let closeBtn = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(close))
+            let arBtn = UIBarButtonItem(image: UIImage(named: "ARChange"), style: .plain, target: self, action: #selector(arChange))
+            studio2D.navigationItem.leftBarButtonItem = closeBtn
+            studio2D.navigationItem.rightBarButtonItem = arBtn
+            studio2D.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+            studio2D.navigationController?.navigationBar.barTintColor = UIColor.black
+            studio2D.navigationItem.title = "2D"
+            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedStringKey.foregroundColor as NSCopying)
+            studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedStringKey : Any]
+            studio2D.navigationController?.navigationBar.tintColor = UIColor.white
+
             self.present(naviController, animated: true, completion: nil)
         }
     }
+    @objc func close(_ sender:UISwitch){
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func arChange(_ sender:UISwitch){
+        self.dismiss(animated: true, completion: nil)
+        //add loading....
+        let ar = self.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
+        self.present(ar, animated: true, completion: nil)
+    }
+    
+    
     
     func buttonForIndexAt(_ menuButton: ASCircularMenuButton, indexForButton: Int) -> UIButton {
         let button = UIButton()
@@ -94,7 +145,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0  {
             var cell = tableView.dequeueReusableCell(withIdentifier: "TopView", for: indexPath) as! TopViewCellController
-            tableView.separatorStyle = .none
+           tableView.separatorStyle = .none
             return cell
         }
         else if indexPath.row == 1 {
@@ -128,31 +179,31 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.row == 0 {
         
-        return 196/647 * UIScreen.main.bounds.height
+        return 205/667 * UIScreen.main.bounds.height
     }
     else if indexPath.row == 1 {
        
-        return 29/647 * UIScreen.main.bounds.height
+        return 40/667 * UIScreen.main.bounds.height
     }
     else if indexPath.row == 2 {
         
         
-        return 151/647 * UIScreen.main.bounds.height
+        return 140/667 * UIScreen.main.bounds.height
     }
     else if indexPath.row == 3{
         
-        return 31/647 * UIScreen.main.bounds.height
+        return 50/667 * UIScreen.main.bounds.height
     }
     else if indexPath.row == 4 {
        
-        return 99/647 * UIScreen.main.bounds.height
+        return 90/667 * UIScreen.main.bounds.height
     }
     else if indexPath.row == 5{
    
-        return 156/647 * UIScreen.main.bounds.height
+        return 150/667 * UIScreen.main.bounds.height
     }
    
-    return 29/647 * UIScreen.main.bounds.height
+    return 40/667 * UIScreen.main.bounds.height
 }
     
 // accessory taped

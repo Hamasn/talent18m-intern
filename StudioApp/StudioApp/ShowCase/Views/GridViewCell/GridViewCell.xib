@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,47 +18,45 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="408.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6E-P8-IXs">
-                        <rect key="frame" x="20" y="16" width="335" height="281"/>
-                        <attributedString key="attributedText">
-                            <fragment>
-                                <string key="content">Augmented Reality (AR) is an interactive experience of a real-world environment whose elements are "augmented" by computer-generated perceptual information, sometimes across multiple sensory modalities, including visual, auditory, haptic, somatosensory, and olfactory. The overlaid sensory information can be constructive (i.e. additive to the natural environment) or destructive (i.e. masking of the natural environment) and is seamlessly interwoven with the physical world such that it is perceived as an immersive aspect of the real environment.In this way, augmented reality alters one’s ongoing perception of a real world environment, whereas virtual reality completely replaces the user's real world environment with a simulated one. Augmented reality is related to two largely synonymous terms: mixed reality and computer-mediated reality.</string>
-                                <attributes>
-                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <font key="NSFont" size="12" name="Helvetica"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="18" maximumLineHeight="18" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3J-P9-RcQ">
-                        <rect key="frame" x="21" y="335.5" width="335" height="50"/>
+                        <rect key="frame" x="17" y="328.5" width="341" height="50"/>
                         <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <state key="normal" title="Button">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="WAo-xd-zQ9"/>
+                        </constraints>
+                        <state key="normal" title="Get Started">
                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="P6I-AG-QnI">
+                        <rect key="frame" x="17" y="0.0" width="341" height="318.5"/>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <color key="backgroundColor" red="0.11764705882352941" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="F6E-P8-IXs" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" constant="20" id="5aJ-hP-gKT"/>
-                    <constraint firstAttribute="bottom" secondItem="v3J-P9-RcQ" secondAttribute="bottom" constant="23" id="Ayz-Ad-mGR"/>
-                    <constraint firstAttribute="bottom" secondItem="F6E-P8-IXs" secondAttribute="bottom" constant="111.5" id="GPg-PJ-gCx"/>
-                    <constraint firstItem="v3J-P9-RcQ" firstAttribute="top" secondItem="F6E-P8-IXs" secondAttribute="bottom" constant="38.5" id="NNb-hg-z2I"/>
-                    <constraint firstAttribute="trailing" secondItem="F6E-P8-IXs" secondAttribute="trailing" constant="20" id="RH9-tL-tKg"/>
-                    <constraint firstAttribute="trailing" secondItem="v3J-P9-RcQ" secondAttribute="trailing" constant="19" id="ckT-rD-OiZ"/>
-                    <constraint firstItem="F6E-P8-IXs" firstAttribute="top" secondItem="wMU-A7-NkY" secondAttribute="top" constant="16" id="gM2-Vu-mJE"/>
-                    <constraint firstItem="v3J-P9-RcQ" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" constant="21" id="teO-Ke-ojl"/>
+                    <constraint firstItem="v3J-P9-RcQ" firstAttribute="top" secondItem="P6I-AG-QnI" secondAttribute="bottom" constant="10" id="1Ts-Yc-5Tc"/>
+                    <constraint firstAttribute="bottom" secondItem="v3J-P9-RcQ" secondAttribute="bottom" constant="30" id="Ayz-Ad-mGR"/>
+                    <constraint firstItem="P6I-AG-QnI" firstAttribute="top" secondItem="wMU-A7-NkY" secondAttribute="top" id="HO1-w0-9qZ"/>
+                    <constraint firstItem="P6I-AG-QnI" firstAttribute="top" secondItem="wMU-A7-NkY" secondAttribute="top" id="U34-nK-2qJ"/>
+                    <constraint firstItem="P6I-AG-QnI" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" constant="17" id="UOp-A5-iaO"/>
+                    <constraint firstAttribute="trailing" secondItem="v3J-P9-RcQ" secondAttribute="trailing" constant="17" id="ckT-rD-OiZ"/>
+                    <constraint firstAttribute="trailing" secondItem="P6I-AG-QnI" secondAttribute="trailing" constant="17" id="gLM-Nb-tDM"/>
+                    <constraint firstItem="P6I-AG-QnI" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" constant="17" id="oVl-SJ-QIp"/>
+                    <constraint firstItem="v3J-P9-RcQ" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" constant="17" id="teO-Ke-ojl"/>
+                    <constraint firstAttribute="trailing" secondItem="P6I-AG-QnI" secondAttribute="trailing" constant="17" id="uUR-0k-6jT"/>
                 </constraints>
             </tableViewCellContentView>
             <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
-                <outlet property="ContentText" destination="F6E-P8-IXs" id="kUl-UG-rXz"/>
+                <outlet property="ContentTextTest" destination="P6I-AG-QnI" id="agd-Kz-jlD"/>
                 <outlet property="JumpButton" destination="v3J-P9-RcQ" id="qGU-DO-Qr3"/>
             </connections>
-            <point key="canvasLocation" x="-78.5" y="99.5"/>
+            <point key="canvasLocation" x="-79.200000000000003" y="99.400299850074973"/>
         </tableViewCell>
     </objects>
 </document>

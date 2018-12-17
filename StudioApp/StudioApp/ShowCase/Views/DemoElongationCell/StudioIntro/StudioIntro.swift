@@ -38,12 +38,7 @@ extension StudioIntro: UITableViewDelegate ,UITableViewDataSource{
         return 2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0  {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "Title", for: indexPath) 
-            tableView.separatorStyle = .none
-            return cell
-        }
-        else if indexPath.row == 1 {
+       if indexPath.row == 0 {
             var cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PageViewCell
             tableView.separatorStyle = .none
             return cell
@@ -52,15 +47,11 @@ extension StudioIntro: UITableViewDelegate ,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            
-            return 96/647 * UIScreen.main.bounds.height
-        }
-        else if indexPath.row == 1 {
-            
-            return 551/647 * UIScreen.main.bounds.height
-        }
+//      if indexPath.row == 0 {
+//
+//            return UIScreen.main.bounds.height
+//        }
     
-        return 63/647 * UIScreen.main.bounds.height
+        return UIScreen.main.bounds.height
     }
 }
