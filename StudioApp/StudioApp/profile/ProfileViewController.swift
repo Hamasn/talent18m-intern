@@ -40,12 +40,12 @@ extension ProfileViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0){
-             var cellOne = tableView.dequeueReusableCell(withIdentifier: "Title", for: indexPath) as! TitleViewCell
+            let cellOne = tableView.dequeueReusableCell(withIdentifier: "Title", for: indexPath) as! TitleViewCell
             tableView.separatorStyle = .none
             return cellOne
         }
         else if (indexPath.row == 1){
-            var cellTwo = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! OptionViewCell
+            let cellTwo = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! OptionViewCell
             tableView.separatorStyle = .singleLine
             tableView.separatorColor = UIColor(red: 69.0/255.0, green: 72.0/255.0, blue: 91.0/255.0, alpha: 1)
             cellTwo.Title.text = "Language"
@@ -53,26 +53,26 @@ extension ProfileViewController: UITableViewDelegate,UITableViewDataSource {
             return cellTwo
         }
         else if (indexPath.row == 2){
-              var cellTwo = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! OptionViewCell
+            let cellTwo = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! OptionViewCell
               cellTwo.Title.text = "Verson"
             return cellTwo
         }
         else if (indexPath.row == 3){
-              var cellThree = tableView.dequeueReusableCell(withIdentifier: "notice", for: indexPath) as!noticeViewCell
+            let cellThree = tableView.dequeueReusableCell(withIdentifier: "notice", for: indexPath) as!noticeViewCell
             return cellThree
         }
         else if (indexPath.row == 4){
-             var cellTwo = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! OptionViewCell
+            let cellTwo = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! OptionViewCell
             cellTwo.Title.text = "About Us"
             return cellTwo
         }
         else if (indexPath.row == 5){
-            var cellTwo = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! OptionViewCell
+            let cellTwo = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! OptionViewCell
               cellTwo.Title.text = "FeedBack"
             return cellTwo
         }
         else {
-             var cellFour = tableView.dequeueReusableCell(withIdentifier: "LogOut", for: indexPath)
+            let cellFour = tableView.dequeueReusableCell(withIdentifier: "LogOut", for: indexPath)
             tableView.separatorStyle = .none
             return cellFour
         }

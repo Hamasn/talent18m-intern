@@ -338,11 +338,7 @@ public class ASCircularMenuButton: UIButton{
     @available(iOS 10.0, *)
     @objc public func onClickMenuItemButton(sender: UIButton){
         delegate?.didClickOnCircularMenuButton(self , indexForButton: sender.tag , button: sender)
-        if #available(iOS 10.0, *) {
-            onClickMenuButton()
-        } else {
-            // Fallback on earlier versions
-        }
+        onClickMenuButton()
     }
     
     //This is method for getting cerculer CGPoints using geometry and trigometry

@@ -22,7 +22,7 @@ class CollectionTwoViewCell: UICollectionViewCell {
   
     @IBOutlet weak var Statue: UIButton!
     func ChangeSize(){
-        let size = EventLabel.text?.size(withAttributes: [.font: EventLabel.font]) ?? .zero
+        let size = EventLabel.text?.size(withAttributes: [.font: EventLabel.font ?? CGSize(width: 0, height: 0)]) ?? .zero
         lineView.frame = CGRect(x: 0,
                                 y: EventLabel.bounds.size.height / 2,
                                 width: size.width,

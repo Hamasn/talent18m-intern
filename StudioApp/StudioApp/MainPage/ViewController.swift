@@ -69,7 +69,7 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             presentView.navigationController?.navigationBar.barTintColor = UIColor.black
             presentView.navigationItem.title = "Studio Introduction"
             let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
-            presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
+            presentView.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedString.Key : Any]
             presentView.navigationController?.navigationBar.tintColor = UIColor.white
             present(naviController, animated: true, completion: nil)
         }
@@ -84,7 +84,7 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             presentView.navigationController?.navigationBar.barTintColor = UIColor.black
             presentView.navigationItem.title = "Settings"
             let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
-            presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
+            presentView.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedString.Key : Any]
             presentView.navigationController?.navigationBar.tintColor = UIColor.white
             present(naviController, animated: true, completion: nil)
         } else if indexForButton == 4 {
@@ -99,7 +99,7 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             studio2D.navigationController?.navigationBar.barTintColor = UIColor.black
             studio2D.navigationItem.title = "2D"
             let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
-            studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
+            studio2D.navigationController?.navigationBar.titleTextAttributes = dict as? [NSAttributedString.Key : Any]
             studio2D.navigationController?.navigationBar.tintColor = UIColor.white
 
             self.present(naviController, animated: true, completion: nil)
@@ -145,32 +145,32 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0  {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "TopView", for: indexPath) as! TopViewCellController
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TopView", for: indexPath) as! TopViewCellController
            tableView.separatorStyle = .none
             return cell
         }
         else if indexPath.row == 1 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "Title1", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Title1", for: indexPath)
             tableView.separatorStyle = .none
             return cell
         }
         else if indexPath.row == 2 {
-             var cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! CellOneViewController
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! CellOneViewController
            
             return cell
         }
         else if indexPath.row == 3{
-             var cell = tableView.dequeueReusableCell(withIdentifier: "Title2", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Title2", for: indexPath)
             tableView.separatorStyle = .none
             return cell
         }
         else if indexPath.row == 4 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! CellTwoViewController
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! CellTwoViewController
             
             return cell
         }
         else if indexPath.row == 5{
-            var cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! CellThreeViewController
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! CellThreeViewController
             tableView.separatorStyle = .none
             return cell
         }

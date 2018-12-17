@@ -73,7 +73,7 @@ extension ShowCaseViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt _: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "Demo") as! DemoElongationCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Demo") as! DemoElongationCell
         return cell
     }
     
