@@ -17,6 +17,7 @@ import DLStudio2D
 class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManagerDelegate,UINavigationControllerDelegate {
    
 
+    @IBOutlet weak var showARBtn: UISwitch!
     @IBAction func showAR(_ sender: Any) {
         let studio2D = DLStudio2DViewController()
         let naviController = UINavigationController(rootViewController: studio2D)
@@ -102,13 +103,10 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
          sceneView.delegate = self
         self.correctView.layer.borderWidth = 3
         self.correctView.layer.borderColor = UIColor.red.cgColor
-        
-        let switchOnOff = UISwitch(frame:CGRect(x: 250, y: 150, width: 51, height: 31))
-     //   switchOnOff.addTarget(self, action: #selector(ShowARViewController.switchStateDidChange(_:)), for: .valueChanged)
-//        switchOnOff.transform = CGAffineTransform(scaleX: 2.0, y: 1.0);
-        switchOnOff.setOn(true, animated: false)
 
-        self.view.addSubview(switchOnOff)
+        showARBtn.setOn(true, animated: false)
+
+
      
         //设置定位服务管理器代理
         locationManager.delegate = self
