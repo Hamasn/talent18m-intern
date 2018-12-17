@@ -39,7 +39,7 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
     
     @IBOutlet weak var Table: UITableView!
     func applyshodow(Button: UIButton){
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle .regular)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style .regular)
         let effectView = UIVisualEffectView(effect: blurEffect)
         effectView.frame = Button.bounds
         
@@ -53,7 +53,7 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
        
         Button.insertSubview(effectView, at: 0)
        if let imageView = Button.imageView{
-            Button.bringSubview(toFront: imageView)
+            Button.bringSubviewToFront(imageView)
         }
         Button.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
     }

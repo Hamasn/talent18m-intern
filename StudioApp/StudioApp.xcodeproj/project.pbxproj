@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		18070A4721BA4CC000F717DB /* DLStudio2D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18070A4621BA4CC000F717DB /* DLStudio2D.framework */; };
 		18070A4A21BA4CE700F717DB /* DLStudio2D.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18070A4921BA4CE700F717DB /* DLStudio2D.bundle */; };
-		18070A4C21BE5FF500F717DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18070A4B21BE5FF500F717DB /* Images.xcassets */; };
 		5D70DCE138D6225B3A1D7A72 /* Pods_StudioApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5FAE654894E42CDB516C49 /* Pods_StudioApp.framework */; };
 		9A06619A20EDB5890053CD5D /* LayerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06619920EDB5890053CD5D /* LayerContainerView.swift */; };
 		9A34675120EDEBBB005366FD /* GridViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A34674C20EDEBBB005366FD /* GridViewCell.xib */; };
@@ -40,7 +39,6 @@
 		9AEECA1320DC821F009819A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEECA1220DC821F009819A8 /* ViewController.swift */; };
 		9AEECA1620DC821F009819A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AEECA1420DC821F009819A8 /* Main.storyboard */; };
 		9AEECA1820DC8220009819A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AEECA1720DC8220009819A8 /* Assets.xcassets */; };
-		9AEECA1B20DC8220009819A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AEECA1920DC8220009819A8 /* LaunchScreen.storyboard */; };
 		9AF5064020F71BFB00DF8D72 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5063F20F71BFB00DF8D72 /* FirstPageViewController.swift */; };
 		CE38EA43214E986D0041DD85 /* VideoViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38EA42214E986D0041DD85 /* VideoViewViewController.swift */; };
 		CE3B48A3212BBBD500AF1B5B /* ShowARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B48A2212BBBD500AF1B5B /* ShowARViewController.swift */; };
@@ -64,7 +62,6 @@
 /* Begin PBXFileReference section */
 		18070A4621BA4CC000F717DB /* DLStudio2D.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DLStudio2D.framework; path = StudioApp/2DFramework/DLStudio2D.framework; sourceTree = "<group>"; };
 		18070A4921BA4CE700F717DB /* DLStudio2D.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DLStudio2D.bundle; path = StudioApp/2DFramework/DLStudio2D.bundle; sourceTree = SOURCE_ROOT; };
-		18070A4B21BE5FF500F717DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9A06619920EDB5890053CD5D /* LayerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerContainerView.swift; sourceTree = "<group>"; };
 		9A34674C20EDEBBB005366FD /* GridViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GridViewCell.xib; sourceTree = "<group>"; };
 		9A34674D20EDEBBB005366FD /* GridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
@@ -95,7 +92,6 @@
 		9AEECA1220DC821F009819A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9AEECA1520DC821F009819A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9AEECA1720DC8220009819A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9AEECA1A20DC8220009819A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9AEECA1C20DC8220009819A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AF5063F20F71BFB00DF8D72 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		AAF67E3115659D093D97BC7C /* Pods-StudioApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudioApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-StudioApp/Pods-StudioApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -323,14 +319,12 @@
 				9A94DD2C20E60550008FF209 /* AgendaPage */,
 				9AE219B420E5CE75008B880C /* MainPage */,
 				9AEECA1020DC821F009819A8 /* AppDelegate.swift */,
-				9AEECA1920DC8220009819A8 /* LaunchScreen.storyboard */,
 				9AEECA1420DC821F009819A8 /* Main.storyboard */,
 				9AC08DB020EDE616001669CD /* ASExtendedCircularMenu.swift */,
 				9AEECA1720DC8220009819A8 /* Assets.xcassets */,
 				9AEECA1C20DC8220009819A8 /* Info.plist */,
 				9AF5063F20F71BFB00DF8D72 /* FirstPageViewController.swift */,
 				CE54733E2139385C007DDA11 /* 1.rtf */,
-				18070A4B21BE5FF500F717DB /* Images.xcassets */,
 			);
 			path = StudioApp;
 			sourceTree = "<group>";
@@ -397,6 +391,7 @@
 				TargetAttributes = {
 					9AEECA0C20DC821F009819A8 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -424,8 +419,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE54733F2139385C007DDA11 /* 1.rtf in Resources */,
-				18070A4C21BE5FF500F717DB /* Images.xcassets in Resources */,
-				9AEECA1B20DC8220009819A8 /* LaunchScreen.storyboard in Resources */,
 				18070A4A21BA4CE700F717DB /* DLStudio2D.bundle in Resources */,
 				9A34675120EDEBBB005366FD /* GridViewCell.xib in Resources */,
 				9A34675320EDEBBB005366FD /* DemoElongationCell.xib in Resources */,
@@ -546,14 +539,6 @@
 				9AEECA1520DC821F009819A8 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		9AEECA1920DC8220009819A8 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9AEECA1A20DC8220009819A8 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -695,8 +680,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cicmobile.dlstudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -722,8 +707,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cicmobile.dlstudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

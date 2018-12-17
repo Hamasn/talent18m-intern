@@ -135,11 +135,11 @@ public class ASCircularMenuButton: UIButton{
                 //Adding targets for dragging schenarios.
                 self.addTarget(self,
                                action: #selector(drag(control:event:)),
-                               for: UIControlEvents.touchDragInside)
+                               for: UIControl.Event.touchDragInside)
                 self.addTarget(self,
                                action: #selector(drag(control:event:)),
-                               for: [UIControlEvents.touchDragExit,
-                                     UIControlEvents.touchDragOutside])
+                               for: [UIControl.Event.touchDragExit,
+                                     UIControl.Event.touchDragOutside])
                 
             }
         }
@@ -259,7 +259,7 @@ public class ASCircularMenuButton: UIButton{
                     
                     //add blur
                    
-                        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle .regular)
+                        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style .regular)
                     let effectView = UIVisualEffectView(effect: blurEffect)
                     effectView.frame = (button?.bounds)!
                     effectView.isUserInteractionEnabled = false
