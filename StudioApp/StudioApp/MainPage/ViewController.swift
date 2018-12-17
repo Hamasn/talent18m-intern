@@ -28,6 +28,7 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
         let statusHeight = UIApplication.shared.statusBarFrame.height
         
         self.Table.contentInset.top = -(statusHeight)
+
         configureDraggebleCircularMenuButton(button: TestButton, numberOfMenuItems: 5, menuRedius: 70, postion: .center)
         TestButton.menuButtonSize = .large
         TestButton.sholudMenuButtonAnimate = false
@@ -108,10 +109,10 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
         self.dismiss(animated: true, completion: nil)
     }
     @objc func arChange(_ sender:UISwitch){
-        self.dismiss(animated: true, completion: nil)
+    //    self.dismiss(animated: true, completion: nil)
         //add loading....
         let ar = self.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
-        self.present(ar, animated: true, completion: nil)
+        studio2D.present(ar, animated: true, completion: nil)
     }
     
     
@@ -192,11 +193,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     }
     else if indexPath.row == 3{
         
-        return 50/667 * UIScreen.main.bounds.height
+        return 40/667 * UIScreen.main.bounds.height
     }
     else if indexPath.row == 4 {
        
-        return 90/667 * UIScreen.main.bounds.height
+        return 100/667 * UIScreen.main.bounds.height
     }
     else if indexPath.row == 5{
    

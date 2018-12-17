@@ -33,9 +33,9 @@ final class DetailViewController: ElongationDetailViewController {
         return cell
     }
     @objc func arChange(_ sender:UISwitch){
- 
         let ar = self.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
-     //   self.navigationController?.present(ar, animated: true, completion: nil)
+        let naviController = UINavigationController(rootViewController: ar)
+        self.present(naviController, animated: true, completion:nil)
        
     }
 
