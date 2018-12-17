@@ -20,7 +20,7 @@ let gradientLayer = CAGradientLayer()
         JumpButton.layer.addSublayer(gradientLayer)
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
-        gradientLayer.colors = [UIColor.init(red: 34.0/255.0, green: 89.0/255.0, blue: 248.0/255.0, alpha: 1).cgColor,UIColor.init(red: 169.0/255.0, green: 0.0/255.0, blue: 255.0/255.0, alpha: 1).cgColor]
+//        gradientLayer.colors = [UIColor.init(red: 34.0/255.0, green: 89.0/255.0, blue: 248.0/255.0, alpha: 1).cgColor,UIColor.init(red: 169.0/255.0, green: 0.0/255.0, blue: 255.0/255.0, alpha: 1).cgColor]
         gradientLayer.cornerRadius = 12
         JumpButton.layer.cornerRadius = 12
     }
