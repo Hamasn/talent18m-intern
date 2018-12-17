@@ -27,8 +27,8 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         studio2D.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         studio2D.navigationController?.navigationBar.barTintColor = UIColor.black
         studio2D.navigationItem.title = "2D"
-        let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedStringKey.foregroundColor as NSCopying)
-        studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedStringKey : Any]
+        let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
+        studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
         studio2D.navigationController?.navigationBar.tintColor = UIColor.white
         
         self.present(naviController, animated: true, completion: nil)

@@ -67,8 +67,8 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             presentView.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
             presentView.navigationController?.navigationBar.barTintColor = UIColor.black
             presentView.navigationItem.title = "Studio Introduction"
-            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedStringKey.foregroundColor as NSCopying)
-            presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedStringKey : Any]
+            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
+            presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
             presentView.navigationController?.navigationBar.tintColor = UIColor.white
             present(naviController, animated: true, completion: nil)
         }
@@ -82,8 +82,8 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             presentView.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
             presentView.navigationController?.navigationBar.barTintColor = UIColor.black
             presentView.navigationItem.title = "Settings"
-            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedStringKey.foregroundColor as NSCopying)
-            presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedStringKey : Any]
+            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
+            presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
             presentView.navigationController?.navigationBar.tintColor = UIColor.white
             present(naviController, animated: true, completion: nil)
         } else if indexForButton == 4 {
@@ -97,8 +97,8 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             studio2D.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
             studio2D.navigationController?.navigationBar.barTintColor = UIColor.black
             studio2D.navigationItem.title = "2D"
-            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedStringKey.foregroundColor as NSCopying)
-            studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedStringKey : Any]
+            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
+            studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
             studio2D.navigationController?.navigationBar.tintColor = UIColor.white
 
             self.present(naviController, animated: true, completion: nil)

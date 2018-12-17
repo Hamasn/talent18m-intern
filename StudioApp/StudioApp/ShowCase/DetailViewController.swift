@@ -28,7 +28,7 @@ final class DetailViewController: ElongationDetailViewController {
          var cell = tableView.dequeueReusableCell(withIdentifier: "ViewCell") as! GridViewCell
         cell.ContentTextTest.text = Text
         if Title=="AR" {
-            cell.JumpButton.addTarget(self, action: #selector(arChange), for: UIControlEvents.touchUpInside)
+            cell.JumpButton.addTarget(self, action: #selector(arChange), for: UIControl.Event.touchUpInside)
         }
         return cell
     }
