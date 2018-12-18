@@ -34,7 +34,7 @@ class VideoViewViewController: UIViewController {
         player.backBlock = { [unowned self] (isFullScreen) in
             self.dismiss(animated: true, completion: nil)
         }
-        let asset = BMPlayerResource(url: URL(string: "http://9.112.70.15:8080/video/xxx.mp4")!,
+        let asset = BMPlayerResource(url: URL(string: "https://v.youku.com/v_show/id_XMjk3MzM1NzAzMg==.html?spm=a2h0k.11417342.soresults.dtitle")!,
                                      name: "IBM Studios DaLian")
         player.setVideo(resource: asset)
     }

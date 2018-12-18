@@ -12,6 +12,7 @@ class StudioIntro: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
 
         // Do any additional setup after loading the view.
     }
@@ -20,7 +21,11 @@ class StudioIntro: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+    }
+
 
     /*
     // MARK: - Navigation

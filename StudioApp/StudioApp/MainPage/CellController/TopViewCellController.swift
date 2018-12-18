@@ -88,10 +88,7 @@ class TopViewCellController: UITableViewCell,UIScrollViewDelegate{
         TopView.addSubview(viewFour)
         
         TopView.addSubview(button1)
-        TopView.addSubview(button2)
-        TopView.addSubview(button3)
-        TopView.addSubview(button4)
-       
+
         self.TopView.contentSize = CGSize(width: UIScreen.main.bounds.width * 4, height: scrollHeight)
         self.TopView.delegate = self
         self.TopControl.currentPage = 0

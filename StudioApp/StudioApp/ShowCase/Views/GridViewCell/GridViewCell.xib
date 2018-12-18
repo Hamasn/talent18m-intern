@@ -19,10 +19,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3J-P9-RcQ">
-                        <rect key="frame" x="17" y="328.5" width="341" height="50"/>
+                        <rect key="frame" x="218" y="328.5" width="140" height="50"/>
                         <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="WAo-xd-zQ9"/>
+                            <constraint firstAttribute="width" constant="140" id="vKe-m1-8zE"/>
                         </constraints>
                         <state key="normal" title="Get Started">
                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -35,18 +36,30 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVE-cq-zHz">
+                        <rect key="frame" x="23" y="328.5" width="140" height="50"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="140" id="Zfh-av-3ut"/>
+                            <constraint firstAttribute="height" constant="50" id="yDC-uA-KMN"/>
+                        </constraints>
+                        <state key="normal" title="Back">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="0.11764705882352941" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="v3J-P9-RcQ" firstAttribute="top" secondItem="P6I-AG-QnI" secondAttribute="bottom" constant="10" id="1Ts-Yc-5Tc"/>
                     <constraint firstAttribute="bottom" secondItem="v3J-P9-RcQ" secondAttribute="bottom" constant="30" id="Ayz-Ad-mGR"/>
                     <constraint firstItem="P6I-AG-QnI" firstAttribute="top" secondItem="wMU-A7-NkY" secondAttribute="top" id="HO1-w0-9qZ"/>
+                    <constraint firstItem="fVE-cq-zHz" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" constant="23" id="KOI-6i-db5"/>
                     <constraint firstItem="P6I-AG-QnI" firstAttribute="top" secondItem="wMU-A7-NkY" secondAttribute="top" id="U34-nK-2qJ"/>
                     <constraint firstItem="P6I-AG-QnI" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" constant="17" id="UOp-A5-iaO"/>
+                    <constraint firstAttribute="bottom" secondItem="fVE-cq-zHz" secondAttribute="bottom" constant="30" id="caA-xz-xLF"/>
                     <constraint firstAttribute="trailing" secondItem="v3J-P9-RcQ" secondAttribute="trailing" constant="17" id="ckT-rD-OiZ"/>
                     <constraint firstAttribute="trailing" secondItem="P6I-AG-QnI" secondAttribute="trailing" constant="17" id="gLM-Nb-tDM"/>
                     <constraint firstItem="P6I-AG-QnI" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" constant="17" id="oVl-SJ-QIp"/>
-                    <constraint firstItem="v3J-P9-RcQ" firstAttribute="leading" secondItem="wMU-A7-NkY" secondAttribute="leading" constant="17" id="teO-Ke-ojl"/>
                     <constraint firstAttribute="trailing" secondItem="P6I-AG-QnI" secondAttribute="trailing" constant="17" id="uUR-0k-6jT"/>
                 </constraints>
             </tableViewCellContentView>
@@ -55,6 +68,7 @@
             <connections>
                 <outlet property="ContentTextTest" destination="P6I-AG-QnI" id="agd-Kz-jlD"/>
                 <outlet property="JumpButton" destination="v3J-P9-RcQ" id="qGU-DO-Qr3"/>
+                <outlet property="closeBtn" destination="fVE-cq-zHz" id="aH0-0Q-L2W"/>
             </connections>
             <point key="canvasLocation" x="-79.200000000000003" y="99.400299850074973"/>
         </tableViewCell>

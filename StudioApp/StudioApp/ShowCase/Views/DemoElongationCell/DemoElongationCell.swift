@@ -17,6 +17,7 @@ final class DemoElongationCell: ElongationCell {
     @IBOutlet weak var Title: UILabel!
     @IBOutlet weak var SubTitle: UILabel!
     @IBOutlet var aboutTitleLabel: UILabel!
+    @IBOutlet weak var closeBtn: UIButton!
     override func awakeFromNib() {
         let shadow = UIView()
         shadow.backgroundColor = UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 0.3)

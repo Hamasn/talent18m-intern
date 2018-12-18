@@ -27,8 +27,8 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         studio2D.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         studio2D.navigationController?.navigationBar.barTintColor = UIColor.black
         studio2D.navigationItem.title = "2D"
-        let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedStringKey.foregroundColor as NSCopying)
-        studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedStringKey : Any]
+        let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
+        studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
         studio2D.navigationController?.navigationBar.tintColor = UIColor.white
         
         self.present(naviController, animated: true, completion: nil)
@@ -98,7 +98,13 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     var nodePosition = RoutesViewController.shared.allPosition()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
+        
+        let navController = self.navigationController?.viewControllers.count
+        let viewController1 = self.navigationController?.viewControllers[0]
+        if (viewController1?.isKind(of: DLStudio2DViewController.self))!{
+            self.showARBtn.isOn = true
+        }
+
        // self.textScroll.contentLayoutGuide.bottomAnchor.constraint(equalTo: self.textLabel.bottomAnchor).isActive = true
          sceneView.delegate = self
         self.correctView.layer.borderWidth = 3

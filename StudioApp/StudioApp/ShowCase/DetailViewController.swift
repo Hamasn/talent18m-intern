@@ -27,8 +27,11 @@ final class DetailViewController: ElongationDetailViewController {
         //let cell = tableView.dequeue(GridViewCell.self)
          var cell = tableView.dequeueReusableCell(withIdentifier: "ViewCell") as! GridViewCell
         cell.ContentTextTest.text = Text
+        cell.closeBtn.addTarget(self, action: #selector(backShowcase), for: UIControl.Event.touchUpInside)
+        cell.JumpButton.isHidden = true
         if Title=="AR" {
-            cell.JumpButton.addTarget(self, action: #selector(arChange), for: UIControlEvents.touchUpInside)
+            cell.JumpButton.isHidden = false
+            cell.JumpButton.addTarget(self, action: #selector(arChange), for: UIControl.Event.touchUpInside)
         }
         return cell
     }
@@ -36,7 +39,9 @@ final class DetailViewController: ElongationDetailViewController {
         let ar = self.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
         let naviController = UINavigationController(rootViewController: ar)
         self.present(naviController, animated: true, completion:nil)
-       
+    }
+    @objc func backShowcase(_ sender:UISwitch){
+        self.dismiss(animated: true, completion: nil)
     }
 
     override func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {

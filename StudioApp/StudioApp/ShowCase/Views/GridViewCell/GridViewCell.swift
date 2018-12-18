@@ -14,6 +14,8 @@ final class GridViewCell: UITableViewCell {
 let gradientLayer = CAGradientLayer()
     @IBOutlet weak var JumpButton: UIButton!
     @IBOutlet weak var ContentTextTest: UITextView!
+ 
+    @IBOutlet weak var closeBtn: UIButton!
     override func awakeFromNib() {
         
         gradientLayer.frame = JumpButton.bounds
@@ -23,6 +25,7 @@ let gradientLayer = CAGradientLayer()
 //        gradientLayer.colors = [UIColor.init(red: 34.0/255.0, green: 89.0/255.0, blue: 248.0/255.0, alpha: 1).cgColor,UIColor.init(red: 169.0/255.0, green: 0.0/255.0, blue: 255.0/255.0, alpha: 1).cgColor]
         gradientLayer.cornerRadius = 12
         JumpButton.layer.cornerRadius = 12
+        closeBtn.layer.cornerRadius = 12
     }
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)

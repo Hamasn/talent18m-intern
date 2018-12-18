@@ -40,7 +40,7 @@ final class ShowCaseViewController: ElongationViewController {
         
     }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
+    override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
 
@@ -50,6 +50,7 @@ final class ShowCaseViewController: ElongationViewController {
         detailViewController.Text = data.Text
         detailViewController.Title = data.Title
         expand(viewController: detailViewController)
+        print(indexPath)
      
     }
 }
@@ -74,6 +75,7 @@ extension ShowCaseViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt _: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "Demo") as! DemoElongationCell
+        cell.closeBtn.isHidden = true
         return cell
     }
     
@@ -87,5 +89,6 @@ extension ShowCaseViewController {
         cell.aboutTitleLabel.text = data.IntroTitle
         cell.TopImage.image = data.TopImage
         cell.SubTitle.text = data.SubTitle
+ 
     }
 }

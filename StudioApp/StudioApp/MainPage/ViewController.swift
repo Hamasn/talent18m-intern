@@ -11,13 +11,17 @@ import SnapKit
 import DLStudio2D
 
 class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationControllerDelegate{
-   var myIndex = 0
+    var myIndex = 0
     let studio2D = DLStudio2DViewController()
+    var naviController = UINavigationController();
+    let arSwitch = UISwitch(frame: .zero)
    
  
     @IBOutlet weak var TestButton: ASCircularMenuButton!
     
-    let items: [String] = ["更多内容","发现","Setting","主页","AR","home","关闭"]
+//    let items: [String] = ["更多内容","发现","Setting","主页","AR","home","关闭"]
+    let items: [String] = ["更多内容","AR","home","关闭"]
+
     var ableToDrag:Bool = true
     var DragPoint:CGPoint!
     var Extend:Bool = false
@@ -29,12 +33,15 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
         
         self.Table.contentInset.top = -(statusHeight)
 
-        configureDraggebleCircularMenuButton(button: TestButton, numberOfMenuItems: 5, menuRedius: 70, postion: .center)
+        configureDraggebleCircularMenuButton(button: TestButton, numberOfMenuItems: 2, menuRedius: 70, postion: .center)
         TestButton.menuButtonSize = .large
         TestButton.sholudMenuButtonAnimate = false
-        TestButton.setImage(UIImage(named: items[5]), for: .normal)
+        TestButton.setImage(UIImage(named: items[2]), for: .normal)
         
         
+    }
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
     @IBOutlet weak var Table: UITableView!
@@ -58,6 +65,7 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
         Button.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
     }
     func didClickOnCircularMenuButton(_ menuButton: ASCircularMenuButton, indexForButton: Int, button: UIButton) {
+        print(indexForButton)
         if indexForButton == 0{
             let presentView = storyboard!.instantiateViewController(withIdentifier: "StudioIntro") as! StudioIntro
             let naviController = UINavigationController(rootViewController: presentView)
@@ -68,8 +76,9 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             presentView.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
             presentView.navigationController?.navigationBar.barTintColor = UIColor.black
             presentView.navigationItem.title = "Studio Introduction"
-            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedStringKey.foregroundColor as NSCopying)
-            presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedStringKey : Any]
+            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
+            
+            presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
             presentView.navigationController?.navigationBar.tintColor = UIColor.white
             present(naviController, animated: true, completion: nil)
         }
@@ -83,23 +92,27 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             presentView.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
             presentView.navigationController?.navigationBar.barTintColor = UIColor.black
             presentView.navigationItem.title = "Settings"
-            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedStringKey.foregroundColor as NSCopying)
-            presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedStringKey : Any]
+            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
+            presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
             presentView.navigationController?.navigationBar.tintColor = UIColor.white
             present(naviController, animated: true, completion: nil)
-        } else if indexForButton == 4 {
+        } else if indexForButton == 1 {
             
-            let naviController = UINavigationController(rootViewController: studio2D)
+            naviController = UINavigationController(rootViewController: studio2D)
             naviController.delegate = self
             let closeBtn = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(close))
-            let arBtn = UIBarButtonItem(image: UIImage(named: "ARChange"), style: .plain, target: self, action: #selector(arChange))
+            
+            arSwitch.isOn = false // or false
+            let arBtn = UIBarButtonItem(customView: arSwitch)
+            arSwitch.addTarget(self, action: #selector(arChange), for:.valueChanged)
+
             studio2D.navigationItem.leftBarButtonItem = closeBtn
             studio2D.navigationItem.rightBarButtonItem = arBtn
             studio2D.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
             studio2D.navigationController?.navigationBar.barTintColor = UIColor.black
             studio2D.navigationItem.title = "2D"
-            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedStringKey.foregroundColor as NSCopying)
-            studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedStringKey : Any]
+            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
+            studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
             studio2D.navigationController?.navigationBar.tintColor = UIColor.white
 
             self.present(naviController, animated: true, completion: nil)
@@ -109,10 +122,11 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
         self.dismiss(animated: true, completion: nil)
     }
     @objc func arChange(_ sender:UISwitch){
-    //    self.dismiss(animated: true, completion: nil)
-        //add loading....
-        let ar = self.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
-        studio2D.present(ar, animated: true, completion: nil)
+        if sender.isOn{
+            let ar = self.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
+       //     naviController.pushViewController(ar, animated: true)
+            
+        }
     }
     
     
@@ -126,11 +140,11 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
     }
     func MenuClosed(_ menuButton: ASCircularMenuButton) {
         if  menuButton == TestButton {
-            TestButton.setImage(UIImage(named: items[5]), for: .normal)
+            TestButton.setImage(UIImage(named: items[2]), for: .normal)
         }
     }
     func MenuOpened(_ menuButton: ASCircularMenuButton) {
-        TestButton.setImage(UIImage(named: items[6]), for: .normal)
+        TestButton.setImage(UIImage(named: items[3]), for: .normal)
     }
 }
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
