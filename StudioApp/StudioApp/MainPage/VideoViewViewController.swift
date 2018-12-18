@@ -10,7 +10,6 @@ import UIKit
 import BMPlayer
 
 class VideoViewViewController: UIViewController {
-
     
     let player = BMPlayer()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
