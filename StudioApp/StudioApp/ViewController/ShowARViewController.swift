@@ -170,7 +170,6 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         var binade: String;
-        var rssi :String;
         var beaconMinor : Int;
         
             for beacon in beacons {
@@ -187,7 +186,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
                         self.verity = 0
                     }
                     binade = String(beacon.accuracy.binade)
-                    rssi = String(beacon.rssi)
+//                    let rssi = String(beacon.rssi)
                     if self.verity > 2 {//停留2秒后
                         self.correctView.layer.borderColor = UIColor.green.cgColor
                         if self.verity >= 4{ //确认对焦
@@ -367,13 +366,11 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         
         let positionStr = UserDefaults.standard.string(forKey: name)
         
-        print(positionStr)
-
         let positionArr = positionStr?.split(separator: " ")
        
         var nodePosition = Array<Any>()
         var k = 0
-        for kkk in positionArr! {
+        for _ in positionArr! {
             if k%3 == 0{
                 var arrPosition = Array<Any>()
                 arrPosition.append(positionArr![k])
@@ -419,7 +416,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
             }
             else{
                 let itLast = SCNVector3(positionArr![(s-1)*3].floatValue+current_x,positionArr![(s-1)*3+1].floatValue+current_y,positionArr![(s-1)*3+2].floatValue+current_z)
-                let itLast1 = SCNVector3(positionArr![(s-1)*3].floatValue,positionArr![(s-1)*3+1].floatValue,positionArr![(s-1)*3+2].floatValue)
+                _ = SCNVector3(positionArr![(s-1)*3].floatValue,positionArr![(s-1)*3+1].floatValue,positionArr![(s-1)*3+2].floatValue)
                 if s == (nodePosition.count)-1{
                     NodeUtil.addEndNode(rootNode: self.sceneView.scene.rootNode, position: itLast)
                     break
@@ -458,21 +455,21 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         let hitResults: [SCNHitTestResult]  = sceneView.hitTest(location, options: hitTestOptions)
         
         if let hit = hitResults.first {
-            if let node = getParent(hit.node) {
+            if getParent(hit.node) != nil {
                 return
             }
         }
     }
     
     func rePlay(name:String){
-        let him = self.modlePerson[name]
-        if isPlay{
+//        let him = self.modlePerson[name]
+//        if isPlay{
 //            him?.playAnimation(imageName: name)
 //            self.sceneView.scene.rootNode.addAnimation((him!.animations["dancing"]!), forKey: "dancing")
-            
-        }else{
-            
-        }
+//
+//        }else{
+//
+//        }
         playVoice(name: name)
         print(isPlay)
         isPlay = !isPlay

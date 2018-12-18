@@ -159,32 +159,32 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0  {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "TopView", for: indexPath) as! TopViewCellController
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TopView", for: indexPath) as! TopViewCellController
            tableView.separatorStyle = .none
             return cell
         }
         else if indexPath.row == 1 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "Title1", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Title1", for: indexPath)
             tableView.separatorStyle = .none
             return cell
         }
         else if indexPath.row == 2 {
-             var cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! CellOneViewController
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! CellOneViewController
            
             return cell
         }
         else if indexPath.row == 3{
-             var cell = tableView.dequeueReusableCell(withIdentifier: "Title2", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Title2", for: indexPath)
             tableView.separatorStyle = .none
             return cell
         }
         else if indexPath.row == 4 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! CellTwoViewController
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! CellTwoViewController
             
             return cell
         }
         else if indexPath.row == 5{
-            var cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! CellThreeViewController
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! CellThreeViewController
             tableView.separatorStyle = .none
             return cell
         }

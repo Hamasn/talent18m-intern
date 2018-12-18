@@ -149,7 +149,7 @@ class RouteCacheService {
     @discardableResult
     func addRouteDae(route:RouteDae) ->Bool{
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReloadRoutes"), object: nil)
-        if let fileUrl = URL(string: FileUtil.path(name: "/com.mmoaay.findme.routes".appending("/").appending(String(route.name)))!) {
+        if URL(string: FileUtil.path(name: "/com.mmoaay.findme.routes".appending("/").appending(String(route.name)))!) != nil {
             let test = URL(fileURLWithPath: FileUtil.path(name: "/com.mmoaay.findme.routes".appending("/").appending(String(route.name).appending(".scn")))!)
             print(test.absoluteString)
 //            var arr = NSArray()

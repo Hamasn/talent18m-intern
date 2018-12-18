@@ -25,7 +25,7 @@ final class DetailViewController: ElongationDetailViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt _: IndexPath) -> UITableViewCell {
         //let cell = tableView.dequeue(GridViewCell.self)
-         var cell = tableView.dequeueReusableCell(withIdentifier: "ViewCell") as! GridViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ViewCell") as! GridViewCell
         cell.ContentTextTest.text = Text
         cell.closeBtn.addTarget(self, action: #selector(backShowcase), for: UIControl.Event.touchUpInside)
         cell.JumpButton.isHidden = true

@@ -44,7 +44,7 @@ extension StudioIntro: UITableViewDelegate ,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        if indexPath.row == 0 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PageViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PageViewCell
             tableView.separatorStyle = .none
             return cell
         }

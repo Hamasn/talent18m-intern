@@ -24,7 +24,7 @@ DEPENDENCIES:
   - SwiftyJSON
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - BMPlayer
     - ElongationPreview
     - FSPagerView
@@ -44,4 +44,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 69998b463b4abc020e6dae5e039b7d5d336e9a3b
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.0

@@ -82,7 +82,6 @@ class RoutesViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
             //允许使用定位服务的话，开始定位服务更新
             locationManager.startUpdatingLocation()
             print("定位开始")
-            print(locationManager.delegate)
             
         }
         sceneView.scene = SCNScene()
@@ -98,7 +97,7 @@ class RoutesViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        var currLocation : CLLocation = locations.last!
+        var _ : CLLocation = locations.last!
     }
 
     override func viewWillAppear(_ animated: Bool) {

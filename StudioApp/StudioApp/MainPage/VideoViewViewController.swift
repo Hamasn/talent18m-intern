@@ -10,12 +10,11 @@ import UIKit
 import BMPlayer
 
 class VideoViewViewController: UIViewController {
-
     
     let player = BMPlayer()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
-        BMPlayerConf
+//        BMPlayerConf
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5) 
         view.isOpaque = false
@@ -24,12 +23,10 @@ class VideoViewViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         player.snp_makeConstraints { (make) in
-            let naviHeight = UIApplication.shared.statusBarFrame.height
+            _ = UIApplication.shared.statusBarFrame.height
 //            make.top.equalTo(self.view).offset(naviHeight)
             make.left.right.equalTo(self.view)
-            // 注意此处，宽高比 16:9 优先级比 1000 低就行，在因为 iPhone 4S 宽高比不是 16：9
-            let test = 205/667 * UIScreen.main.bounds.height
-            make.width.equalTo(player.snp_height).multipliedBy(16.0/11.0).priority(667)
+            make.width.equalTo(player.snp_height).multipliedBy(16.0/11.0).priority(UIScreen.main.bounds.size.height)
         }
         player.backBlock = { [unowned self] (isFullScreen) in
             self.dismiss(animated: true, completion: nil)
