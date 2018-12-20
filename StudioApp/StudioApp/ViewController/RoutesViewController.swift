@@ -24,37 +24,8 @@ class RoutesViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     var recordFlag = false
     var arr = Array<SCNVector3>()
     static let shared = RoutesViewController()
-    @IBAction func handleAction(_ sender: UIButton) {
-        if recordFlag {
-            route.scene = SCNScene()
-        }
-        recordFlag = !recordFlag
-        sender.isSelected = !sender.isSelected
-        if !recordFlag {
-            NodeUtil.addEndNode(rootNode: self.sceneView.scene.rootNode, position: last!)
-            print(self.arr)
-            let filePath:String = NSHomeDirectory() + "/Documents/arr.plist"
-            let stringNSArray = NSArray()
-            stringNSArray.addingObjects(from: arr)
-            print(stringNSArray)
-            stringNSArray.write(toFile: filePath, atomically: true)
+    var position: [String : SCNVector3] = [ : ]
 
-            
-            //新增一条线路
-            AlertUtil.showTextFieldAlert { (name) in
-                self.route.name = name
-                self.route.scene = self.sceneView.scene
-                if RouteCacheService.shared.addRouteDae(route: self.route) {
-                    self.sceneView.scene = SCNScene()
-                    self.last = nil
-                    self.showBadge()
-                }else{
-                    AlertUtil.showAlert("添加失败")
-                }
-            }
-            
-        }
-    }
     //
     lazy var configuration = { () -> ARWorldTrackingConfiguration in
         let configuration = ARWorldTrackingConfiguration()
@@ -62,9 +33,12 @@ class RoutesViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         return configuration
     }()
     //
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.clear
         self.correctView.layer.borderWidth = 1
         self.correctView.layer.borderColor = UIColor(red:222/255, green:225/255, blue:227/255, alpha: 1).cgColor
         //设置定位服务管理器代理
@@ -82,16 +56,10 @@ class RoutesViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
             //允许使用定位服务的话，开始定位服务更新
             locationManager.startUpdatingLocation()
             print("定位开始")
-            
         }
         sceneView.scene = SCNScene()
         sceneView.delegate = self
-        
         sceneView.session.run(configuration)
-        
-       
-
-      //  self.showBadge()
     }
     
     
@@ -111,7 +79,29 @@ class RoutesViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         sceneView.session.pause()
     }
     
-    
+    @IBAction func handleAction(_ sender: UIButton) {
+        if recordFlag {
+            route.scene = SCNScene()
+        }
+        recordFlag = !recordFlag
+        sender.isSelected = !sender.isSelected
+        if !recordFlag {
+            NodeUtil.addEndNode(rootNode: self.sceneView.scene.rootNode, position: last!)
+            
+            //新增一条线路
+            AlertUtil.showTextFieldAlert { (name) in
+                self.route.name = name
+                self.route.scene = self.sceneView.scene
+                if RouteCacheService.shared.addRouteDae(route: self.route) {
+                    self.sceneView.scene = SCNScene()
+                    self.last = nil
+                    self.showBadge()
+                }else{
+                    AlertUtil.showAlert("添加失败")
+                }
+            }
+        }
+    }
     
     func showBadge(){
         let routes = RouteCacheService.shared.allRoutesDae()
@@ -120,9 +110,7 @@ class RoutesViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     }
 
     @IBAction func ShowRoutesAction(_ sender: UIButton) {
-        print("showroutes")
-        let routes = self.storyboard!.instantiateViewController(withIdentifier: "routesTable") as! RoutesTableViewController
-        self.present(routes, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
@@ -143,16 +131,16 @@ class RoutesViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
                     print("begin")
                     print(current)
                     self.last = current
-
                 }
                 glLineWidth(0)
             }
         }
     }
+    
     func allPosition() -> [SCNVector3] {
         return Array(self.position.values)
     }
-    var position: [String : SCNVector3] = [ : ]
+    
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
         

@@ -37,8 +37,8 @@ final class DetailViewController: ElongationDetailViewController {
     }
     @objc func arChange(_ sender:UISwitch){
         let ar = self.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
-        let naviController = UINavigationController(rootViewController: ar)
-        self.present(naviController, animated: true, completion:nil)
+//        let naviController = UINavigationController(rootViewController: ar)
+        self.present(ar, animated: true, completion:nil)
     }
     @objc func backShowcase(_ sender:UISwitch){
         self.dismiss(animated: true, completion: nil)

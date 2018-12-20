@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18070A4721BA4CC000F717DB /* DLStudio2D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18070A4621BA4CC000F717DB /* DLStudio2D.framework */; };
 		18070A4A21BA4CE700F717DB /* DLStudio2D.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18070A4921BA4CE700F717DB /* DLStudio2D.bundle */; };
+		18E4FC5B21C9D8EF0071EE61 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4FC5A21C9D8EF0071EE61 /* Constant.swift */; };
 		5D70DCE138D6225B3A1D7A72 /* Pods_StudioApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5FAE654894E42CDB516C49 /* Pods_StudioApp.framework */; };
 		9A06619A20EDB5890053CD5D /* LayerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06619920EDB5890053CD5D /* LayerContainerView.swift */; };
 		9A34675120EDEBBB005366FD /* GridViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A34674C20EDEBBB005366FD /* GridViewCell.xib */; };
@@ -51,7 +52,6 @@
 		CE5473302137C8BC007DDA11 /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE54732F2137C8BC007DDA11 /* FileUtil.swift */; };
 		CE5473342137CDE8007DDA11 /* ShowRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5473332137CDE8007DDA11 /* ShowRouteViewController.swift */; };
 		CE5473362137D596007DDA11 /* RoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5473352137D596007DDA11 /* RoutesTableViewController.swift */; };
-		CE54733F2139385C007DDA11 /* 1.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CE54733E2139385C007DDA11 /* 1.rtf */; };
 		CE547341213CCBFB007DDA11 /* RouteDae.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE547340213CCBFB007DDA11 /* RouteDae.swift */; };
 		CE547343213CCD8D007DDA11 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE547342213CCD8D007DDA11 /* Route.swift */; };
 		CE547345213CE24D007DDA11 /* ShareUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE547344213CE24D007DDA11 /* ShareUtil.swift */; };
@@ -62,6 +62,7 @@
 /* Begin PBXFileReference section */
 		18070A4621BA4CC000F717DB /* DLStudio2D.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DLStudio2D.framework; path = StudioApp/2DFramework/DLStudio2D.framework; sourceTree = "<group>"; };
 		18070A4921BA4CE700F717DB /* DLStudio2D.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DLStudio2D.bundle; path = StudioApp/2DFramework/DLStudio2D.bundle; sourceTree = SOURCE_ROOT; };
+		18E4FC5A21C9D8EF0071EE61 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		9A06619920EDB5890053CD5D /* LayerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerContainerView.swift; sourceTree = "<group>"; };
 		9A34674C20EDEBBB005366FD /* GridViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GridViewCell.xib; sourceTree = "<group>"; };
 		9A34674D20EDEBBB005366FD /* GridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
@@ -107,7 +108,6 @@
 		CE54732F2137C8BC007DDA11 /* FileUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
 		CE5473332137CDE8007DDA11 /* ShowRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRouteViewController.swift; sourceTree = "<group>"; };
 		CE5473352137D596007DDA11 /* RoutesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTableViewController.swift; sourceTree = "<group>"; };
-		CE54733E2139385C007DDA11 /* 1.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = 1.rtf; sourceTree = "<group>"; };
 		CE547340213CCBFB007DDA11 /* RouteDae.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDae.swift; sourceTree = "<group>"; };
 		CE547342213CCD8D007DDA11 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		CE547344213CE24D007DDA11 /* ShareUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUtil.swift; sourceTree = "<group>"; };
@@ -144,6 +144,27 @@
 				18070A4921BA4CE700F717DB /* DLStudio2D.bundle */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		1831447921CB346600F56FE7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEB17946212FC51A009DEF0E /* Person.swift */,
+				CE547342213CCD8D007DDA11 /* Route.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18E4FC5921C9D8D30071EE61 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				CE547344213CE24D007DDA11 /* ShareUtil.swift */,
+				CE54732F2137C8BC007DDA11 /* FileUtil.swift */,
+				CE5473292137C7AD007DDA11 /* AlertUtil.swift */,
+				CE54732521378E7D007DDA11 /* NodeUtil.swift */,
+				18E4FC5A21C9D8EF0071EE61 /* Constant.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		681CF85BC16991D0CB3CE3DC /* Frameworks */ = {
@@ -309,22 +330,23 @@
 		9AEECA0F20DC821F009819A8 /* StudioApp */ = {
 			isa = PBXGroup;
 			children = (
-				18070A4821BA4CD700F717DB /* Resources */,
-				CEECC3CC212D556B001CC128 /* Extension */,
-				CE3B48A6212BF6BA00AF1B5B /* art.scnassets */,
-				CE3B489D212BBA1E00AF1B5B /* ViewController */,
-				9A37379720F4A52300368E02 /* LogInPage */,
-				9AEB64DE20F33AC400FE0300 /* profile */,
-				9A06619B20EDBE080053CD5D /* ShowCase */,
-				9A94DD2C20E60550008FF209 /* AgendaPage */,
-				9AE219B420E5CE75008B880C /* MainPage */,
-				9AEECA1020DC821F009819A8 /* AppDelegate.swift */,
-				9AEECA1420DC821F009819A8 /* Main.storyboard */,
-				9AC08DB020EDE616001669CD /* ASExtendedCircularMenu.swift */,
-				9AEECA1720DC8220009819A8 /* Assets.xcassets */,
+				1831447921CB346600F56FE7 /* Model */,
+				18E4FC5921C9D8D30071EE61 /* Utility */,
 				9AEECA1C20DC8220009819A8 /* Info.plist */,
+				CE3B48A6212BF6BA00AF1B5B /* art.scnassets */,
+				9AEECA1020DC821F009819A8 /* AppDelegate.swift */,
+				9AC08DB020EDE616001669CD /* ASExtendedCircularMenu.swift */,
 				9AF5063F20F71BFB00DF8D72 /* FirstPageViewController.swift */,
-				CE54733E2139385C007DDA11 /* 1.rtf */,
+				9AEECA1720DC8220009819A8 /* Assets.xcassets */,
+				9A94DD2C20E60550008FF209 /* AgendaPage */,
+				CEECC3CC212D556B001CC128 /* Extension */,
+				9A37379720F4A52300368E02 /* LogInPage */,
+				9AEECA1420DC821F009819A8 /* Main.storyboard */,
+				9AE219B420E5CE75008B880C /* MainPage */,
+				9AEB64DE20F33AC400FE0300 /* profile */,
+				18070A4821BA4CD700F717DB /* Resources */,
+				9A06619B20EDBE080053CD5D /* ShowCase */,
+				CE3B489D212BBA1E00AF1B5B /* ViewController */,
 			);
 			path = StudioApp;
 			sourceTree = "<group>";
@@ -332,19 +354,13 @@
 		CE3B489D212BBA1E00AF1B5B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CE547342213CCD8D007DDA11 /* Route.swift */,
 				CE3B48A2212BBBD500AF1B5B /* ShowARViewController.swift */,
-				CEB17946212FC51A009DEF0E /* Person.swift */,
 				CE547323213698A6007DDA11 /* RoutesViewController.swift */,
-				CE54732521378E7D007DDA11 /* NodeUtil.swift */,
-				CE5473292137C7AD007DDA11 /* AlertUtil.swift */,
 				CE54732B2137C815007DDA11 /* RouteCacheService.swift */,
 				CE54732D2137C858007DDA11 /* SCNVector3-Ex.swift */,
-				CE54732F2137C8BC007DDA11 /* FileUtil.swift */,
 				CE5473332137CDE8007DDA11 /* ShowRouteViewController.swift */,
 				CE5473352137D596007DDA11 /* RoutesTableViewController.swift */,
 				CE547340213CCBFB007DDA11 /* RouteDae.swift */,
-				CE547344213CE24D007DDA11 /* ShareUtil.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -418,7 +434,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE54733F2139385C007DDA11 /* 1.rtf in Resources */,
 				18070A4A21BA4CE700F717DB /* DLStudio2D.bundle in Resources */,
 				9A34675120EDEBBB005366FD /* GridViewCell.xib in Resources */,
 				9A34675320EDEBBB005366FD /* DemoElongationCell.xib in Resources */,
@@ -518,6 +533,7 @@
 				9A656BB220E1D3C200602A96 /* CellThreeViewController.swift in Sources */,
 				9A656BBD20E1EA8D00602A96 /* CollectionOneViewCell.swift in Sources */,
 				9AEB64E520F3446F00FE0300 /* OptionViewCell.swift in Sources */,
+				18E4FC5B21C9D8EF0071EE61 /* Constant.swift in Sources */,
 				CE5473302137C8BC007DDA11 /* FileUtil.swift in Sources */,
 				9AE9EEA120EDE2A500AEC2ED /* ShowCaseViewController.swift in Sources */,
 				CE38EA43214E986D0041DD85 /* VideoViewViewController.swift in Sources */,

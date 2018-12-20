@@ -59,7 +59,9 @@ class NodeUtil{
         node.name = "endNode"
 
          positionStr = positionStr+position.toString()
-         print(positionStr)
+        print("-------------")
+        print(positionStr)
+        print("-------------")
         UserDefaults.standard.set(positionStr, forKey: "ShuLiFixed")
 
         node.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
@@ -69,6 +71,7 @@ class NodeUtil{
     static var arrPosition = Array<Any>()
     static var NToDel:NSMutableArray = []
     static var positionStr : String!
+    
     static func addNormalNode(rootNode:SCNNode, current: SCNVector3, last: SCNVector3) {
         let path = NodeUtil.arrowPath()
         let shape = SCNShape(path: path, extrusionDepth: 1)//
