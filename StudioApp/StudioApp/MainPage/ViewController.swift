@@ -19,8 +19,8 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
  
     @IBOutlet weak var TestButton: ASCircularMenuButton!
     
-//    let items: [String] = ["更多内容","发现","Setting","主页","AR","home","关闭"]
-    let items: [String] = ["更多内容","AR","home","关闭"]
+    let items: [String] = ["更多内容","发现","Setting","主页","AR","home","关闭"]
+  //  let items: [String] = ["更多内容","AR","home","关闭"]
 
     var ableToDrag:Bool = true
     var DragPoint:CGPoint!
@@ -33,10 +33,10 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
         
         self.Table.contentInset.top = -(statusHeight)
 
-        configureDraggebleCircularMenuButton(button: TestButton, numberOfMenuItems: 2, menuRedius: 70, postion: .center)
+        configureDraggebleCircularMenuButton(button: TestButton, numberOfMenuItems: 5, menuRedius: 70, postion: .center)
         TestButton.menuButtonSize = .large
         TestButton.sholudMenuButtonAnimate = false
-        TestButton.setImage(UIImage(named: items[2]), for: .normal)
+        TestButton.setImage(UIImage(named: items[5]), for: .normal)
         
         let notificationName = "cell3"
         let notificationCenter = NotificationCenter.default
@@ -117,7 +117,7 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
             presentView.navigationController?.navigationBar.tintColor = UIColor.white
             present(naviController, animated: true, completion: nil)
-        } else if indexForButton == 1 {
+        } else if indexForButton == 4 {
             
             naviController = UINavigationController(rootViewController: studio2D)
             naviController.delegate = self
@@ -159,11 +159,11 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
     }
     func MenuClosed(_ menuButton: ASCircularMenuButton) {
         if  menuButton == TestButton {
-            TestButton.setImage(UIImage(named: items[2]), for: .normal)
+            TestButton.setImage(UIImage(named: items[5]), for: .normal)
         }
     }
     func MenuOpened(_ menuButton: ASCircularMenuButton) {
-        TestButton.setImage(UIImage(named: items[3]), for: .normal)
+        TestButton.setImage(UIImage(named: items[6]), for: .normal)
     }
 }
 extension ViewController: UITableViewDataSource, UITableViewDelegate{

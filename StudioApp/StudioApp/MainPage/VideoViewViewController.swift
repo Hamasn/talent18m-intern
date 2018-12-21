@@ -19,7 +19,7 @@ class VideoViewViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5) 
         view.isOpaque = false
-        appDelegate.blockRotation = true
+    
         view.addSubview(player)
         
    //      Do any additional setup after loading the view.
