@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.8.0)
   - BMPlayer (1.0.1):
     - BMPlayer/Full (= 1.0.1)
   - BMPlayer/Core (1.0.1)
@@ -11,37 +12,44 @@ PODS:
   - NVActivityIndicatorView (4.0.1):
     - NVActivityIndicatorView/Presenter (= 4.0.1)
   - NVActivityIndicatorView/Presenter (4.0.1)
+  - PKHUD (5.2.0)
   - SnapKit (4.0.1)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.7)
   - BMPlayer (~> 1.0.0)
   - ElongationPreview
   - FSPagerView
+  - PKHUD (~> 5.0)
   - SnapKit (~> 4.0.0)
   - SVProgressHUD
   - SwiftyJSON
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
     - BMPlayer
     - ElongationPreview
     - FSPagerView
     - NVActivityIndicatorView
+    - PKHUD
     - SnapKit
     - SVProgressHUD
     - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   BMPlayer: 44eebf06eb01450dd14ea74b27d07c5222f0eed1
   ElongationPreview: c167df6cf34e21cec440061c57041cfac1368d9a
   FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
   NVActivityIndicatorView: 77ed6d7b571643e24899e7858bf9ae2ee4c21f31
+  PKHUD: dd5357ac65f26115c35c4a68e9b328053326c5fe
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 69998b463b4abc020e6dae5e039b7d5d336e9a3b
+PODFILE CHECKSUM: b4081598c87048559975eb994790ac33fa780bad
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

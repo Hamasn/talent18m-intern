@@ -98,15 +98,13 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     var nodePosition = RoutesViewController.shared.allPosition()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let navController = self.navigationController?.viewControllers.count
-        let viewController1 = self.navigationController?.viewControllers[0]
-        let arOff = ViewController().arSwitch
-        arOff.isOn = true
-        self.view.addSubview(arOff)
-        print(arOff.isOn)
+//
+//        let navController = self.navigationController?.viewControllers.count
+//        let viewController1 = self.navigationController?.viewControllers[0]
+//        if (viewController1?.isKind(of: DLStudio2DViewController.self))!{
+//            self.showARBtn.isOn = true
+//        }
 
-       // self.textScroll.contentLayoutGuide.bottomAnchor.constraint(equalTo: self.textLabel.bottomAnchor).isActive = true
          sceneView.delegate = self
         self.correctView.layer.borderWidth = 3
         self.correctView.layer.borderColor = UIColor.red.cgColor
@@ -366,7 +364,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         self.guideView.isHidden = false
         
         let positionStr = UserDefaults.standard.string(forKey: name)
-        
+
         let positionArr = positionStr?.split(separator: " ")
        
         var nodePosition = Array<Any>()
@@ -398,7 +396,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         
         print("current_x")
         print(current_x)
-
+        
         var s = 0
         for test in nodePosition{
             print("test")
@@ -455,11 +453,11 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         
         let hitResults: [SCNHitTestResult]  = sceneView.hitTest(location, options: hitTestOptions)
         
-        if let hit = hitResults.first {
-            if getParent(hit.node) != nil {
-                return
-            }
-        }
+//        if let hit = hitResults.first {
+//            if getParent(hit.node) != nil {
+//                return
+//            }
+//        }
     }
     
     func rePlay(name:String){

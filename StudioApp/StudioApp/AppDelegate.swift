@@ -12,22 +12,12 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var blockRotation: Bool = false
-    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {
-        if self.blockRotation{
-            return UIInterfaceOrientationMask.all
-        } else {
-            return UIInterfaceOrientationMask.portrait
-        }
-      
-
-    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 //        UINavigationBar.appearance().barTintColor = UIColor.red
-
+        self.setStatusBarBackgroundColor(UIColor.clear)
         return true
     }
 
@@ -53,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func setStatusBarBackgroundColor(_ color: UIColor) {
+        guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
+        statusBar.backgroundColor = color
+    }
 }
 

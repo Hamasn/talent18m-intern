@@ -69,18 +69,17 @@ extension CellOneViewController: UICollectionViewDelegate, UICollectionViewDataS
         return nil
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let view = self.responderViewController()
-        let ar = view?.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
-        let routes = view?.storyboard!.instantiateViewController(withIdentifier: "showRoutes") as! RoutesViewController
+        print(indexPath.row)
         if indexPath.row == 0{
-            print("0")
+            let ar = view?.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
             view?.present(ar, animated: true, completion: nil)
-            
         }else if indexPath.row == 1{
-            print("1")
+            let routes = view?.storyboard!.instantiateViewController(withIdentifier: "showRoutes") as! RoutesViewController
             view?.present(routes, animated: true, completion: nil)
         }else if indexPath.row == 2 {
-            print("2")
+            
         }
         
         
