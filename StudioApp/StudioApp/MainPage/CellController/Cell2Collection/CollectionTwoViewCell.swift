@@ -15,6 +15,10 @@ class CollectionTwoViewCell: UICollectionViewCell {
     @IBOutlet weak var EventLabel: UITextField!
     @IBOutlet weak var TimeLabel: UITextField!
    let weekday = Calendar.current.component(.weekday, from: Date())
+    let year = Calendar.current.component(.year, from: Date())
+    let month = Calendar.current.component(.month, from: Date())
+    let day = Calendar.current.component(.day, from: Date())
+  // let days = Calendar.current.component(.w, from: Date())
      let lineView = UIView()
     
    
@@ -79,6 +83,7 @@ func FutureEvent(){
     }
 //set up default content
     func defaultSetting( Page: Int){
+        
         /*Statue.setImage(#imageLiteral(resourceName: "icon-进行中2"), for: .normal)
         BottomLine.backgroundColor = UIColor.init(red: 100.0/255.0, green: 213.0/255.0, blue: 147.0/255.0, alpha: 1)
         DateLabel.textColor = UIColor.init(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1)
@@ -158,6 +163,11 @@ func FutureEvent(){
     }
     var WeekDay = ["MON","TUE","WED","THU","FRI","SAT","SUN"]
     func ChangeItem( Page: Int ) {
+        print("weekday")
+        print(weekday-1)
+        print(year)
+        print(month)
+        print(day)
       
         if ( Page == 0 ){
             self.ChangeContent(Time: "9:00", Date: WeekDay[Page], Event: "Mengniu Dairy")

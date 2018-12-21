@@ -12,7 +12,15 @@ class PageViewCell: UITableViewCell{
     @IBOutlet weak var PagerView: FSPagerView!
     @IBOutlet weak var PageControl: FSPageControl!
     
-    let imageuse = ["cbcarea1","cbcarea2","coffeearea1","iotroom","makerspace","meetingroom1","pod","quietArea1","restarea1","tatami1"]
+    let imageuse = ["industry","iot","showcase2","restarea1","tatami1"]
+    let TextTitle = ["Industry Solution","IoT","Watson","Design","Block Chain"]
+    let TextUse = ["这是基于IBM Watson技术对常用社交媒体平台数据的实时监控。它可以针对各种热点话题拿到用户的评论，转发，进行预测分析，有助于对市场进行精准投放",
+                     "这个区域叫做物联网实验室，在这个实验室中，我们帮助客户进行各种基于Watson物联网技术的概念验证。",
+                     "我们这里要展示的就是基于IBM认知技术和云平台的Watson Display。它是一个我们团队最近开发的虚拟的语音助手原型。",
+                     "Design",
+                     "..."
+                     
+                     ]
     let MainPicture = UIImageView()
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,10 +37,10 @@ class PageViewCell: UITableViewCell{
         self.PageControl.setImage(nil, for: .normal)
         self.PageControl.setImage(nil, for: .selected)
         //set page control number
-        self.PageControl.numberOfPages = 10
+        self.PageControl.numberOfPages = 3
         self.PageControl.contentHorizontalAlignment = .center
         let inset = PageControl.frame.height / 2
-        self.PageControl.contentInsets = UIEdgeInsets(top: inset, left: 139, bottom: inset, right: 139)
+        self.PageControl.contentInsets = UIEdgeInsets(top: inset, left: 200, bottom: inset, right: 200)
         self.PageControl.hidesForSinglePage = true
         self.PageControl.itemSpacing = 6
     }
@@ -46,7 +54,7 @@ class PageViewCell: UITableViewCell{
 
 extension PageViewCell : FSPagerViewDataSource,FSPagerViewDelegate {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return 10
+        return 3
     }
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
@@ -85,7 +93,8 @@ extension PageViewCell : FSPagerViewDataSource,FSPagerViewDelegate {
             make.left.equalTo(cell).offset(20)
             make.bottom.equalTo(cell).offset(-128)
         }
-        title.text = "SME POD"
+        title.text = ""
+        title.text = TextTitle[index]
         title.font = UIFont.init(name: "Helvetica-Bold", size: 30)
         title.textColor = UIColor.white
         title.textAlignment = .left
@@ -99,11 +108,13 @@ extension PageViewCell : FSPagerViewDataSource,FSPagerViewDelegate {
             make.bottom.equalTo(cell).offset(-33)
             make.right.equalTo(cell).offset(-13)
         }
-        let TextUse = "The 1920s bungalows and 1950s modernist buildings found across Los Angeles influenced locally based Martin Fenlon Architecture when designing…"
-        let attr = NSMutableAttributedString(string: TextUse)
+      
+        let attr1 = NSMutableAttributedString(string: "")
+        let attr = NSMutableAttributedString(string: TextUse[index])
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.minimumLineHeight = 20
         attr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attr.length))
+        mainContent.attributedText = attr1;
         mainContent.attributedText = attr;
         mainContent.font = UIFont.init(name: "Helvetica-light", size: 14)
         mainContent.textColor = UIColor.white
@@ -112,22 +123,6 @@ extension PageViewCell : FSPagerViewDataSource,FSPagerViewDelegate {
         
        
          cell.backgroundColor = UIColor(red: 37.0/255.0, green: 37.0/255.0, blue: 48.0/255.0, alpha: 1)
-      /*  if index == 0 {
-           
-           
-        }
-        else if index == 1{
-            cell.backgroundColor = UIColor.blue
-        }
-        else if index == 2 {
-            cell.backgroundColor = UIColor.green
-        }
-        else if index == 3 {
-            cell.backgroundColor = UIColor.brown
-        }
-        else if index == 4 {
-            cell.backgroundColor = UIColor.black
-        }*/
         MainPicture.image = UIImage(named: imageuse[index])
         cell.layer.cornerRadius = 12.0
         return cell

@@ -101,9 +101,10 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         
         let navController = self.navigationController?.viewControllers.count
         let viewController1 = self.navigationController?.viewControllers[0]
-        if (viewController1?.isKind(of: DLStudio2DViewController.self))!{
-            self.showARBtn.isOn = true
-        }
+        let arOff = ViewController().arSwitch
+        arOff.isOn = true
+        self.view.addSubview(arOff)
+        print(arOff.isOn)
 
        // self.textScroll.contentLayoutGuide.bottomAnchor.constraint(equalTo: self.textLabel.bottomAnchor).isActive = true
          sceneView.delegate = self

@@ -17,7 +17,7 @@ let gradientLayer = CAGradientLayer()
  
     @IBOutlet weak var closeBtn: UIButton!
     override func awakeFromNib() {
-        
+        self.ContentTextTest.isEditable = false
         gradientLayer.frame = JumpButton.bounds
         JumpButton.layer.addSublayer(gradientLayer)
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)

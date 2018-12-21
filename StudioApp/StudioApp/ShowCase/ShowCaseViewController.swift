@@ -50,7 +50,6 @@ final class ShowCaseViewController: ElongationViewController {
         detailViewController.Text = data.Text
         detailViewController.Title = data.Title
         expand(viewController: detailViewController)
-        print(indexPath)
      
     }
 }

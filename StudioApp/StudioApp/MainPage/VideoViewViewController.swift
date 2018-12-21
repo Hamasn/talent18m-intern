@@ -13,25 +13,29 @@ class VideoViewViewController: UIViewController {
     
     let player = BMPlayer()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+   
     override func viewDidLoad() {
-//        BMPlayerConf
+        BMPlayerConf
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5) 
         view.isOpaque = false
-//        appDelegate.blockRotation = true
+        appDelegate.blockRotation = true
         view.addSubview(player)
         
-        // Do any additional setup after loading the view.
+   //      Do any additional setup after loading the view.
         player.snp_makeConstraints { (make) in
             _ = UIApplication.shared.statusBarFrame.height
 //            make.top.equalTo(self.view).offset(naviHeight)
             make.left.right.equalTo(self.view)
-            make.width.equalTo(player.snp_height).multipliedBy(16.0/11.0).priority(UIScreen.main.bounds.size.height)
+            make.width.equalTo(player.snp_height).multipliedBy(16.0/11.0).priority(750)
+            
         }
+        
+        
         player.backBlock = { [unowned self] (isFullScreen) in
             self.dismiss(animated: true, completion: nil)
         }
-        let asset = BMPlayerResource(url: URL(string: "https://v.youku.com/v_show/id_XMjk3MzM1NzAzMg==.html?spm=a2h0k.11417342.soresults.dtitle")!,
+        let asset = BMPlayerResource(url: URL(string: "https://ibm.ent.box.com/shared/static/wute8zk6szhfzw9tc9ql4oshzaj5j8t8")!,
                                      name: "IBM Studios DaLian")
         player.setVideo(resource: asset)
     }

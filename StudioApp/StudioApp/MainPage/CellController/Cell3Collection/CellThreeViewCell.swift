@@ -10,7 +10,8 @@ import UIKit
 
 class CellThreeViewCell: UICollectionViewCell {
    
-    func ChengeContent(Page: Int) {
-        
-    }
+    @IBOutlet weak var newsImage: UIImageView!
+    @IBOutlet weak var newsTitle: UILabel!
+    @IBOutlet weak var newsIntro: UILabel!
+    
 }

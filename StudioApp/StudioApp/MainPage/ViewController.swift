@@ -38,12 +38,33 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
         TestButton.sholudMenuButtonAnimate = false
         TestButton.setImage(UIImage(named: items[2]), for: .normal)
         
-        
+        let notificationName = "cell3"
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(watchNews), name: NSNotification.Name(rawValue: notificationName), object: nil)
+
     }
+    var curIndex = -1
+    @objc func watchNews(notification: Notification){
+       let userInfo = notification.userInfo
+        if let index = userInfo?["indexRow"] as? Int {
+            self.curIndex = index
+            self.performSegue(withIdentifier: "showNews", sender: nil)
+        }else{
+            print("something wrong")
+        }
+    }
+    
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showNews" {
+            if let vc = segue.destination as? NewsViewController {
+                vc.newsIndex = self.curIndex
+            }
+        }
+    }
     @IBOutlet weak var Table: UITableView!
     func applyshodow(Button: UIButton){
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style .regular)
@@ -103,6 +124,7 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             let closeBtn = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(close))
             
             arSwitch.isOn = false // or false
+        
             let arBtn = UIBarButtonItem(customView: arSwitch)
             arSwitch.addTarget(self, action: #selector(arChange), for:.valueChanged)
 
@@ -124,12 +146,9 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
     @objc func arChange(_ sender:UISwitch){
         if sender.isOn{
             let ar = self.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
-       //     naviController.pushViewController(ar, animated: true)
-            
+            naviController.present(ar, animated: true, completion: nil)
         }
     }
-    
-    
     
     func buttonForIndexAt(_ menuButton: ASCircularMenuButton, indexForButton: Int) -> UIButton {
         let button = UIButton()

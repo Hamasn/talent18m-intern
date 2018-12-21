@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "CM-bg.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "rawpixel-com-250087.jpg",
       "scale" : "2x"
     },
     {

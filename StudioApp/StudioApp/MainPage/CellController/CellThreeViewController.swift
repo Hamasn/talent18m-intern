@@ -14,6 +14,7 @@ class CellThreeViewController: UITableViewCell {
     private let cellWidth: CGFloat = 291
     private let cellHeight: CGFloat = 81
     let numberOfItems = 3
+    let datasource: [ContentNews] = ContentNews.data
     
     @IBOutlet weak var BottomControl: UIPageControl!
     
@@ -40,10 +41,19 @@ extension CellThreeViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let data = datasource[indexPath[0]]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionThreeViewCell
+        cell.newsImage.image = data.TopImage
+        cell.newsTitle.text = data.newsTitle
+        cell.newsIntro.text = data.newsIntro
        
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let info = ["indexRow":indexPath[0]]as[String:Int]
+        let notificationName = "cell3"
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.post(name: NSNotification.Name(rawValue: notificationName), object: nil, userInfo: info)
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -77,6 +87,7 @@ extension CellThreeViewController: UICollectionViewDelegate, UICollectionViewDat
             return CGSize(width: cellWidth, height: cellHeight)
         }
 
-}
+    }
+    
 
 }

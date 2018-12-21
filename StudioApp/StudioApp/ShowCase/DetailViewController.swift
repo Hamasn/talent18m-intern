@@ -33,6 +33,15 @@ final class DetailViewController: ElongationDetailViewController {
             cell.JumpButton.isHidden = false
             cell.JumpButton.addTarget(self, action: #selector(arChange), for: UIControl.Event.touchUpInside)
         }
+        else{
+            cell.closeBtn.snp.makeConstraints { (make) in
+                            make.centerX.equalToSuperview()
+                            make.width.equalTo(200)
+                            make.bottom.equalTo(10)
+                            make.height.equalTo(60)
+
+            }
+        }
         return cell
     }
     @objc func arChange(_ sender:UISwitch){
