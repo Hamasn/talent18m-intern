@@ -342,9 +342,7 @@
 			children = (
 				CEEF7FE121CBFAAE001FDBB3 /* NetWork */,
 				CEEF7FD821CBEA88001FDBB3 /* Agenda */,
-				CEEF7FCF21CB78FE001FDBB3 /* New Group */,
-				18070A4821BA4CD700F717DB /* Resources */,
-				CEECC3CC212D556B001CC128 /* Extension */,
+				CEEF7FCF21CB78FE001FDBB3 /* News */,
 				1831447921CB346600F56FE7 /* Model */,
 				18E4FC5921C9D8D30071EE61 /* Utility */,
 				9AEECA1C20DC8220009819A8 /* Info.plist */,
@@ -388,13 +386,13 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		CEEF7FCF21CB78FE001FDBB3 /* New Group */ = {
+		CEEF7FCF21CB78FE001FDBB3 /* News */ = {
 			isa = PBXGroup;
 			children = (
 				CEEF7FD021CB7935001FDBB3 /* NewsViewController.swift */,
 				CEEF7FD221CB79A6001FDBB3 /* ContentNews.swift */,
 			);
-			path = "New Group";
+			path = News;
 			sourceTree = "<group>";
 		};
 		CEEF7FD821CBEA88001FDBB3 /* Agenda */ = {

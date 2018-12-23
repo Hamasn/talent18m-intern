@@ -15,26 +15,41 @@ import CoreLocation
 import DLStudio2D
 
 class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManagerDelegate,UINavigationControllerDelegate {
-   
+   var index:Int = -1
+   let arSwitch = UISwitch(frame: .zero)
 
     @IBOutlet weak var showARBtn: UISwitch!
-    @IBAction func showAR(_ sender: Any) {
-        let studio2D = DLStudio2DViewController()
-        let naviController = UINavigationController(rootViewController: studio2D)
-        naviController.delegate = self
-        let closeBtn = UIBarButtonItem(title: "BACK AR", style: .plain, target: self, action: #selector(close))
-        studio2D.navigationItem.leftBarButtonItem = closeBtn
-        studio2D.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
-        studio2D.navigationController?.navigationBar.barTintColor = UIColor.black
-        studio2D.navigationItem.title = "2D"
-        let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
-        studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
-        studio2D.navigationController?.navigationBar.tintColor = UIColor.white
+    @IBAction func showAR(_ sender: UISwitch) {
+        if index == 0{
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            arSwitch.isOn = false // or false
+            arSwitch.onTintColor = UIColor.init(red: 0.23, green: 0.28, blue: 0.93, alpha: 1)
+            let arBtn = UIBarButtonItem(customView: arSwitch)
+            arSwitch.addTarget(self, action: #selector(arChange), for:.valueChanged)
+            let studio2D = DLStudio2DViewController()
+            let naviController = UINavigationController(rootViewController: studio2D)
+            naviController.delegate = self
+            studio2D.navigationItem.rightBarButtonItem = arBtn
+           
+            studio2D.navigationController?.navigationBar.barTintColor = UIColor.black
+            studio2D.navigationItem.title = "2D"
+            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
+            studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
+            studio2D.navigationController?.navigationBar.tintColor = UIColor.white
+            self.present(naviController, animated: true, completion: nil)
+        }
         
-        self.present(naviController, animated: true, completion: nil)
+  
     }
+    @objc func arChange(_ sender:UISwitch){
+        UserDefaults.standard.set(sender.isOn, forKey: "arState")
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBOutlet weak var backBtn: UIButton!
     @objc func close(_ sender:UISwitch){
         self.dismiss(animated: true, completion: nil)
+  //      UserDefaults.standard.set(sender.isOn, forKey: "arState")
     }
     @IBOutlet weak var distance: UILabel!
     
@@ -96,23 +111,20 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     }
     var routes = RouteCacheService.shared.allRoutes()
     var nodePosition = RoutesViewController.shared.allPosition()
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-//
-//        let navController = self.navigationController?.viewControllers.count
-//        let viewController1 = self.navigationController?.viewControllers[0]
-//        if (viewController1?.isKind(of: DLStudio2DViewController.self))!{
-//            self.showARBtn.isOn = true
-//        }
 
-         sceneView.delegate = self
+        sceneView.delegate = self
         self.correctView.layer.borderWidth = 3
         self.correctView.layer.borderColor = UIColor.red.cgColor
 
         showARBtn.setOn(true, animated: false)
-
-
-     
+        
+        if index == 0{
+            self.backBtn.isHidden = true
+        }
         //设置定位服务管理器代理
         locationManager.delegate = self
         //设置定位进度
@@ -240,6 +252,8 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         resetTrackingConfiguration()
+        self.showARBtn.isOn = true
+      
     }
     
     func resetTrackingConfiguration() {
