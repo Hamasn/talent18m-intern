@@ -42,6 +42,7 @@
 		9AEECA1620DC821F009819A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AEECA1420DC821F009819A8 /* Main.storyboard */; };
 		9AEECA1820DC8220009819A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AEECA1720DC8220009819A8 /* Assets.xcassets */; };
 		9AF5064020F71BFB00DF8D72 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5063F20F71BFB00DF8D72 /* FirstPageViewController.swift */; };
+		CE3477EE21D0D0A4004FDFFC /* RouteContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3477ED21D0D0A4004FDFFC /* RouteContent.swift */; };
 		CE38EA43214E986D0041DD85 /* VideoViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38EA42214E986D0041DD85 /* VideoViewViewController.swift */; };
 		CE3B48A3212BBBD500AF1B5B /* ShowARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B48A2212BBBD500AF1B5B /* ShowARViewController.swift */; };
 		CE3B48A7212BF6BA00AF1B5B /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3B48A6212BF6BA00AF1B5B /* art.scnassets */; };
@@ -103,6 +104,7 @@
 		9AF5063F20F71BFB00DF8D72 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		AAF67E3115659D093D97BC7C /* Pods-StudioApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudioApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-StudioApp/Pods-StudioApp.release.xcconfig"; sourceTree = "<group>"; };
 		BD5FAE654894E42CDB516C49 /* Pods_StudioApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudioApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE3477ED21D0D0A4004FDFFC /* RouteContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteContent.swift; sourceTree = "<group>"; };
 		CE38EA42214E986D0041DD85 /* VideoViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewViewController.swift; sourceTree = "<group>"; };
 		CE3B48A2212BBBD500AF1B5B /* ShowARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowARViewController.swift; sourceTree = "<group>"; };
 		CE3B48A6212BF6BA00AF1B5B /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				CE5473332137CDE8007DDA11 /* ShowRouteViewController.swift */,
 				CE5473352137D596007DDA11 /* RoutesTableViewController.swift */,
 				CE547340213CCBFB007DDA11 /* RouteDae.swift */,
+				CE3477ED21D0D0A4004FDFFC /* RouteContent.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				9AF5064020F71BFB00DF8D72 /* FirstPageViewController.swift in Sources */,
 				CE54732C2137C815007DDA11 /* RouteCacheService.swift in Sources */,
 				9AEECA1120DC821F009819A8 /* AppDelegate.swift in Sources */,
+				CE3477EE21D0D0A4004FDFFC /* RouteContent.swift in Sources */,
 				CE5473362137D596007DDA11 /* RoutesTableViewController.swift in Sources */,
 				CE3B48A3212BBBD500AF1B5B /* ShowARViewController.swift in Sources */,
 				9A656BAD20E1CC9200602A96 /* CellOneViewController.swift in Sources */,

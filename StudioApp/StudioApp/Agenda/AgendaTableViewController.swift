@@ -63,16 +63,10 @@ class AgendaTableViewController: UITableViewController {
             (JSONResponse) -> Void in
 
             self.data=[[String:String]]()
-            print("array")
-            print(JSONResponse["visitors"])
             if let arr = JSONResponse["visitors"].array{
                 self.arrCount=arr.count
                 for f in arr {
-                    print("fffffffffff")
-                    print(f)
-                    var dict = [String:String]()
-                    
-                    
+                    var dict = [String:String]()        
                     if let cellCompany = f["displayas"].string{
                         dict["company"] = cellCompany
                     }else{

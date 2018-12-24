@@ -18,6 +18,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
    var index:Int = -1
    let arSwitch = UISwitch(frame: .zero)
 
+    @IBOutlet weak var speaker: UIButton!
     @IBOutlet weak var showARBtn: UISwitch!
     @IBAction func showAR(_ sender: UISwitch) {
         if index == 0{
@@ -51,11 +52,37 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         self.dismiss(animated: true, completion: nil)
   //      UserDefaults.standard.set(sender.isOn, forKey: "arState")
     }
+    
+    @IBAction func speaker(_ sender: Any) {
+        self.sceneView.scene.rootNode.enumerateChildNodes { (existingNode, _) in
+            existingNode.removeFromParentNode()
+            
+        }
+        self.displayPerson(name: "ShuLiFixed")
+    }
+    @IBAction func closeSpeaker(_ sender: Any) {
+        self.sceneView.scene.rootNode.enumerateChildNodes { (existingNode, _) in
+            existingNode.removeFromParentNode()
+        }
+        self.bottomView.isHidden = true
+        self.isAlert = false
+        self.routeName = ""
+        
+        self.correctView.isHidden = false
+        self.noticeLabel.text = "站在图像正前方，让相框与图像重合"
+        self.routeName = "routeName"
+        self.synthesizer.stopSpeaking(at: .immediate)
+        self.isAlert = true
+    }
     @IBOutlet weak var distance: UILabel!
     
     @IBOutlet weak var sceneView: ARSCNView!
-    @IBOutlet weak var textScroll: UIScrollView!
-    @IBOutlet weak var textLabel: UILabel!
+
+    @IBOutlet weak var textView: UIView!
+    @IBOutlet weak var textWord: UITextView!
+    
+    
+    
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var guideView: UIView!
     
@@ -108,6 +135,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         self.correctView.isHidden = false
         self.noticeLabel.text = "站在图像正前方，让相框与图像重合"
         self.routeName = "routeName"
+        self.isAlert = true
     }
     var routes = RouteCacheService.shared.allRoutes()
     var nodePosition = RoutesViewController.shared.allPosition()
@@ -117,11 +145,11 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         super.viewDidLoad()
 
         sceneView.delegate = self
+        
         self.correctView.layer.borderWidth = 3
         self.correctView.layer.borderColor = UIColor.red.cgColor
-
+        self.speaker.isHidden = true
         showARBtn.setOn(true, animated: false)
-        
         if index == 0{
             self.backBtn.isHidden = true
         }
@@ -143,7 +171,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         }
         
         self.bottomView.isHidden = true
-        modleVoice["ShuLiFixed"] = "In a horizontally regular environment, the view controller is presented in the style specified by the"
+        modleVoice["ShuLiFixed"] = "欢迎大家来到IBM Studio。您可能知道，IBM已经转型为一家认知解决方案云平台公司。我们这里要展示的就是基于IBM认知技术和云平台的Watson Display。它是一个我们团队最近开发的虚拟的语音助手原型，这个原型和其他语音助手不同的是它使用了IBM Watson 技术，其中包括语音识别、自然语言处理和学习能力。最近几个月，我们每天和它一起，教它学习IBM 为不同行业打造的解决方案。"
         modleVoice["YellingFixed"] = "hello im YellingFixed"
         
         //设置路线节点
@@ -151,8 +179,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         shuli[58458] = "参照箭头路线行走"
         shuli[33114] = "前方左转"
         routeRecord["ShuLiFixed"] = shuli
-        
-   //     self.readRoute(name: "ShuLiFixed")
+
         
     }
     
@@ -281,11 +308,11 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     func playVoice(name:String){
         let text = modleVoice[name]
         let utterance = AVSpeechUtterance(string: text!)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+        utterance.voice = AVSpeechSynthesisVoice(language: "zh-CN")
         utterance.rate = 0.4
         
         if isPlay{
-            self.textLabel.text = text
+            self.textWord.text = text
             synthesizer.speak(utterance)
         }else{
             synthesizer.stopSpeaking(at: .immediate)
@@ -322,7 +349,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     
     func displayPerson(name:String){
         self.bottomView.isHidden = false
-        self.textScroll.isHidden = false
+        self.textView.isHidden = false
         self.guideView.isHidden = true
         switch name {
         case "ShuLiFixed"  :
@@ -345,7 +372,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
             self.ShuLiFixed?.playAnimation(imageName: "ShuLiFixed")
             self.sceneView.scene.rootNode.addAnimation((self.ShuLiFixed?.animations["dancing"]!)!, forKey: "dancing")
             let text = self.modleVoice["ShuLiFixed"]
-            self.textLabel.text = text
+            self.textWord.text = text
             self.playVoice(name: "ShuLiFixed")
         }
         modlePerson["ShuLiFixed"] = ShuLiFixed
@@ -363,32 +390,36 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
             self.YellingFixed?.playAnimation(imageName: "YellingFixed")
             self.sceneView.scene.rootNode.addAnimation((self.YellingFixed?.animations["dancing"]!)!, forKey: "dancing")
             let text = self.YellingFixed?.yelling
-            self.textLabel.text = text
+            self.textWord.text = text
             self.playVoice(name: "YellingFixed")
         }
         
     }
     
     func readRoute(name:String){
+        self.speaker.isHidden = false
         self.routeName = name
         self.correctView.isHidden = true
-        self.isAlert = true
+        self.isAlert = false
         self.bottomView.isHidden = false
-        self.textScroll.isHidden = true
+        self.textView.isHidden = true
         self.guideView.isHidden = false
-        
-        let positionStr = UserDefaults.standard.string(forKey: name)
+        var positionStr = ""
 
-        let positionArr = positionStr?.split(separator: " ")
+        if name == "ShuLiFixed"{
+           positionStr = kRoute1
+        }
+        
+        let positionArr = positionStr.split(separator: " ")
        
         var nodePosition = Array<Any>()
         var k = 0
-        for _ in positionArr! {
+        for _ in positionArr {
             if k%3 == 0{
                 var arrPosition = Array<Any>()
-                arrPosition.append(positionArr![k])
-                arrPosition.append(positionArr![k+1])
-                arrPosition.append(positionArr![k+2])
+                arrPosition.append(positionArr[k])
+                arrPosition.append(positionArr[k+1])
+                arrPosition.append(positionArr[k+2])
                 nodePosition.append(arrPosition)
                 print(arrPosition)
             }
@@ -398,38 +429,26 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         guard let pointOfView = self.sceneView.pointOfView else { return }
         
         let current = pointOfView.position
-        print("CURRENT")
-        print(current.x.toString())
-        print(current.x.toString().floatValue)
-        print("positionArr")
-        print(positionArr![0])
-        print(positionArr![0].floatValue)
-        let current_x = current.x.toString().floatValue - positionArr![0].floatValue
-        let current_y = current.y.toString().floatValue - positionArr![1].floatValue
-        let current_z = current.z.toString().floatValue - positionArr![2].floatValue
-        
-        print("current_x")
-        print(current_x)
+
+        let current_x = current.x.toString().floatValue - positionArr[0].floatValue
+        let current_y = current.y.toString().floatValue - positionArr[1].floatValue
+        let current_z = current.z.toString().floatValue - positionArr[2].floatValue
+
         
         var s = 0
         for test in nodePosition{
-            print("test")
-            print(test)
-           let itPosition = SCNVector3(positionArr![s*3].floatValue+current_x,positionArr![s*3+1].floatValue+current_y,positionArr![s*3+2].floatValue+current_z)
+
+            let itPosition = SCNVector3(positionArr[s*3].floatValue+current_x,positionArr[s*3+1].floatValue+current_y,positionArr[s*3+2].floatValue+current_z)
             
-            let itPosition1 = SCNVector3(positionArr![s*3].floatValue,positionArr![s*3+1].floatValue,positionArr![s*3+2].floatValue)
-            
-            print("itPosition")
-         //   print(itPosition)
-            print("itPosition1")
-            print(itPosition1)
+            let itPosition1 = SCNVector3(positionArr[s*3].floatValue,positionArr[s*3+1].floatValue,positionArr[s*3+2].floatValue)
+
             if s == 0{
                 
                 NodeUtil.addBeginNode(rootNode: self.sceneView.scene.rootNode, position: itPosition)
             }
             else{
-                let itLast = SCNVector3(positionArr![(s-1)*3].floatValue+current_x,positionArr![(s-1)*3+1].floatValue+current_y,positionArr![(s-1)*3+2].floatValue+current_z)
-                _ = SCNVector3(positionArr![(s-1)*3].floatValue,positionArr![(s-1)*3+1].floatValue,positionArr![(s-1)*3+2].floatValue)
+                let itLast = SCNVector3(positionArr[(s-1)*3].floatValue+current_x,positionArr[(s-1)*3+1].floatValue+current_y,positionArr[(s-1)*3+2].floatValue+current_z)
+                _ = SCNVector3(positionArr[(s-1)*3].floatValue,positionArr[(s-1)*3+1].floatValue,positionArr[(s-1)*3+2].floatValue)
                 if s == (nodePosition.count)-1{
                     NodeUtil.addEndNode(rootNode: self.sceneView.scene.rootNode, position: itLast)
                     break
@@ -449,8 +468,8 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
                 else { return }
             self.imageName.text = imageName
             
-            if imageName == "ShuLiFixed" && self.ShuLiFixed == nil && !self.isAlert && self.verityDis {
-                self.selectAlert(name:imageName)
+            if imageName == "ShuLiFixed" && self.ShuLiFixed == nil && self.verityDis {
+                self.readRoute(name: imageName)
                 
             }else if imageName == "YellingFixed" && self.YellingFixed == nil && !self.isAlert{
                 self.selectAlert(name:imageName)
