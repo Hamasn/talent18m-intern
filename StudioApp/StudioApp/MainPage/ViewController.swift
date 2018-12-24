@@ -12,7 +12,6 @@ import DLStudio2D
 
 class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationControllerDelegate{
     var myIndex = 0
-    let studio2D = DLStudio2DViewController()
     var naviController = UINavigationController();
     let arSwitch = UISwitch(frame: .zero)
 
@@ -121,30 +120,31 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             presentView.navigationController?.navigationBar.tintColor = UIColor.white
             present(naviController, animated: true, completion: nil)
         } else if indexForButton == 4 {
-            
-            naviController = UINavigationController(rootViewController: studio2D)
-            naviController.delegate = self
-            let closeBtn = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(close))
-            
-            arSwitch.isOn = false // or false
-         
-       //     arSwitch.onTintColor = UIColor(red: 59, green: 72, blue: 238, alpha: 1)
-            arSwitch.onTintColor = UIColor.init(red: 0.23, green: 0.28, blue: 0.93, alpha: 1)
-        
-            let arBtn = UIBarButtonItem(customView: arSwitch)
-            arSwitch.addTarget(self, action: #selector(arChange), for:.valueChanged)
+            let studio2D = DLStudio2DViewController()
 
-            studio2D.navigationItem.leftBarButtonItem = closeBtn
-            studio2D.navigationItem.rightBarButtonItem = arBtn
-            studio2D.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
-            studio2D.navigationController?.navigationBar.barTintColor = UIColor.black
-            studio2D.navigationItem.title = "2D"
-            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
-            studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
-            studio2D.navigationController?.navigationBar.tintColor = UIColor.white
-            let status = UserDefaults.standard.bool(forKey: "arState")
-            print(status)
-            self.present(naviController, animated: true, completion: nil)
+//            naviController = UINavigationController(rootViewController: studio2D)
+//            naviController.delegate = self
+//            let closeBtn = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(close))
+//
+//            arSwitch.isOn = false // or false
+//
+//       //     arSwitch.onTintColor = UIColor(red: 59, green: 72, blue: 238, alpha: 1)
+//            arSwitch.onTintColor = UIColor.init(red: 0.23, green: 0.28, blue: 0.93, alpha: 1)
+//
+//            let arBtn = UIBarButtonItem(customView: arSwitch)
+//            arSwitch.addTarget(self, action: #selector(arChange), for:.valueChanged)
+//
+//            studio2D.navigationItem.leftBarButtonItem = closeBtn
+//            studio2D.navigationItem.rightBarButtonItem = arBtn
+//            studio2D.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+//            studio2D.navigationController?.navigationBar.barTintColor = UIColor.black
+//            studio2D.navigationItem.title = "2D"
+//            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
+//            studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
+//            studio2D.navigationController?.navigationBar.tintColor = UIColor.white
+//            let status = UserDefaults.standard.bool(forKey: "arState")
+//            print(status)
+            self.present(studio2D, animated: true, completion: nil)
         }
     }
     @objc func close(_ sender:UISwitch){
