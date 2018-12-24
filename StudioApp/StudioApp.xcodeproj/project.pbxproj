@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		18070A4721BA4CC000F717DB /* DLStudio2D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18070A4621BA4CC000F717DB /* DLStudio2D.framework */; };
 		18070A4A21BA4CE700F717DB /* DLStudio2D.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18070A4921BA4CE700F717DB /* DLStudio2D.bundle */; };
+		18D594BB21D06BCB00C6A7F5 /* ContentNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D594B921D06BCB00C6A7F5 /* ContentNews.swift */; };
+		18D594BC21D06BCB00C6A7F5 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D594BA21D06BCB00C6A7F5 /* NewsViewController.swift */; };
 		18E4FC5B21C9D8EF0071EE61 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4FC5A21C9D8EF0071EE61 /* Constant.swift */; };
 		5D70DCE138D6225B3A1D7A72 /* Pods_StudioApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5FAE654894E42CDB516C49 /* Pods_StudioApp.framework */; };
 		9A06619A20EDB5890053CD5D /* LayerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06619920EDB5890053CD5D /* LayerContainerView.swift */; };
@@ -56,8 +58,6 @@
 		CE547345213CE24D007DDA11 /* ShareUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE547344213CE24D007DDA11 /* ShareUtil.swift */; };
 		CEB17947212FC51A009DEF0E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB17946212FC51A009DEF0E /* Person.swift */; };
 		CEECC3CE212D558A001CC128 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC3CD212D558A001CC128 /* extension.swift */; };
-		CEEF7FD121CB7935001FDBB3 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF7FD021CB7935001FDBB3 /* NewsViewController.swift */; };
-		CEEF7FD321CB79A6001FDBB3 /* ContentNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF7FD221CB79A6001FDBB3 /* ContentNews.swift */; };
 		CEEF7FD721CB7F33001FDBB3 /* CollectionThreeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF7FD621CB7F33001FDBB3 /* CollectionThreeViewCell.swift */; };
 		CEEF7FDA21CBEAD6001FDBB3 /* AgendaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF7FD921CBEAD6001FDBB3 /* AgendaTableViewController.swift */; };
 		CEEF7FE021CBF0AC001FDBB3 /* AgendaItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF7FDF21CBF0AC001FDBB3 /* AgendaItemTableViewCell.swift */; };
@@ -67,6 +67,8 @@
 /* Begin PBXFileReference section */
 		18070A4621BA4CC000F717DB /* DLStudio2D.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DLStudio2D.framework; path = StudioApp/2DFramework/DLStudio2D.framework; sourceTree = "<group>"; };
 		18070A4921BA4CE700F717DB /* DLStudio2D.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DLStudio2D.bundle; path = StudioApp/2DFramework/DLStudio2D.bundle; sourceTree = SOURCE_ROOT; };
+		18D594B921D06BCB00C6A7F5 /* ContentNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentNews.swift; sourceTree = "<group>"; };
+		18D594BA21D06BCB00C6A7F5 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		18E4FC5A21C9D8EF0071EE61 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		9A06619920EDB5890053CD5D /* LayerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerContainerView.swift; sourceTree = "<group>"; };
 		9A34674C20EDEBBB005366FD /* GridViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GridViewCell.xib; sourceTree = "<group>"; };
@@ -117,8 +119,6 @@
 		CE547344213CE24D007DDA11 /* ShareUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUtil.swift; sourceTree = "<group>"; };
 		CEB17946212FC51A009DEF0E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CEECC3CD212D558A001CC128 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
-		CEEF7FD021CB7935001FDBB3 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsViewController.swift; path = StudioApp/NewsViewController.swift; sourceTree = SOURCE_ROOT; };
-		CEEF7FD221CB79A6001FDBB3 /* ContentNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentNews.swift; path = StudioApp/ContentNews.swift; sourceTree = SOURCE_ROOT; };
 		CEEF7FD621CB7F33001FDBB3 /* CollectionThreeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionThreeViewCell.swift; sourceTree = "<group>"; };
 		CEEF7FD921CBEAD6001FDBB3 /* AgendaTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaTableViewController.swift; sourceTree = "<group>"; };
 		CEEF7FDF21CBF0AC001FDBB3 /* AgendaItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -163,6 +163,15 @@
 				CE547342213CCD8D007DDA11 /* Route.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		18D594B821D06BCB00C6A7F5 /* NewsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				18D594B921D06BCB00C6A7F5 /* ContentNews.swift */,
+				18D594BA21D06BCB00C6A7F5 /* NewsViewController.swift */,
+			);
+			path = NewsViewController;
 			sourceTree = "<group>";
 		};
 		18E4FC5921C9D8D30071EE61 /* Utility */ = {
@@ -340,9 +349,9 @@
 		9AEECA0F20DC821F009819A8 /* StudioApp */ = {
 			isa = PBXGroup;
 			children = (
+				18D594B821D06BCB00C6A7F5 /* NewsViewController */,
 				CEEF7FE121CBFAAE001FDBB3 /* NetWork */,
 				CEEF7FD821CBEA88001FDBB3 /* Agenda */,
-				CEEF7FCF21CB78FE001FDBB3 /* News */,
 				1831447921CB346600F56FE7 /* Model */,
 				18E4FC5921C9D8D30071EE61 /* Utility */,
 				9AEECA1C20DC8220009819A8 /* Info.plist */,
@@ -384,15 +393,6 @@
 				CEECC3CD212D558A001CC128 /* extension.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		CEEF7FCF21CB78FE001FDBB3 /* News */ = {
-			isa = PBXGroup;
-			children = (
-				CEEF7FD021CB7935001FDBB3 /* NewsViewController.swift */,
-				CEEF7FD221CB79A6001FDBB3 /* ContentNews.swift */,
-			);
-			path = News;
 			sourceTree = "<group>";
 		};
 		CEEF7FD821CBEA88001FDBB3 /* Agenda */ = {
@@ -553,16 +553,15 @@
 				CEEF7FD721CB7F33001FDBB3 /* CollectionThreeViewCell.swift in Sources */,
 				9AE9EEA320EDE2A900AEC2ED /* DetailViewController.swift in Sources */,
 				CEEF7FE321CBFB38001FDBB3 /* AFWrapper.swift in Sources */,
-				CEEF7FD321CB79A6001FDBB3 /* ContentNews.swift in Sources */,
 				9AE219B120E5CE60008B880C /* StudioIntro.swift in Sources */,
 				9A9B183320F2FA7C00DCA8E7 /* Content.swift in Sources */,
 				9ADE2FFE20EC5E940002D8E4 /* PageViewCell.swift in Sources */,
 				CEEF7FDA21CBEAD6001FDBB3 /* AgendaTableViewController.swift in Sources */,
+				18D594BB21D06BCB00C6A7F5 /* ContentNews.swift in Sources */,
 				CE547324213698A6007DDA11 /* RoutesViewController.swift in Sources */,
 				9A34675420EDEBBB005366FD /* DemoElongationCell.swift in Sources */,
 				9AEECA1320DC821F009819A8 /* ViewController.swift in Sources */,
 				9AF5064020F71BFB00DF8D72 /* FirstPageViewController.swift in Sources */,
-				CEEF7FD121CB7935001FDBB3 /* NewsViewController.swift in Sources */,
 				CE54732C2137C815007DDA11 /* RouteCacheService.swift in Sources */,
 				9AEECA1120DC821F009819A8 /* AppDelegate.swift in Sources */,
 				CE5473362137D596007DDA11 /* RoutesTableViewController.swift in Sources */,
@@ -571,6 +570,7 @@
 				9A34675220EDEBBB005366FD /* GridViewCell.swift in Sources */,
 				9A06619A20EDB5890053CD5D /* LayerContainerView.swift in Sources */,
 				9A37379920F4A54300368E02 /* LoginViewController.swift in Sources */,
+				18D594BC21D06BCB00C6A7F5 /* NewsViewController.swift in Sources */,
 				CEECC3CE212D558A001CC128 /* extension.swift in Sources */,
 				9AEB64E320F3445C00FE0300 /* TitleViewCell.swift in Sources */,
 				9A656BB020E1D3AA00602A96 /* CellTwoViewController.swift in Sources */,
