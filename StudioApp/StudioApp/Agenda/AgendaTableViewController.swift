@@ -52,7 +52,10 @@ class AgendaTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
- 
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
     func getFavoriteList(){
         let strURL = "https://thoth-assets.mybluemix.net/api/v1/event/recents"

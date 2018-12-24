@@ -15,12 +15,12 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
     let studio2D = DLStudio2DViewController()
     var naviController = UINavigationController();
     let arSwitch = UISwitch(frame: .zero)
-   
+
  
     @IBOutlet weak var TestButton: ASCircularMenuButton!
     
-//    let items: [String] = ["更多内容","发现","Setting","主页","AR","home","关闭"]
-    let items: [String] = ["更多内容","AR","home","关闭"]
+    let items: [String] = ["更多内容","发现","Setting","主页","AR","home","关闭"]
+  //  let items: [String] = ["更多内容","AR","home","关闭"]
 
     var ableToDrag:Bool = true
     var DragPoint:CGPoint!
@@ -33,10 +33,10 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
         
         self.Table.contentInset.top = -(statusHeight)
 
-        configureDraggebleCircularMenuButton(button: TestButton, numberOfMenuItems: 2, menuRedius: 70, postion: .center)
+        configureDraggebleCircularMenuButton(button: TestButton, numberOfMenuItems: 5, menuRedius: 70, postion: .center)
         TestButton.menuButtonSize = .large
         TestButton.sholudMenuButtonAnimate = false
-        TestButton.setImage(UIImage(named: items[2]), for: .normal)
+        TestButton.setImage(UIImage(named: items[5]), for: .normal)
         
         let notificationName = "cell3"
         let notificationCenter = NotificationCenter.default
@@ -102,8 +102,11 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
             presentView.navigationController?.navigationBar.tintColor = UIColor.white
             present(naviController, animated: true, completion: nil)
-        }
-        else if indexForButton == 2  {
+        }else if indexForButton == 1{
+            let routes = storyboard!.instantiateViewController(withIdentifier: "showRoutes") as! RoutesViewController
+            present(routes, animated: true, completion: nil)
+            
+        }else if indexForButton == 2  {
             let presentView = storyboard!.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
             let naviController = UINavigationController(rootViewController: presentView)
             let closeBtn = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(close))
@@ -117,13 +120,16 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
             presentView.navigationController?.navigationBar.tintColor = UIColor.white
             present(naviController, animated: true, completion: nil)
-        } else if indexForButton == 1 {
+        } else if indexForButton == 4 {
             
             naviController = UINavigationController(rootViewController: studio2D)
             naviController.delegate = self
             let closeBtn = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(close))
             
             arSwitch.isOn = false // or false
+         
+       //     arSwitch.onTintColor = UIColor(red: 59, green: 72, blue: 238, alpha: 1)
+            arSwitch.onTintColor = UIColor.init(red: 0.23, green: 0.28, blue: 0.93, alpha: 1)
         
             let arBtn = UIBarButtonItem(customView: arSwitch)
             arSwitch.addTarget(self, action: #selector(arChange), for:.valueChanged)
@@ -136,7 +142,8 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
             studio2D.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
             studio2D.navigationController?.navigationBar.tintColor = UIColor.white
-
+            let status = UserDefaults.standard.bool(forKey: "arState")
+            print(status)
             self.present(naviController, animated: true, completion: nil)
         }
     }
@@ -145,10 +152,17 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
     }
     @objc func arChange(_ sender:UISwitch){
         if sender.isOn{
-            let ar = self.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
-            naviController.present(ar, animated: true, completion: nil)
+            let vc = self.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
+            vc.index = 0
+            naviController.present(vc, animated: true, completion: nil)
+         
         }
     }
+
+    
+    
+
+
     
     func buttonForIndexAt(_ menuButton: ASCircularMenuButton, indexForButton: Int) -> UIButton {
         let button = UIButton()
@@ -159,11 +173,11 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
     }
     func MenuClosed(_ menuButton: ASCircularMenuButton) {
         if  menuButton == TestButton {
-            TestButton.setImage(UIImage(named: items[2]), for: .normal)
+            TestButton.setImage(UIImage(named: items[5]), for: .normal)
         }
     }
     func MenuOpened(_ menuButton: ASCircularMenuButton) {
-        TestButton.setImage(UIImage(named: items[3]), for: .normal)
+        TestButton.setImage(UIImage(named: items[6]), for: .normal)
     }
 }
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
@@ -247,29 +261,5 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
     
 }
-/* ViewController:CircleMenuDelegate {
-    func circleMenu(_ circleMenu: CircleMenu, willDisplay button: UIButton, atIndex: Int) {
-        MenuButton.setImage(UIImage(named: items[7]), for: .selected)
-        ableToDrag = false
-        button.backgroundColor = UIColor.clear
-        button.setImage(UIImage(named: items[atIndex]), for: .normal)
-       applyshodow(Button: button)
-       
-    }
-    func circleMenu(_ circleMenu: CircleMenu, buttonDidSelected button: UIButton, atIndex: Int) {
-          MenuButton.setImage(UIImage(named: items[6]), for: .normal)
-        if (atIndex == 0){
-            let NewView = storyboard?.instantiateViewController(withIdentifier: "ButtonOne") as! ButtonOneViewController
-           present(NewView, animated: true, completion: nil)
-           
-        }
-        
-    }
-    func menuCollapsed(_ circleMenu: CircleMenu) {
-        ableToDrag = true
-        MenuButton.setImage(UIImage(named: items[6]), for: .normal)
 
-    }
-    
-}*/
 

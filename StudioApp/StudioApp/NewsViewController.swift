@@ -19,9 +19,14 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var newsTitle: UILabel!
     @IBOutlet weak var newsText: UITextView!
     
+    @IBOutlet weak var icon: UIImageView!
     let datasource: [ContentNews] = ContentNews.data
     
     override func viewDidLoad() {
+        if newsIndex == 3 || newsIndex == 4{
+            newsTime.isHidden = true
+            icon.isHidden = true
+        }
         super.viewDidLoad()
         self.newsText.isEditable = false
         let data = datasource[newsIndex]

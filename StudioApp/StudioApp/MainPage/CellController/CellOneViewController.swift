@@ -76,9 +76,14 @@ extension CellOneViewController: UICollectionViewDelegate, UICollectionViewDataS
             let ar = view?.storyboard!.instantiateViewController(withIdentifier: "showAR") as! ShowARViewController
             view?.present(ar, animated: true, completion: nil)
         }else if indexPath.row == 1{
-            let routes = view?.storyboard!.instantiateViewController(withIdentifier: "showRoutes") as! RoutesViewController
-            view?.present(routes, animated: true, completion: nil)
+            let vc = view?.storyboard!.instantiateViewController(withIdentifier: "news") as! NewsViewController
+            vc.newsIndex = 3
+            view?.present(vc, animated: true, completion: nil)
+   
         }else if indexPath.row == 2 {
+            let vc = view?.storyboard!.instantiateViewController(withIdentifier: "news") as! NewsViewController
+            vc.newsIndex = 4
+            view?.present(vc, animated: true, completion: nil)
             
         }
         
