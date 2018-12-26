@@ -8,12 +8,16 @@
 
 import UIKit
 import SnapKit
+import BMPlayer
+protocol TopCellDelegate {
+    func topCellitemClick(item:TopViewCellController,index:Int)
+}
 
 class TopViewCellController: UITableViewCell,UIScrollViewDelegate{
     
     @IBOutlet weak var TopControl: UIPageControl!
     @IBOutlet weak var TopView: UIScrollView!
-   
+    var delegate:TopCellDelegate? = nil
     var contentWidth:CGFloat = 0.0
     var frameSet: CGRect = CGRect(x:0, y:0, width:0, height:0)
     var colors:[UIColor] = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow]
@@ -91,11 +95,7 @@ class TopViewCellController: UITableViewCell,UIScrollViewDelegate{
     }
     
     @objc func playVedio1(sender: UIButton) {
-        let view = self.responderViewController()
-        let videoView = view?.storyboard!.instantiateViewController(withIdentifier: "videoView") as! VideoViewViewController
-//        videoView.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-        videoView.modalPresentationStyle = .overCurrentContext
-        view?.present(videoView, animated: true, completion: nil)
+        self.delegate?.topCellitemClick(item: self, index: 0)
         
     }
     
