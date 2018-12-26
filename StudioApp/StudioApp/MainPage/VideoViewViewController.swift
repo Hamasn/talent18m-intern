@@ -22,6 +22,8 @@ class VideoViewViewController: UIViewController {
         view.isOpaque = false
         var controller:BMPlayerControlView? = nil
         let player = BMPlayer(customControlView: controller)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.blockRotation = true
         view.addSubview(player)
  
         
@@ -37,6 +39,7 @@ class VideoViewViewController: UIViewController {
             if isFullScreen {
                 return
             } else {
+                appDelegate.blockRotation = false
                 self.dismiss(animated: true, completion: nil)
             }
         }
