@@ -193,6 +193,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0  {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TopView", for: indexPath) as! TopViewCellController
+            cell.delegate = self
            tableView.separatorStyle = .none
             return cell
         }
@@ -263,3 +264,13 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
 }
 
 
+extension ViewController:TopCellDelegate {
+
+    func topCellitemClick(item: TopViewCellController, index: Int) {
+
+        let videoVC = self.storyboard!.instantiateViewController(withIdentifier: "videoView") as! VideoViewViewController
+        videoVC.modalPresentationStyle = .overCurrentContext
+        self.present(videoVC, animated: true, completion: nil)
+
+    }
+}
