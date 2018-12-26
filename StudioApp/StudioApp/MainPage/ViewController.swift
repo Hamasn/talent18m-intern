@@ -144,6 +144,7 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
 //            studio2D.navigationController?.navigationBar.tintColor = UIColor.white
 //            let status = UserDefaults.standard.bool(forKey: "arState")
 //            print(status)
+            
             self.present(studio2D, animated: true, completion: nil)
         }
     }
