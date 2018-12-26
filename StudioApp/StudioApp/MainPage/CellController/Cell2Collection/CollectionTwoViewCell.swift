@@ -163,12 +163,6 @@ func FutureEvent(){
     }
     var WeekDay = ["MON","TUE","WED","THU","FRI","SAT","SUN"]
     func ChangeItem( Page: Int ) {
-        print("weekday")
-        print(weekday-1)
-        print(year)
-        print(month)
-        print(day)
-      
         if ( Page == 0 ){
             self.ChangeContent(Time: "9:00", Date: WeekDay[Page], Event: "Mengniu Dairy")
              self.ChangeSize()

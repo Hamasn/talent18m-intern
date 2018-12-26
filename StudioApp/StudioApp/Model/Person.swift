@@ -16,7 +16,7 @@ class Person : SCNNode{
   //  var sceneSource = SCNSceneSource()
     override init(){
         super.init()
-        let idleScene = SCNScene(named: "art.scnassets/briefcase.dae")!
+        let idleScene = SCNScene(named: "art.scnassets/ShuLiFixed.dae")!
         
         
         // Add all the child nodes to the parent node
@@ -31,14 +31,14 @@ class Person : SCNNode{
     }
 
     func playAnimation(imageName:String){
-        guard  let sceneURL = Bundle.main.url(forResource: "art.scnassets/"+"briefcase", withExtension: "dae") else {
+        guard  let sceneURL = Bundle.main.url(forResource: "art.scnassets/"+imageName, withExtension: "dae") else {
             fatalError("dae not exit.")
         }
         guard  let sceneSource = SCNSceneSource(url: sceneURL,options: nil) else {
             fatalError("dae not exit.")
         }
 
-        if let animationObject = sceneSource.entryWithIdentifier("briefcase"+"-1", withClass: CAAnimation.self) {
+        if let animationObject = sceneSource.entryWithIdentifier(imageName+"-1", withClass: CAAnimation.self) {
             // The animation will only play once
             animationObject.repeatCount = 5
             // To create smooth transitions between animations
