@@ -348,8 +348,6 @@
 {
     NSMutableArray *paths = [[NSMutableArray alloc] init];
     
-     NSLog( @"%@", [NSString stringWithFormat:@"GGGGGGGGG======== %@",filePath]);
-    
     NSMutableArray *path1 = [_mapViewNew findPathStartX:start.x
                                                   statY:start.y
                                                    endX:end.x

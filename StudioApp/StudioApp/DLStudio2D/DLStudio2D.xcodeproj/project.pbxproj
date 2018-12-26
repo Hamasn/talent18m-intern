@@ -31,8 +31,6 @@
 		4B5757F1216C7A34005209F6 /* AStarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B5757B6216C7A32005209F6 /* AStarItem.h */; };
 		4B5757F3216C7A34005209F6 /* IndoorMapViewNew.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5757B8216C7A32005209F6 /* IndoorMapViewNew.m */; };
 		4B5757F4216C7A34005209F6 /* MyPositon.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B5757B9216C7A33005209F6 /* MyPositon.h */; };
-		4B5757F5216C7A34005209F6 /* NSFileHandle+readLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B5757BB216C7A33005209F6 /* NSFileHandle+readLine.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4B5757F6216C7A34005209F6 /* NSFileHandle+readLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5757BC216C7A33005209F6 /* NSFileHandle+readLine.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4B5757F7216C7A34005209F6 /* MapPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5757BD216C7A33005209F6 /* MapPopView.m */; };
 		4B5757F8216C7A34005209F6 /* RouteBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5757BE216C7A33005209F6 /* RouteBtn.m */; };
 		4B5757F9216C7A34005209F6 /* AStar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5757BF216C7A33005209F6 /* AStar.m */; };
@@ -79,8 +77,6 @@
 		4B5757B6216C7A32005209F6 /* AStarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AStarItem.h; sourceTree = "<group>"; };
 		4B5757B8216C7A32005209F6 /* IndoorMapViewNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndoorMapViewNew.m; sourceTree = "<group>"; };
 		4B5757B9216C7A33005209F6 /* MyPositon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPositon.h; sourceTree = "<group>"; };
-		4B5757BB216C7A33005209F6 /* NSFileHandle+readLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileHandle+readLine.h"; sourceTree = "<group>"; };
-		4B5757BC216C7A33005209F6 /* NSFileHandle+readLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileHandle+readLine.m"; sourceTree = "<group>"; };
 		4B5757BD216C7A33005209F6 /* MapPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPopView.m; sourceTree = "<group>"; };
 		4B5757BE216C7A33005209F6 /* RouteBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteBtn.m; sourceTree = "<group>"; };
 		4B5757BF216C7A33005209F6 /* AStar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AStar.m; sourceTree = "<group>"; };
@@ -147,7 +143,6 @@
 			children = (
 				4B5757A9216C7A32005209F6 /* Constants.h */,
 				4B5757B1216C7A32005209F6 /* FileReader */,
-				4B5757BA216C7A33005209F6 /* ReadLine */,
 				4B8F9056218558B4003CE939 /* Model */,
 				4B8F905B2185597C003CE939 /* Utils */,
 				4B8F905C218559AC003CE939 /* Views */,
@@ -166,15 +161,6 @@
 				4B5757B5216C7A32005209F6 /* PrimitivePoints.h */,
 			);
 			path = FileReader;
-			sourceTree = "<group>";
-		};
-		4B5757BA216C7A33005209F6 /* ReadLine */ = {
-			isa = PBXGroup;
-			children = (
-				4B5757BB216C7A33005209F6 /* NSFileHandle+readLine.h */,
-				4B5757BC216C7A33005209F6 /* NSFileHandle+readLine.m */,
-			);
-			path = ReadLine;
 			sourceTree = "<group>";
 		};
 		4B5757C7216C7A33005209F6 /* IndoorMapScene */ = {
@@ -262,7 +248,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B5757E7216C7A34005209F6 /* HotSpot.h in Headers */,
-				4B5757F5216C7A34005209F6 /* NSFileHandle+readLine.h in Headers */,
 				4B5757E3216C7A34005209F6 /* AStar.h in Headers */,
 				4B575807216C7A34005209F6 /* DLStudio2DViewController.h in Headers */,
 				4B5757F0216C7A34005209F6 /* PrimitivePoints.h in Headers */,
@@ -359,7 +344,6 @@
 				4B5757DD216C7A34005209F6 /* Utils.m in Sources */,
 				4B5757ED216C7A34005209F6 /* PrimitivePoints.m in Sources */,
 				4B575810216C7A34005209F6 /* AStarItem.m in Sources */,
-				4B5757F6216C7A34005209F6 /* NSFileHandle+readLine.m in Sources */,
 				4B5757D9216C7A34005209F6 /* ItemRelation.m in Sources */,
 				4B5757F8216C7A34005209F6 /* RouteBtn.m in Sources */,
 				4B5757F7216C7A34005209F6 /* MapPopView.m in Sources */,
