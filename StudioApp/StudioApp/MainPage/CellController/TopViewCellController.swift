@@ -53,25 +53,20 @@ class TopViewCellController: UITableViewCell,UIScrollViewDelegate{
 //
         //set up button
         let ratio:CGFloat = 163.0/375.0
+        let ratio1:CGFloat = 145.0/375.0
         let width = UIScreen.main.bounds.width * ratio;
+        let height = imgOne.frame.height * ratio1
 
         
         
-        let button1 = UIButton(frame: CGRect(x: width, y: 74, width: 50, height: 50))
-        let button2 = UIButton(frame: CGRect(x: scrollWidth+width, y: 74, width: 50, height: 50))
-        let button3 = UIButton(frame: CGRect(x: scrollWidth*2+width , y: 74, width: 50, height: 50))
-        let button4 = UIButton(frame: CGRect(x: scrollWidth*3+width , y: 74, width: 50, height: 50))
-        
+        let button1 = UIButton(frame: CGRect(x: width, y: height, width: 50, height: 50))
+
         
         button1.addTarget(self, action: #selector(playVedio1), for: .touchUpInside)
-        button2.addTarget(self, action: #selector(playVedio1), for: .touchUpInside)
-        button3.addTarget(self, action: #selector(playVedio1), for: .touchUpInside)
-        button4.addTarget(self, action: #selector(playVedio1), for: .touchUpInside)
+
         
         self.setUpButton(button: button1)
-        self.setUpButton(button: button2)
-        self.setUpButton(button: button3)
-        self.setUpButton(button: button4)
+
 
         //add image to view
         viewOne.addSubview(imgOne)

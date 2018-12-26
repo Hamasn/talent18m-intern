@@ -65,6 +65,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
             existingNode.removeFromParentNode()
         }
         self.bottomView.isHidden = true
+        self.speaker.isHidden = true
         self.isAlert = false
         self.routeName = ""
         

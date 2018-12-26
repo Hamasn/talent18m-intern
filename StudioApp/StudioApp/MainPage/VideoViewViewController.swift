@@ -8,19 +8,24 @@
 
 import UIKit
 import BMPlayer
+import AVFoundation
+import NVActivityIndicatorView
 
 class VideoViewViewController: UIViewController {
     
-    let player = BMPlayer()
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+
    
     override func viewDidLoad() {
-        BMPlayerConf
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5) 
         view.isOpaque = false
-    
+        var controller:BMPlayerControlView? = nil
+        let player = BMPlayer(customControlView: controller)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.blockRotation = true
         view.addSubview(player)
+ 
         
    //      Do any additional setup after loading the view.
         player.snp_makeConstraints { (make) in
@@ -30,11 +35,16 @@ class VideoViewViewController: UIViewController {
             make.width.equalTo(player.snp_height).multipliedBy(16.0/11.0).priority(750)
             
         }
-        
-        
         player.backBlock = { [unowned self] (isFullScreen) in
-            self.dismiss(animated: true, completion: nil)
+            if isFullScreen {
+                return
+            } else {
+                appDelegate.blockRotation = false
+                self.dismiss(animated: true, completion: nil)
+            }
         }
+
+
         let asset = BMPlayerResource(url: URL(string: "https://ibm.ent.box.com/shared/static/wute8zk6szhfzw9tc9ql4oshzaj5j8t8")!,
                                      name: "IBM Studios DaLian")
         player.setVideo(resource: asset)
