@@ -46,7 +46,7 @@ class NodeUtil{
         let node = SCNNode(geometry: box)
         node.position = position
         positionStr = position.toString()+" "
-        node.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor.init(red: 0.34, green: 0.45, blue: 1, alpha: 1)
         node.name = "startNode"
         rootNode.addChildNode(node)
     }
@@ -64,7 +64,7 @@ class NodeUtil{
         print("-------------")
         UserDefaults.standard.set(positionStr, forKey: "ShuLiFixed")
 
-        node.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor.init(red: 0.78, green: 0.25, blue: 0.91, alpha: 1)
         rootNode.addChildNode(node)
     }
     static var positionArr:[(pos:SCNVector3,trans:SCNMatrix4,rota:SCNVector4)]?
@@ -85,7 +85,7 @@ class NodeUtil{
         
         node.position = current
 
-        node.geometry?.firstMaterial?.diffuse.contents = UIColor.white
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor.init(red: 0.23, green: 0.80, blue: 0.88, alpha: 1)
         rootNode.addChildNode(node)
         print(current.toString())
         positionStr = positionStr+current.toString()+" "
