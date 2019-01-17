@@ -1012,7 +1012,7 @@ Cg
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Syf-t5-X1C"/>
                                                                 <constraint firstAttribute="width" constant="30" id="b4h-ZV-uz3"/>
                                                             </constraints>
-                                                            <state key="normal" title="Button" backgroundImage="email"/>
+                                                            <state key="normal" backgroundImage="like"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDe-q8-1bJ">
                                                             <rect key="frame" x="40" y="0.0" width="30" height="30"/>
@@ -1020,7 +1020,7 @@ Cg
                                                                 <constraint firstAttribute="width" constant="30" id="1fI-qh-CDP"/>
                                                                 <constraint firstAttribute="height" constant="30" id="nxa-NF-uWq"/>
                                                             </constraints>
-                                                            <state key="normal" title="Button" backgroundImage="email"/>
+                                                            <state key="normal" backgroundImage="write"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WN5-zP-5e7">
                                                             <rect key="frame" x="80" y="0.0" width="30" height="30"/>
@@ -1028,10 +1028,9 @@ Cg
                                                                 <constraint firstAttribute="height" constant="30" id="6La-zQ-RAR"/>
                                                                 <constraint firstAttribute="width" constant="30" id="c6V-3P-zKA"/>
                                                             </constraints>
-                                                            <state key="normal" title="Button" backgroundImage="email"/>
+                                                            <state key="normal" backgroundImage="share"/>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="1aw-6B-rlo"/>
                                                         <constraint firstAttribute="width" constant="110" id="Fe2-N6-Ysk"/>
@@ -1803,14 +1802,17 @@ Cg
         <image name="edit" width="36" height="36"/>
         <image name="email" width="48" height="36"/>
         <image name="icon-完成" width="13" height="13"/>
+        <image name="like" width="30" height="30"/>
         <image name="login" width="5868" height="4004"/>
         <image name="news1" width="81" height="81"/>
         <image name="profile" width="169.19999694824219" height="112.80000305175781"/>
+        <image name="share" width="30" height="30"/>
         <image name="showcase1" width="116" height="116"/>
         <image name="speaker" width="64" height="64"/>
         <image name="time" width="14" height="14"/>
         <image name="username" width="42" height="51"/>
         <image name="walking-1" width="46" height="46"/>
         <image name="waston" width="4032" height="3024"/>
+        <image name="write" width="30" height="30"/>
     </resources>
 </document>
