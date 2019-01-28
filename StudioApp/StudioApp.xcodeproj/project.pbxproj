@@ -58,6 +58,10 @@
 		CE547341213CCBFB007DDA11 /* RouteDae.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE547340213CCBFB007DDA11 /* RouteDae.swift */; };
 		CE547343213CCD8D007DDA11 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE547342213CCD8D007DDA11 /* Route.swift */; };
 		CE547345213CE24D007DDA11 /* ShareUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE547344213CE24D007DDA11 /* ShareUtil.swift */; };
+		CE59DCDB21EB7C7700089665 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DCDA21EB7C7700089665 /* FriendTableViewCell.swift */; };
+		CE59DCDD21EB7C9800089665 /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DCDC21EB7C9800089665 /* FriendTableViewController.swift */; };
+		CE59DCDF21EB85FD00089665 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DCDE21EB85FD00089665 /* FriendViewController.swift */; };
+		CE59DCE121EB8A8900089665 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59DCE021EB8A8900089665 /* TestTableViewController.swift */; };
 		CEB17947212FC51A009DEF0E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB17946212FC51A009DEF0E /* Person.swift */; };
 		CEECC3CE212D558A001CC128 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC3CD212D558A001CC128 /* extension.swift */; };
 		CEEF7FD721CB7F33001FDBB3 /* CollectionThreeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF7FD621CB7F33001FDBB3 /* CollectionThreeViewCell.swift */; };
@@ -152,6 +156,10 @@
 		CE547340213CCBFB007DDA11 /* RouteDae.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDae.swift; sourceTree = "<group>"; };
 		CE547342213CCD8D007DDA11 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		CE547344213CE24D007DDA11 /* ShareUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUtil.swift; sourceTree = "<group>"; };
+		CE59DCDA21EB7C7700089665 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		CE59DCDC21EB7C9800089665 /* FriendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
+		CE59DCDE21EB85FD00089665 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		CE59DCE021EB8A8900089665 /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 		CEB17946212FC51A009DEF0E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CEECC3CD212D558A001CC128 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		CEEF7FD621CB7F33001FDBB3 /* CollectionThreeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionThreeViewCell.swift; sourceTree = "<group>"; };
@@ -393,6 +401,7 @@
 		9AEECA0F20DC821F009819A8 /* StudioApp */ = {
 			isa = PBXGroup;
 			children = (
+				CE59DCD921EB7C4D00089665 /* New Group */,
 				18D594B821D06BCB00C6A7F5 /* NewsViewController */,
 				CEEF7FE121CBFAAE001FDBB3 /* NetWork */,
 				CEEF7FD821CBEA88001FDBB3 /* Agenda */,
@@ -430,6 +439,17 @@
 				CE3477ED21D0D0A4004FDFFC /* RouteContent.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CE59DCD921EB7C4D00089665 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				CE59DCDA21EB7C7700089665 /* FriendTableViewCell.swift */,
+				CE59DCDC21EB7C9800089665 /* FriendTableViewController.swift */,
+				CE59DCDE21EB85FD00089665 /* FriendViewController.swift */,
+				CE59DCE021EB8A8900089665 /* TestTableViewController.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		CEECC3CC212D556B001CC128 /* Extension */ = {
@@ -639,6 +659,7 @@
 				18D594BB21D06BCB00C6A7F5 /* ContentNews.swift in Sources */,
 				CE547324213698A6007DDA11 /* RoutesViewController.swift in Sources */,
 				9A34675420EDEBBB005366FD /* DemoElongationCell.swift in Sources */,
+				CE59DCDB21EB7C7700089665 /* FriendTableViewCell.swift in Sources */,
 				9AEECA1320DC821F009819A8 /* ViewController.swift in Sources */,
 				9AF5064020F71BFB00DF8D72 /* FirstPageViewController.swift in Sources */,
 				CE54732C2137C815007DDA11 /* RouteCacheService.swift in Sources */,
@@ -654,11 +675,14 @@
 				CEECC3CE212D558A001CC128 /* extension.swift in Sources */,
 				9AEB64E320F3445C00FE0300 /* TitleViewCell.swift in Sources */,
 				9A656BB020E1D3AA00602A96 /* CellTwoViewController.swift in Sources */,
+				CE59DCDD21EB7C9800089665 /* FriendTableViewController.swift in Sources */,
 				CEB17947212FC51A009DEF0E /* Person.swift in Sources */,
 				9AE219B320E5CE71008B880C /* AgendaViewController.swift in Sources */,
+				CE59DCDF21EB85FD00089665 /* FriendViewController.swift in Sources */,
 				CE54732621378E7D007DDA11 /* NodeUtil.swift in Sources */,
 				9A656BB220E1D3C200602A96 /* CellThreeViewController.swift in Sources */,
 				9A656BBD20E1EA8D00602A96 /* CollectionOneViewCell.swift in Sources */,
+				CE59DCE121EB8A8900089665 /* TestTableViewController.swift in Sources */,
 				9AEB64E520F3446F00FE0300 /* OptionViewCell.swift in Sources */,
 				18E4FC5B21C9D8EF0071EE61 /* Constant.swift in Sources */,
 				CE5473302137C8BC007DDA11 /* FileUtil.swift in Sources */,
@@ -731,6 +755,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -750,6 +775,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = "IBM CIO Distribution Wildcard";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -792,6 +818,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -804,6 +831,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE_SPECIFIER = "IBM CIO Distribution Wildcard";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -819,8 +847,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XQ42ZC97NS;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/StudioApp/2DFramework",
@@ -833,9 +861,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cicmobile.dlstudio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.cio.be.dlstudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "IBM CIO Distribution Wildcard";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -848,8 +876,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XQ42ZC97NS;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/StudioApp/2DFramework",
@@ -862,9 +890,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cicmobile.dlstudio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.cio.be.dlstudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "IBM CIO Distribution Wildcard";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

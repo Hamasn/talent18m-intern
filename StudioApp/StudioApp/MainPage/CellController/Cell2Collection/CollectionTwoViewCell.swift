@@ -174,7 +174,7 @@ func FutureEvent(){
            
         }
         else{
-            self.ChangeContent(Time: "NONE", Date: WeekDay[Page], Event: "Please Add")
+            self.ChangeContent(Time: "NONE", Date: WeekDay[Page], Event: "NONE")
              self.ChangeSize()
             
         }

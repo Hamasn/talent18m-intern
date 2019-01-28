@@ -119,18 +119,20 @@ class RoutesViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
                 guard let pointOfView = self.sceneView.pointOfView else { return }
                 
                 let current = pointOfView.position
+                print(current)
+                let current2 = SCNVector3(x: current.x, y: current.y, z: current.z)
+                print("update")
+                print(current2)
                 if let last = self.last {
-                    if last.distance(vector: current) >= Constant.ROUTE_DOT_INTERVAL*Constant.SCALE_INTERVAL {
-                        NodeUtil.addNormalNode(rootNode: self.sceneView.scene.rootNode, current: current, last: last);
-                        self.last = current
-                        self.position["sss"] = current
-                        self.arr.append(current)
+                    if last.distance(vector: current2) >= Constant.ROUTE_DOT_INTERVAL*Constant.SCALE_INTERVAL {
+                        NodeUtil.addNormalNode(rootNode: self.sceneView.scene.rootNode, current: current2, last: last);
+                        self.last = current2
+                        self.position["sss"] = current2
+                        self.arr.append(current2)
                     }
                 } else {
-                    NodeUtil.addBeginNode(rootNode: self.sceneView.scene.rootNode, position: current)
-                    print("begin")
-                    print(current)
-                    self.last = current
+                    NodeUtil.addBeginNode(rootNode: self.sceneView.scene.rootNode, position: current2)
+                    self.last = current2
                 }
                 glLineWidth(0)
             }

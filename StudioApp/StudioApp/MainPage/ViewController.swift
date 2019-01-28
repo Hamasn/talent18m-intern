@@ -102,8 +102,21 @@ class ViewController: UIViewController,ASCircularButtonDelegate,UINavigationCont
             presentView.navigationController?.navigationBar.tintColor = UIColor.white
             present(naviController, animated: true, completion: nil)
         }else if indexForButton == 1{
-            let routes = storyboard!.instantiateViewController(withIdentifier: "showRoutes") as! RoutesViewController
-            present(routes, animated: true, completion: nil)
+//            let routes = storyboard!.instantiateViewController(withIdentifier: "showRoutes") as! RoutesViewController
+//            present(routes, animated: true, completion: nil)
+            let presentView = storyboard!.instantiateViewController(withIdentifier: "Friend") as! FriendTableViewController
+            let naviController = UINavigationController(rootViewController: presentView)
+            let closeBtn = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(close))
+
+            presentView.navigationItem.leftBarButtonItem = closeBtn
+
+            presentView.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+            presentView.navigationController?.navigationBar.barTintColor = UIColor.black
+            presentView.navigationItem.title = "Friend Moments"
+            let dict:NSDictionary = NSDictionary(object: UIColor.white,forKey:NSAttributedString.Key.foregroundColor as NSCopying)
+            presentView.navigationController?.navigationBar.titleTextAttributes = dict as! [NSAttributedString.Key : Any]
+            presentView.navigationController?.navigationBar.tintColor = UIColor.white
+            present(naviController, animated: true, completion: nil)
             
         }else if indexForButton == 2  {
             let presentView = storyboard!.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController

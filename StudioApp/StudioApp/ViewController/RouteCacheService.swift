@@ -152,13 +152,6 @@ class RouteCacheService {
         if URL(string: FileUtil.path(name: "/com.mmoaay.findme.routes".appending("/").appending(String(route.name)))!) != nil {
             let test = URL(fileURLWithPath: FileUtil.path(name: "/com.mmoaay.findme.routes".appending("/").appending(String(route.name).appending(".scn")))!)
             print(test.absoluteString)
-//            var arr = NSArray()
-//            for child in route.scene.rootNode.childNodes{
-//                let a = (child.position,child.transform,child.rotation)
-//                arr.adding(a)
-//            }
-//            let filePath:String = NSHomeDirectory() + "/Documents/arr.plist"
-//            arr.write(toFile: filePath, atomically: true)
             return route.scene.write(to: test , options: nil, delegate: nil, progressHandler: { (totalProgress, error, stop) in
                 print("Progress \(totalProgress) Error: \(String(describing: error))")
             })

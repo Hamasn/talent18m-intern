@@ -114,13 +114,15 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     
     var dis:Bool?
     var xinhao:Double?
-    var verity = 0
+    var verity:Float = 0
     var verityDis = true
     
     var routeRecord = [String:[Int:String]]()
     var routeItem = [Int]()
     var routeBeacon:Int?
     var routeName = "routeName" //路线名称变量
+    
+    
 
     @IBAction func back(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -129,14 +131,14 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         self.sceneView.scene.rootNode.enumerateChildNodes { (existingNode, _) in
             existingNode.removeFromParentNode()
         }
+        self.speaker.isHidden = true
         self.bottomView.isHidden = true
         self.isAlert = false
-        self.routeName = ""
-
+        self.isLoadingRoute = false
         self.correctView.isHidden = false
         self.noticeLabel.text = "站在图像正前方，让相框与图像重合"
         self.routeName = "routeName"
-        self.isAlert = true
+        self.resetSession(withImageDetection: true)
     }
     var routes = RouteCacheService.shared.allRoutes()
     var nodePosition = RoutesViewController.shared.allPosition()
@@ -144,7 +146,10 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
+        self.routeInfo.isHidden = true
+        self.distance.isHidden = true
+        self.imageName.isHidden = true
         sceneView.delegate = self
         
         self.correctView.layer.borderWidth = 3
@@ -177,8 +182,8 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         
         //设置路线节点
         var shuli = [Int:String]()
-        shuli[58458] = "参照箭头路线行走"
-        shuli[33114] = "前方左转"
+//        shuli[58458] = "参照箭头路线行走"
+//        shuli[33114] = "前方左转"
         routeRecord["ShuLiFixed"] = shuli
 
         
@@ -218,17 +223,14 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
                     
                     self.dis = updateDistance(beacon.proximity)
                     if beacon.accuracy.binade <= 1 && beacon.accuracy.binade >= 0{
-                        
-                        self.verity += 1
+                        self.verity += 0.5
                     }else{
-                        
                         self.verity = 0
                     }
                     binade = String(beacon.accuracy.binade)
-//                    let rssi = String(beacon.rssi)
-                    if self.verity > 2 {//停留2秒后
+                    if self.verity > 0.5 {//停留0.5秒后
                         self.correctView.layer.borderColor = UIColor.green.cgColor
-                        if self.verity >= 4{ //确认对焦
+                        if self.verity >= 1{ //确认对焦
                             self.verityDis = true
                         }
                     }
@@ -245,7 +247,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
                 if routeName != "routeName" {
                     var routePath = routeRecord[routeName]!
                     if routePath.keys.contains(beaconMinor) {
-                        self.noticeLabel.text = "向前走"
+                        self.noticeLabel.text = "参照箭头路线行走"
                         if beacon.accuracy.binade <= 1 && beacon.accuracy.binade >= 0{
                             self.noticeLabel.text = routePath[beaconMinor]
                         }
@@ -285,13 +287,8 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     }
     
     func resetTrackingConfiguration() {
-        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else { return }
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.detectionImages = referenceImages
-        let options: ARSession.RunOptions = [.resetTracking, .removeExistingAnchors]
-        configuration.planeDetection = .vertical
         
-        sceneView.session.run(configuration, options: options)
+        resetSession(withImageDetection: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -303,7 +300,6 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
     }
     
     func playVoice(name:String){
@@ -352,6 +348,7 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         self.bottomView.isHidden = false
         self.textView.isHidden = false
         self.guideView.isHidden = true
+        self.noticeLabel.text = "Studio Introduction"
         switch name {
         case "ShuLiFixed"  :
             displayShuli(); break
@@ -368,7 +365,8 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         if self.ShuLiFixed == nil{
             self.ShuLiFixed = Person()
             self.ShuLiFixed?.name = "ShuLiFixed"
-            self.ShuLiFixed?.position = current
+            self.ShuLiFixed?.position = SCNVector3(x: current.x, y: current.y/2, z: -current.z/2)
+            print(current)
             self.sceneView.scene.rootNode.addChildNode(self.ShuLiFixed!)
             self.ShuLiFixed?.playAnimation(imageName: "ShuLiFixed")
             self.sceneView.scene.rootNode.addAnimation((self.ShuLiFixed?.animations["dancing"]!)!, forKey: "dancing")
@@ -397,69 +395,77 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
         
     }
     
+    var isLoadingRoute = false
+    
     func readRoute(name:String){
-        self.speaker.isHidden = false
-        self.routeName = name
-        self.correctView.isHidden = true
-        self.isAlert = false
-        self.bottomView.isHidden = false
-        self.textView.isHidden = true
-        self.guideView.isHidden = false
-        var positionStr = ""
-
-        if name == "ShuLiFixed"{
-           positionStr = kRoute1
-        }
-        
-        let positionArr = positionStr.split(separator: " ")
-       
-        var nodePosition = Array<Any>()
-        var k = 0
-        for _ in positionArr {
-            if k%3 == 0{
-                var arrPosition = Array<Any>()
-                arrPosition.append(positionArr[k])
-                arrPosition.append(positionArr[k+1])
-                arrPosition.append(positionArr[k+2])
-                nodePosition.append(arrPosition)
-                print(arrPosition)
-            }
-            k = k+1
-        }
-        
-        guard let pointOfView = self.sceneView.pointOfView else { return }
-        
-        let current = pointOfView.position
-
-        let current_x = current.x.toString().floatValue - positionArr[0].floatValue
-        let current_y = current.y.toString().floatValue - positionArr[1].floatValue
-        let current_z = current.z.toString().floatValue - positionArr[2].floatValue
-
-        
-        var s = 0
-        for test in nodePosition{
-
-            let itPosition = SCNVector3(positionArr[s*3].floatValue+current_x,positionArr[s*3+1].floatValue+current_y,positionArr[s*3+2].floatValue+current_z)
+        if isLoadingRoute == true {
+            return
+        }else{
+            isLoadingRoute = true
+            self.speaker.isHidden = false
+            self.routeName = name
+            self.correctView.isHidden = true
+            self.isAlert = true
+            self.bottomView.isHidden = false
+            self.textView.isHidden = true
+            self.guideView.isHidden = false
+            var positionStr = ""
             
-            let itPosition1 = SCNVector3(positionArr[s*3].floatValue,positionArr[s*3+1].floatValue,positionArr[s*3+2].floatValue)
-
-            if s == 0{
-                
-                NodeUtil.addBeginNode(rootNode: self.sceneView.scene.rootNode, position: itPosition)
+            if name == "ShuLiFixed"{
+                positionStr = kRoute1
             }
-            else{
-                let itLast = SCNVector3(positionArr[(s-1)*3].floatValue+current_x,positionArr[(s-1)*3+1].floatValue+current_y,positionArr[(s-1)*3+2].floatValue+current_z)
-                _ = SCNVector3(positionArr[(s-1)*3].floatValue,positionArr[(s-1)*3+1].floatValue,positionArr[(s-1)*3+2].floatValue)
-                if s == (nodePosition.count)-1{
-                    NodeUtil.addEndNode(rootNode: self.sceneView.scene.rootNode, position: itLast)
-                    break
+            
+            let positionArr = positionStr.split(separator: " ")
+            
+            var nodePosition = Array<Any>()
+            var k = 0
+            for _ in positionArr {
+                if k%3 == 0{
+                    var arrPosition = Array<Any>()
+                    arrPosition.append(positionArr[k])
+                    arrPosition.append(positionArr[k+1])
+                    arrPosition.append(positionArr[k+2])
+                    nodePosition.append(arrPosition)
+                    print(arrPosition)
+                }
+                k = k+1
+            }
+            
+            guard let pointOfView = self.sceneView.pointOfView else { return }
+            
+            let current = pointOfView.position
+            
+            let current_x = current.x.toString().floatValue - positionArr[0].floatValue
+            let current_y = current.y.toString().floatValue - positionArr[1].floatValue
+            let current_z = current.z.toString().floatValue - positionArr[2].floatValue
+            
+            
+            var s = 0
+            for _ in nodePosition{
+                
+                let itPosition = SCNVector3(positionArr[s*3].floatValue+current_x,positionArr[s*3+1].floatValue+current_y-0.5,positionArr[s*3+2].floatValue+current_z)
+                
+                let itPosition1 = SCNVector3(positionArr[s*3].floatValue,positionArr[s*3+1].floatValue,positionArr[s*3+2].floatValue)
+                
+                if s == 0{
+                    
+                    NodeUtil.addBeginNode(rootNode: self.sceneView.scene.rootNode, position: itPosition)
+                }
+                else{
+                    let itLast = SCNVector3(positionArr[(s-1)*3].floatValue+current_x,positionArr[(s-1)*3+1].floatValue+current_y-0.5,positionArr[(s-1)*3+2].floatValue+current_z)
+                    _ = SCNVector3(positionArr[(s-1)*3].floatValue,positionArr[(s-1)*3+1].floatValue,positionArr[(s-1)*3+2].floatValue)
+                    if s == (nodePosition.count)-1{
+                        NodeUtil.addEndNode(rootNode: self.sceneView.scene.rootNode, position: itLast)
+                        break
+                    }
+                    
+                    NodeUtil.addNormalNode(rootNode: self.sceneView.scene.rootNode, current: itPosition, last: itLast);
                 }
                 
-                NodeUtil.addNormalNode(rootNode: self.sceneView.scene.rootNode, current: itPosition, last: itLast);
+                s = s+1
             }
-            
-            s = s+1
         }
+       
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
@@ -467,14 +473,33 @@ class ShowARViewController: UIViewController,ARSCNViewDelegate,CLLocationManager
             guard let imageAnchor = anchor as? ARImageAnchor,
                 let imageName = imageAnchor.referenceImage.name
                 else { return }
-            self.imageName.text = imageName
-            
-            if imageName == "ShuLiFixed" && self.ShuLiFixed == nil && self.verityDis {
+            self.imageName.text = String(self.isAlert)
+            print(self.routeName)
+            print("2 imagename: \(imageName)")
+
+            if imageName == "ShuLiFixed" && self.ShuLiFixed == nil && self.verityDis{
+                if self.routeName != "routeName"{
+                    self.resetSession(withImageDetection: false)
+                }
                 self.readRoute(name: imageName)
                 
-            }else if imageName == "YellingFixed" && self.YellingFixed == nil && !self.isAlert{
-                self.selectAlert(name:imageName)
             }
+        }
+    }
+    
+    func resetSession(withImageDetection:Bool){
+        let options: ARSession.RunOptions = [.resetTracking, .removeExistingAnchors]
+        if withImageDetection{
+            guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else { return }
+            let configuration = ARWorldTrackingConfiguration()
+            configuration.detectionImages = referenceImages
+            
+            configuration.planeDetection = .vertical
+            sceneView.session.run(configuration, options: options)
+        }else{
+            let configuration = ARWorldTrackingConfiguration()
+            sceneView.session.run(configuration, options: options)
+            
         }
     }
     
