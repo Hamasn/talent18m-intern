@@ -11,9 +11,12 @@
 #import "HotSpot.h"
 #import "RouteBtn.h"
 #import <CoreLocation/CoreLocation.h>
-#import "LocationManager.h"
+#import <Beacon_2D/Beacon_2D.h>
+
 
 #import "Constants.h"
+
+#define bundlePath [[NSBundle mainBundle] pathForResource:@"DLStudio2D" ofType:@"bundle"]
 
 @interface DLStudio2DViewController ()<UIPopoverPresentationControllerDelegate,HotSpotDelegate,CLLocationManagerDelegate>
 {
@@ -24,6 +27,7 @@
     UIButton * currentLocation;
     RouteBtn * destination;
     UIView *routeControll;
+    UILabel *routeControllLabel;
     UIViewController * popvc;
     BOOL routing;
     CGFloat currentX;
@@ -37,45 +41,49 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     [locationManager requestAlwaysAuthorization];
-    routing = false;
     
+    routing = false;//初始化routing
+    
+    //Add indoor map scrollView
     indoorMapScrollView = [[IndoorMapScrollView alloc] initWithFrame:CGRectMake(0, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
     [self.view addSubview:indoorMapScrollView];
     
+    //Add listenr for map view zoom action.
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(zoom:) name:@"Zoom" object:nil];
     
-    //加载热点区域
+    //load all hot spots
     [self loadHotSpots];
     
-    currentLocation = [UIButton buttonWithType:UIButtonTypeCustom];
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"DLStudio2D" ofType:@"bundle"];
-    [currentLocation setImage: [UIImage imageWithContentsOfFile:[[NSBundle bundleWithPath:bundlePath] pathForResource:@"location" ofType:@"png"]] forState:UIControlStateNormal];
-    currentLocation.frame = CGRectMake(-100, -100, 40, 40);
-    [indoorMapScrollView.subviews[0].subviews[1] addSubview:currentLocation];
-    [currentLocation bringSubviewToFront:indoorMapScrollView.subviews.firstObject.subviews[1]];
+    //location self
+    [self addCurrentLocation];
     
     //延迟1秒并聚焦2倍视角地图，进行定位
     indoorMapScrollView.zoomScale = 2;
     [self zoomAction:@"2"];
     [self performSelector:@selector(locationAction)withObject:nil afterDelay:.0];
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateLocation) userInfo:nil repeats:YES];
-    //更改模式
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     
     //Add close button
     UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    closeBtn.frame = CGRectMake(self.view.bounds.size.width-50, 50, 40, 40);
+    closeBtn.frame = CGRectMake(self.view.bounds.size.width-50, 30, 40, 40);
     closeBtn.alpha = 0.7;
     [closeBtn setImage:[UIImage imageWithContentsOfFile:[[NSBundle bundleWithPath:bundlePath] pathForResource:@"icon_close" ofType:@"png"]] forState:UIControlStateNormal];
     [closeBtn addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeBtn];
     [closeBtn bringSubviewToFront:self.view];
-    
+}
+
+-(void)addCurrentLocation{
+    currentLocation = [UIButton buttonWithType:UIButtonTypeCustom];
+    [currentLocation setImage: [UIImage imageWithContentsOfFile:[[NSBundle bundleWithPath:bundlePath] pathForResource:@"location" ofType:@"png"]] forState:UIControlStateNormal];
+    currentLocation.frame = CGRectMake(-100, -100, 40, 40);
+    [indoorMapScrollView.subviews[0].subviews[1] addSubview:currentLocation];
+    [currentLocation bringSubviewToFront:indoorMapScrollView.subviews.firstObject.subviews[1]];
 }
 
 -(void)closeAction{
@@ -108,7 +116,6 @@
     
     RouteBtn * routeBtn = [RouteBtn buttonWithType:UIButtonTypeCustom];
     routeBtn.frame = CGRectMake(145, 3, 50, 40);
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"DLStudio2D" ofType:@"bundle"];
     [routeBtn setImage: [UIImage imageWithContentsOfFile:[[NSBundle bundleWithPath:bundlePath] pathForResource:@"arrow" ofType:@"png"]] forState:UIControlStateNormal];
     routeBtn.name = spotView.name;
     routeBtn.x = spotView.x;
@@ -120,6 +127,7 @@
     [popvc.view addSubview:distanceLabel];
     [popvc.view addSubview:routeBtn];
     [self presentViewController:popvc animated:YES completion:nil];
+    [self close];//关闭之前的导航
 }
 
 -(CGFloat)calculateDistanceCx: (CGFloat)currentX Cy:(CGFloat)currentY Dx:(CGFloat)destX Dy:(CGFloat)destY{
@@ -136,11 +144,9 @@
 -(void) selectSpot:(RouteBtn *)routeBtn{
     routing = !routing;
     destination = routeBtn;
-    NSLog(@"X:%d   Y:%d",routeBtn.x,routeBtn.y);
+    NSLog(@"Select at %@  X:%d   Y:%d",routeBtn.name,routeBtn.x,routeBtn.y);
     [popvc dismissViewControllerAnimated:true completion:nil];
-    
     [self addRouteControll:routeBtn];
-    
     if (routing && currentX>1&&currentY>1) {
         [indoorMapScrollView findShortestPath:CGPointMake(currentX, currentY) end:CGPointMake(routeBtn.x,routeBtn.y) filePath:@"map1_path_data"];
         currentLocation.center = CGPointMake(currentX, currentY);
@@ -155,17 +161,16 @@
     [routeControll bringSubviewToFront:self.view];
     
     UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(30, 5, 60, 60)];
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"DLStudio2D" ofType:@"bundle"];
     imgV.image = [UIImage imageWithContentsOfFile:[[NSBundle bundleWithPath:bundlePath] pathForResource:@"zoulu" ofType:@"png"]];
     [routeControll addSubview:imgV];
     
-    UILabel * l = [[UILabel alloc] initWithFrame:CGRectMake(100, 10, 200, 50)];
-    l.numberOfLines = 0;
-    l.font = [UIFont systemFontOfSize:12];
+    routeControllLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 10, 200, 50)];
+    routeControllLabel.numberOfLines = 0;
+    routeControllLabel.font = [UIFont systemFontOfSize:12];
     CGFloat dist = [self calculateDistanceCx:currentX Cy:currentY Dx:routeBtn.x Dy:routeBtn.y];
     CGFloat time = dist/1.2;
-    l.text = [NSString stringWithFormat:@"About %.1f m to %@ \nit takes about %.1f s",dist,routeBtn.name,time];
-    [routeControll addSubview:l];
+    routeControllLabel.text = [NSString stringWithFormat:@"About %.1f m to %@ \nit takes about %.1f s",dist,routeBtn.name,time];
+    [routeControll addSubview:routeControllLabel];
     
     UIButton *close = [UIButton buttonWithType:UIButtonTypeCustom];
     close.frame = CGRectMake(routeControll.bounds.size.width-90, 15, 60, 50);
@@ -181,13 +186,23 @@
     [self zoomAction:zoomScale];
 }
 
-- (void)updateLocation{
-
-    currentLocation.center = CGPointMake(currentX, currentY);
+- (void)locationAction{
+    //    [indoorMapScrollView scrollRectToVisible:CGRectMake(1120*MRScreenHeight/2855, 1880*MRScreenHeight/2855, 40, 40) animated:true ];
 }
 
-- (void)locationAction{
-//    [indoorMapScrollView scrollRectToVisible:CGRectMake(1120*MRScreenHeight/2855, 1880*MRScreenHeight/2855, 40, 40) animated:true ];
+- (void)updateLocation{
+    currentLocation.center = CGPointMake(currentX, currentY);
+    
+    //if user is routing in this time, change distance description at here
+    if (routing && routeControllLabel != nil && destination != nil) {
+        CGFloat dist = [self calculateDistanceCx:currentX Cy:currentY Dx:destination.x Dy:destination.y];
+        if (dist<1.5) {//If the user is less than 1.5m from the destination, the user is determined to have arrived
+            routeControllLabel.text = [NSString stringWithFormat:@"Great, you have already arrived at %@",destination.name];
+        }else{
+            CGFloat time = dist/1.2;
+            routeControllLabel.text = [NSString stringWithFormat:@"About %.1f m to %@ \nit takes about %.1f s",dist,destination.name,time];
+        }
+    }
 }
 
 - (void)zoomAction:(NSString*)zoomScale{
@@ -205,12 +220,10 @@
 -(void) close{
     routing = false;
     [routeControll removeFromSuperview];
-//    routeControll.frame = CGRectMake(-100, -180, 80, 40);
     [indoorMapScrollView findShortestPath:CGPointMake(-10, -10) end:CGPointMake(-10,-10) filePath:@"map1_path_data"];
 }
 
 -(void)loadHotSpots{
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"DLStudio2D" ofType:@"bundle"];
     NSString *plistPath = [[NSBundle bundleWithPath:bundlePath]  pathForResource:@"HotSpots" ofType:@"plist"];
     NSArray * hotSpots = [NSArray arrayWithContentsOfFile:plistPath];
     hotSpotViews  = [NSMutableArray array];
@@ -231,34 +244,39 @@
     }
 }
 
-- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller{
-    return UIModalPresentationNone;
-}
-
 - (void)hotSpotSelectedAt:(HotSpot*)hotSpot{
     [self pop:hotSpot];
 }
 
+//MaARK: UIAdaptivePresentationControllerDelegate
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller{
+    return UIModalPresentationNone;
+}
 
 //MARK: CoreLocation Delegate
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
     if (status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        [locationManager startRangingBeaconsInRegion:[[LocationManager getInstance] rangeBeacons]];
+        [locationManager startRangingBeaconsInRegion:[[[LocationManager alloc] init] rangeBeacons]];
     }
 }
 
 -(void) locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray<CLBeacon *> *)beacons inRegion:(CLBeaconRegion *)region{
-    CGPoint point = [[LocationManager getInstance] findNearest:beacons];
+    CGPoint point = [[[LocationManager alloc] init] findNearest:beacons];
     if (point.y*0.5924>1&&point.x*0.5924>1 && point.y != 100000.0) {
-        currentX = point.x*0.5924;
-        currentY = point.y*0.5924;
-        [indoorMapScrollView findShortestPath:CGPointMake(currentX, currentY) end:CGPointMake(destination.x,destination.y) filePath:@"map1_path_data"];
-        currentLocation.center = CGPointMake(currentX*MRScreenHeight/2855, currentY*MRScreenHeight/2855);
-        [indoorMapScrollView scrollRectToVisible:CGRectMake(currentX*MRScreenHeight/2855, currentY*MRScreenHeight/2855, self.view.frame.size.width, self.view.frame.size.height) animated:true];
-        
+        if (routing) {
+            currentX = point.x*0.5924;
+            currentY = point.y*0.5924;
+            [indoorMapScrollView findShortestPath:CGPointMake(currentX, currentY) end:CGPointMake(destination.x,destination.y) filePath:@"map1_path_data"];
+            currentLocation.center = CGPointMake(currentX*MRScreenHeight/2855, currentY*MRScreenHeight/2855);
+            [indoorMapScrollView scrollRectToVisible:CGRectMake(currentX*MRScreenHeight/2855, currentY*MRScreenHeight/2855, self.view.frame.size.width, self.view.frame.size.height) animated:true];
+        }else{
+            currentX = point.x*0.5924;
+            currentY = point.y*0.5924;
+            currentLocation.center = CGPointMake(currentX*MRScreenHeight/2855, currentY*MRScreenHeight/2855);
+            [indoorMapScrollView scrollRectToVisible:CGRectMake(currentX*MRScreenHeight/2855, currentY*MRScreenHeight/2855, self.view.frame.size.width, self.view.frame.size.height) animated:true];
+        }
     }
     NSLog(@"point.x:%f    point.y:%f ",point.x,point.y);
-    
 }
 
 @end

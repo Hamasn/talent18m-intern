@@ -11,6 +11,8 @@
 		18D594BB21D06BCB00C6A7F5 /* ContentNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D594B921D06BCB00C6A7F5 /* ContentNews.swift */; };
 		18D594BC21D06BCB00C6A7F5 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D594BA21D06BCB00C6A7F5 /* NewsViewController.swift */; };
 		18E4FC5B21C9D8EF0071EE61 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4FC5A21C9D8EF0071EE61 /* Constant.swift */; };
+		4BC46DDC21E890B4006A51DD /* Beacon_2D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC46DDB21E890B3006A51DD /* Beacon_2D.framework */; };
+		4BC46DDD21E890B4006A51DD /* Beacon_2D.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC46DDB21E890B3006A51DD /* Beacon_2D.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5D70DCE138D6225B3A1D7A72 /* Pods_StudioApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5FAE654894E42CDB516C49 /* Pods_StudioApp.framework */; };
 		9A06619A20EDB5890053CD5D /* LayerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06619920EDB5890053CD5D /* LayerContainerView.swift */; };
 		9A34675120EDEBBB005366FD /* GridViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A34674C20EDEBBB005366FD /* GridViewCell.xib */; };
@@ -81,12 +83,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4BE21DC521E5FC6E0046DBB2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4BC46DDD21E890B4006A51DD /* Beacon_2D.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		18A2330D21D3696000B63CE3 /* DLStudio2D.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DLStudio2D.xcodeproj; path = StudioApp/DLStudio2D/DLStudio2D.xcodeproj; sourceTree = "<group>"; };
 		18A2331521D3698700B63CE3 /* DLStudio2D.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DLStudio2D.bundle; path = StudioApp/DLStudio2D.bundle; sourceTree = SOURCE_ROOT; };
 		18D594B921D06BCB00C6A7F5 /* ContentNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentNews.swift; sourceTree = "<group>"; };
 		18D594BA21D06BCB00C6A7F5 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		18E4FC5A21C9D8EF0071EE61 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		4BC46DDB21E890B3006A51DD /* Beacon_2D.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Beacon_2D.framework; sourceTree = "<group>"; };
 		9A06619920EDB5890053CD5D /* LayerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerContainerView.swift; sourceTree = "<group>"; };
 		9A34674C20EDEBBB005366FD /* GridViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GridViewCell.xib; sourceTree = "<group>"; };
 		9A34674D20EDEBBB005366FD /* GridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
@@ -149,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BC46DDC21E890B4006A51DD /* Beacon_2D.framework in Frameworks */,
 				5D70DCE138D6225B3A1D7A72 /* Pods_StudioApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +372,7 @@
 		9AEECA0420DC821F009819A8 = {
 			isa = PBXGroup;
 			children = (
+				4BC46DDB21E890B3006A51DD /* Beacon_2D.framework */,
 				18A2330D21D3696000B63CE3 /* DLStudio2D.xcodeproj */,
 				9AD5165520E46D4A00F894BB /* Podfile */,
 				9AEECA0F20DC821F009819A8 /* StudioApp */,
@@ -450,6 +469,8 @@
 				9AEECA0A20DC821F009819A8 /* Frameworks */,
 				9AEECA0B20DC821F009819A8 /* Resources */,
 				9D59476527C006943E9750A5 /* [CP] Embed Pods Frameworks */,
+				CF35B1A692FD6DF464BDF49D /* [CP] Copy Pods Resources */,
+				4BE21DC521E5FC6E0046DBB2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -579,6 +600,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StudioApp/Pods-StudioApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF35B1A692FD6DF464BDF49D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StudioApp/Pods-StudioApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -784,10 +820,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5YX7VL3TZ3;
+				DEVELOPMENT_TEAM = XQ42ZC97NS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/StudioApp/2DFramework",
+					"$(PROJECT_DIR)/StudioApp",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = StudioApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -811,10 +849,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5YX7VL3TZ3;
+				DEVELOPMENT_TEAM = XQ42ZC97NS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/StudioApp/2DFramework",
+					"$(PROJECT_DIR)/StudioApp",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = StudioApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
