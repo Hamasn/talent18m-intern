@@ -27,18 +27,6 @@ DEPENDENCIES:
   - SVProgressHUD
   - SwiftyJSON
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Alamofire
-    - BMPlayer
-    - ElongationPreview
-    - FSPagerView
-    - NVActivityIndicatorView
-    - PKHUD
-    - SnapKit
-    - SVProgressHUD
-    - SwiftyJSON
-
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   BMPlayer: 44eebf06eb01450dd14ea74b27d07c5222f0eed1
@@ -52,4 +40,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: b4081598c87048559975eb994790ac33fa780bad
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.4.0
