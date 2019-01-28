@@ -74,8 +74,8 @@ var lastKnowPoint:[Double] = [0,0]
 let notChangeValue:Double = 100000.0
 
 
-let val_Q = 0.001
-let val_R = 0.004
+let val_Q = 0.0003
+let val_R = 0.0014
 let val_X0 = 0
 let val_P0 = 1
 
